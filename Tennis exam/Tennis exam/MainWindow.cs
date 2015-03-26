@@ -11,11 +11,11 @@ using Tennis_exam.Classes;
 
 namespace Tennis_exam
 {
-    public partial class Form1 : Form
+    public partial class MainWindow : Form
     {
         Tournament tournament;
 
-        public Form1()
+        public MainWindow()
         {
             InitializeComponent();
         }
@@ -49,8 +49,7 @@ namespace Tennis_exam
                 MessageBox.Show(ex.Message, "Can't add player", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
-            
-            
+            DataGridSetup(dataGridViewPlayer, newPlayer);
 
             //Resets the text fields after submit
             textPlayerFirstName.Text = null;
@@ -78,30 +77,5 @@ namespace Tennis_exam
                 }
             }
         }
-    }/*
-    public class GridHandler
-    {
-        public void GridSetup(DataGridView g, Player player)
-        {
-            int n = dataGridViewPlayer.Rows.Add();
-
-            g.Rows[n].Cells[0].Value = player;
-            g.Rows[n].Cells[1].Value = newPlayer.FristName;
-            g.Rows[n].Cells[2].Value = newPlayer.MiddleName;
-            g.Rows[n].Cells[3].Value = newPlayer.LastName;
-            g.Rows[n].Cells[4].Value = newPlayer.DateOfBirth;
-            dataGridViewPlayer.Rows[n].Cells[5].Value = newPlayer.CalcAge(newPlayer.DateOfBirth);
-            dataGridViewPlayer.Rows[n].Cells[6].Value = newPlayer.Nationality;
-            dataGridViewPlayer.Rows[n].Cells[7].Value = newPlayer.Gender;
-
-            dataGridViewPlayer.Rows[n].Cells[0].ValueType = typeof(Player);
-            dataGridViewPlayer.Rows[n].Cells[1].ValueType = typeof(string);
-            dataGridViewPlayer.Rows[n].Cells[2].ValueType = typeof(string);
-            dataGridViewPlayer.Rows[n].Cells[3].ValueType = typeof(string);
-            dataGridViewPlayer.Rows[n].Cells[4].ValueType = typeof(DateTime);
-            dataGridViewPlayer.Rows[n].Cells[5].ValueType = typeof(int);
-            dataGridViewPlayer.Rows[n].Cells[6].ValueType = typeof(Player.Nationalities);
-            dataGridViewPlayer.Rows[n].Cells[7].ValueType = typeof(Player.Genders);
-        }
-    }*/
+    }
 }

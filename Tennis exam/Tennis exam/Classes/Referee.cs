@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tennis_exam.Classes
 {
-    public class Referee : Person
+    internal class Referee : Person
     {
         public DateTime LicenseAcquired { get; set; }
         public DateTime LicenseLastRenewed { get; set; }
