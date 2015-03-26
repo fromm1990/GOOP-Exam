@@ -38,7 +38,7 @@ namespace Tennis_exam
 
         private void DataGridSetup(DataGridView dataGrid, Referee newReferee)
         {
-            int n = dataGridViewPlayer.Rows.Add();
+            int n = dataGridViewReferee.Rows.Add();
 
             dataGrid.Rows[n].Cells[0].Value = newReferee;
             dataGrid.Rows[n].Cells[1].Value = newReferee.FristName;
@@ -60,7 +60,7 @@ namespace Tennis_exam
             dataGrid.Rows[n].Cells[6].ValueType = typeof(Referee.Nationalities);
             dataGrid.Rows[n].Cells[7].ValueType = typeof(Referee.Genders);
             dataGrid.Rows[n].Cells[8].ValueType = typeof(DateTime);
-            dataGrid.Rows[n].Cells[9].ValueType = typeof(DateTime);
+            dataGrid.Rows[n].Cells[9].ValueType = typeof(DateTime?);
         }
     }
 }

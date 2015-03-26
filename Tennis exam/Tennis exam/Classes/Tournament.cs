@@ -68,6 +68,7 @@ namespace Tennis_exam.Classes
                 throw new Exception("All referee slots are filled.");
             }
         }
+
         public void AddGamemaster(GameMaster gameMaster)
         {
             if(GameMaster == null)
@@ -77,8 +78,25 @@ namespace Tennis_exam.Classes
             else
             {
                 throw new Exception("You will have to remove the curent gamemaster.");
-            }
+            }           
+        }
+
+        public void SetGameMaster(Referee referee)
+        {
+            GameMaster gamemaster = new GameMaster();
+
+            gamemaster.FristName = referee.FristName;
+            gamemaster.MiddleName = referee.MiddleName;
+            gamemaster.LastName = referee.LastName;
+            gamemaster.DateOfBirth = referee.DateOfBirth;
+            gamemaster.Nationality = referee.Nationality;
+            gamemaster.Gender = referee.Gender;
+            gamemaster.LicenseAcquired = referee.LicenseAcquired;
+            gamemaster.LicenseLastRenewed = referee.LicenseLastRenewed;
+
+            GameMaster = gamemaster;
             
+            RemoveReferee(referee);
         }
 
         public void RemovePlayer(Player player)

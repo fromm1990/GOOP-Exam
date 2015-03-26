@@ -27,6 +27,8 @@ namespace Tennis_exam
             //Setting up Data sources for combo boxes
             comboPlayerGender.DataSource = Enum.GetValues(typeof(Player.Genders));
             comboPlayerNationality.DataSource = Enum.GetValues(typeof(Player.Nationalities));
+            comboRefereeGender.DataSource = Enum.GetValues(typeof(Referee.Genders));
+            comboRefereeNationality.DataSource = Enum.GetValues(typeof(Referee.Nationalities));
         }
         
 
@@ -36,8 +38,8 @@ namespace Tennis_exam
             try
             {         
                 newPlayer.FristName = textPlayerFirstName.Text;
-                newPlayer.MiddleName = textMiddleName.Text;
-                newPlayer.LastName = textLastName.Text;
+                newPlayer.MiddleName = textPlayerMiddleName.Text;
+                newPlayer.LastName = textPlayerLastName.Text;
                 newPlayer.DateOfBirth = datePlayerDOB.Value;
                 newPlayer.Nationality = (int)comboPlayerNationality.SelectedValue;
                 newPlayer.Gender = (int)comboPlayerGender.SelectedValue;
@@ -53,8 +55,8 @@ namespace Tennis_exam
 
             //Resets the text fields after submit
             textPlayerFirstName.Text = null;
-            textMiddleName.Text = null;
-            textLastName.Text = null;
+            textPlayerMiddleName.Text = null;
+            textPlayerLastName.Text = null;
             datePlayerDOB.Value = DateTime.Today;
             comboPlayerGender.SelectedIndex = 0;
             comboPlayerNationality.SelectedIndex = 0;
@@ -77,5 +79,75 @@ namespace Tennis_exam
                 }
             }
         }
+
+        private void buttonRefereeAdd_Click(object sender, EventArgs e)
+        {
+            Referee newReferee = new Referee();
+            try
+            {
+                newReferee.FristName = textRefereeFirstName.Text;
+                newReferee.MiddleName = textRefereeMiddleName.Text;
+                newReferee.LastName = textRefereeLastName.Text;
+                newReferee.DateOfBirth = dateRefereeDOB.Value;
+                newReferee.Nationality = (int)comboRefereeNationality.SelectedValue;
+                newReferee.Gender = (int)comboRefereeGender.SelectedValue;
+                newReferee.LicenseAcquired = dateRefereeLicenseAcquired.Value;
+
+                if (dateRefereeLicenseRenewed.Enabled == false)
+                {
+                    newReferee.LicenseLastRenewed = null;
+                }
+                else
+                {
+                    newReferee.LicenseLastRenewed = dateRefereeLicenseRenewed.Value;
+                }
+                
+
+                tournament.AddReferee(newReferee);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Can't add player", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            DataGridSetup(dataGridViewReferee, newReferee);
+
+            //Resets the text fields after submit
+            textRefereeFirstName.Text = null;
+            textRefereeMiddleName.Text = null;
+            textRefereeLastName.Text = null;
+            dateRefereeDOB.Value = DateTime.Today;
+            comboRefereeGender.SelectedIndex = 0;
+            comboRefereeNationality.SelectedIndex = 0;
+        }
+
+        private void checkRefereeNeverRenewed_CheckedChanged(object sender, EventArgs e)
+        {
+            if (dateRefereeLicenseRenewed.Enabled == true)
+            {
+                dateRefereeLicenseRenewed.Enabled = false;
+            }
+            else
+            {
+                dateRefereeLicenseRenewed.Enabled = true;
+            }          
+        }
+
+        private void buttonRefereeRemove_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dataGridViewReferee.SelectedRows)
+            {
+                try
+                {
+                    tournament.RemoveReferee((Referee)row.Cells[0].Value);
+                    dataGridViewReferee.Rows.RemoveAt(row.Index);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Can't remove referee", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
     }
 }
