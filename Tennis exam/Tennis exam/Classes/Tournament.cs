@@ -84,18 +84,7 @@ namespace Tennis_exam.Classes
         public void SetGameMaster(Referee referee)
         {
             GameMaster gamemaster = new GameMaster();
-
-            gamemaster.FristName = referee.FristName;
-            gamemaster.MiddleName = referee.MiddleName;
-            gamemaster.LastName = referee.LastName;
-            gamemaster.DateOfBirth = referee.DateOfBirth;
-            gamemaster.Nationality = referee.Nationality;
-            gamemaster.Gender = referee.Gender;
-            gamemaster.LicenseAcquired = referee.LicenseAcquired;
-            gamemaster.LicenseLastRenewed = referee.LicenseLastRenewed;
-
-            GameMaster = gamemaster;
-            
+            gamemaster = (GameMaster)referee;
             RemoveReferee(referee);
         }
 
