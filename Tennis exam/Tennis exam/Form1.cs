@@ -28,6 +28,7 @@ namespace Tennis_exam
             comboPlayerGender.DataSource = Enum.GetValues(typeof(Player.Genders));
             comboPlayerNationality.DataSource = Enum.GetValues(typeof(Player.Nationalities));
         }
+        
 
         private void buttonAddPlayer_Click(object sender, EventArgs e)
         {
@@ -48,26 +49,8 @@ namespace Tennis_exam
                 MessageBox.Show(ex.Message, "Can't add player", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
-
-            int n = dataGridViewPlayer.Rows.Add();
-
-            dataGridViewPlayer.Rows[n].Cells[0].Value = newPlayer;
-            dataGridViewPlayer.Rows[n].Cells[1].Value = newPlayer.FristName;
-            dataGridViewPlayer.Rows[n].Cells[2].Value = newPlayer.MiddleName;
-            dataGridViewPlayer.Rows[n].Cells[3].Value = newPlayer.LastName;
-            dataGridViewPlayer.Rows[n].Cells[4].Value = newPlayer.DateOfBirth;
-            dataGridViewPlayer.Rows[n].Cells[5].Value = newPlayer.CalcAge(newPlayer.DateOfBirth);
-            dataGridViewPlayer.Rows[n].Cells[6].Value = newPlayer.Nationality;
-            dataGridViewPlayer.Rows[n].Cells[7].Value = newPlayer.Gender;
-
-            dataGridViewPlayer.Rows[n].Cells[0].ValueType = typeof(Player);
-            dataGridViewPlayer.Rows[n].Cells[1].ValueType = typeof(string);
-            dataGridViewPlayer.Rows[n].Cells[2].ValueType = typeof(string);
-            dataGridViewPlayer.Rows[n].Cells[3].ValueType = typeof(string);
-            dataGridViewPlayer.Rows[n].Cells[4].ValueType = typeof(DateTime);
-            dataGridViewPlayer.Rows[n].Cells[5].ValueType = typeof(int);
-            dataGridViewPlayer.Rows[n].Cells[6].ValueType = typeof(Player.Nationalities);
-            dataGridViewPlayer.Rows[n].Cells[7].ValueType = typeof(Player.Genders);
+            
+            
 
             //Resets the text fields after submit
             textPlayerFirstName.Text = null;
@@ -95,5 +78,30 @@ namespace Tennis_exam
                 }
             }
         }
-    }
+    }/*
+    public class GridHandler
+    {
+        public void GridSetup(DataGridView g, Player player)
+        {
+            int n = dataGridViewPlayer.Rows.Add();
+
+            g.Rows[n].Cells[0].Value = player;
+            g.Rows[n].Cells[1].Value = newPlayer.FristName;
+            g.Rows[n].Cells[2].Value = newPlayer.MiddleName;
+            g.Rows[n].Cells[3].Value = newPlayer.LastName;
+            g.Rows[n].Cells[4].Value = newPlayer.DateOfBirth;
+            dataGridViewPlayer.Rows[n].Cells[5].Value = newPlayer.CalcAge(newPlayer.DateOfBirth);
+            dataGridViewPlayer.Rows[n].Cells[6].Value = newPlayer.Nationality;
+            dataGridViewPlayer.Rows[n].Cells[7].Value = newPlayer.Gender;
+
+            dataGridViewPlayer.Rows[n].Cells[0].ValueType = typeof(Player);
+            dataGridViewPlayer.Rows[n].Cells[1].ValueType = typeof(string);
+            dataGridViewPlayer.Rows[n].Cells[2].ValueType = typeof(string);
+            dataGridViewPlayer.Rows[n].Cells[3].ValueType = typeof(string);
+            dataGridViewPlayer.Rows[n].Cells[4].ValueType = typeof(DateTime);
+            dataGridViewPlayer.Rows[n].Cells[5].ValueType = typeof(int);
+            dataGridViewPlayer.Rows[n].Cells[6].ValueType = typeof(Player.Nationalities);
+            dataGridViewPlayer.Rows[n].Cells[7].ValueType = typeof(Player.Genders);
+        }
+    }*/
 }
