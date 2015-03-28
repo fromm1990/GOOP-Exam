@@ -51,7 +51,7 @@ namespace Tennis_exam
                 MessageBox.Show(ex.Message, "Can't add player", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
-            DataGridSetup(dataGridViewPlayer, newPlayer);
+            DataGridAddElement(dataGridViewPlayer, newPlayer);
 
             //Resets the text fields after submit
             textPlayerFirstName.Text = null;
@@ -110,7 +110,7 @@ namespace Tennis_exam
                 MessageBox.Show(ex.Message, "Can't add player", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            DataGridSetup(dataGridViewReferee, newReferee);
+            DataGridAddElement(dataGridViewReferee, newReferee);
 
             //Resets the text fields after submit
             textRefereeFirstName.Text = null;
@@ -147,6 +147,35 @@ namespace Tennis_exam
                     MessageBox.Show(ex.Message, "Can't remove referee", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void buttonPlayerSortByFirstName_Click(object sender, EventArgs e)
+        {
+            tournament.SortByFirstName(tournament.Players);
+            dataGridViewPlayer.Rows.Clear();
+            PopulateDataGridView(dataGridViewPlayer, tournament.Players);
+
+        }
+
+        private void buttonPlayerSortByLastName_Click(object sender, EventArgs e)
+        {
+            tournament.SortByLastName(tournament.Players);
+            dataGridViewPlayer.Rows.Clear();
+            PopulateDataGridView(dataGridViewPlayer, tournament.Players);
+        }
+
+        private void buttonRefereeSortByFirstName_Click(object sender, EventArgs e)
+        {
+            tournament.SortByFirstName(tournament.Referees);
+            dataGridViewReferee.Rows.Clear();
+            PopulateDataGridView(dataGridViewReferee, tournament.Referees);
+        }
+
+        private void buttonRefereeSortByLastName_Click(object sender, EventArgs e)
+        {
+            tournament.SortByLastName(tournament.Referees);
+            dataGridViewReferee.Rows.Clear();
+            PopulateDataGridView(dataGridViewReferee, tournament.Referees);
         }
 
     }

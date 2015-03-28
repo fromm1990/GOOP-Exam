@@ -55,28 +55,15 @@
             this.textPlayerFirstName = new System.Windows.Forms.TextBox();
             this.labelPlayerMiddelName = new System.Windows.Forms.Label();
             this.TabReferee = new System.Windows.Forms.TabPage();
-            this.groupBoxAdd = new System.Windows.Forms.GroupBox();
-            this.labelRefereeFirstName = new System.Windows.Forms.Label();
-            this.textRefereeFirstName = new System.Windows.Forms.TextBox();
-            this.labelRefereeMiddleName = new System.Windows.Forms.Label();
-            this.textRefereeMiddleName = new System.Windows.Forms.TextBox();
-            this.labelRefereeLastName = new System.Windows.Forms.Label();
-            this.textRefereeLastName = new System.Windows.Forms.TextBox();
-            this.labelRefereeDOB = new System.Windows.Forms.Label();
-            this.dateRefereeDOB = new System.Windows.Forms.DateTimePicker();
-            this.comboRefereeNationality = new System.Windows.Forms.ComboBox();
-            this.labelRefereeNationality = new System.Windows.Forms.Label();
-            this.comboRefereeGender = new System.Windows.Forms.ComboBox();
-            this.labelRefereeGender = new System.Windows.Forms.Label();
-            this.dataGridViewReferee = new System.Windows.Forms.DataGridView();
-            this.buttonRefereeAdd = new System.Windows.Forms.Button();
-            this.buttonRefereeRemove = new System.Windows.Forms.Button();
-            this.buttonRefereeAutoAdd = new System.Windows.Forms.Button();
-            this.dateRefereeLicenseAcquired = new System.Windows.Forms.DateTimePicker();
-            this.dateRefereeLicenseRenewed = new System.Windows.Forms.DateTimePicker();
-            this.labelRefereeLicenseAcquired = new System.Windows.Forms.Label();
-            this.labelRefereeLicenseRenewed = new System.Windows.Forms.Label();
             this.checkRefereeNeverRenewed = new System.Windows.Forms.CheckBox();
+            this.labelRefereeLicenseRenewed = new System.Windows.Forms.Label();
+            this.labelRefereeLicenseAcquired = new System.Windows.Forms.Label();
+            this.dateRefereeLicenseRenewed = new System.Windows.Forms.DateTimePicker();
+            this.dateRefereeLicenseAcquired = new System.Windows.Forms.DateTimePicker();
+            this.buttonRefereeAutoAdd = new System.Windows.Forms.Button();
+            this.buttonRefereeRemove = new System.Windows.Forms.Button();
+            this.buttonRefereeAdd = new System.Windows.Forms.Button();
+            this.dataGridViewReferee = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,12 +74,29 @@
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LicenseAcquired = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LicenseRenewed = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelRefereeGender = new System.Windows.Forms.Label();
+            this.comboRefereeGender = new System.Windows.Forms.ComboBox();
+            this.labelRefereeNationality = new System.Windows.Forms.Label();
+            this.comboRefereeNationality = new System.Windows.Forms.ComboBox();
+            this.dateRefereeDOB = new System.Windows.Forms.DateTimePicker();
+            this.labelRefereeDOB = new System.Windows.Forms.Label();
+            this.textRefereeLastName = new System.Windows.Forms.TextBox();
+            this.labelRefereeLastName = new System.Windows.Forms.Label();
+            this.textRefereeMiddleName = new System.Windows.Forms.TextBox();
+            this.labelRefereeMiddleName = new System.Windows.Forms.Label();
+            this.textRefereeFirstName = new System.Windows.Forms.TextBox();
+            this.labelRefereeFirstName = new System.Windows.Forms.Label();
+            this.groupBoxAdd = new System.Windows.Forms.GroupBox();
+            this.buttonPlayerSortByFirstName = new System.Windows.Forms.Button();
+            this.buttonPlayerSortByLastName = new System.Windows.Forms.Button();
+            this.buttonRefereeSortByFirstName = new System.Windows.Forms.Button();
+            this.buttonRefereeSortByLastName = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.TabPlayers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlayer)).BeginInit();
             this.TabReferee.SuspendLayout();
-            this.groupBoxAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReferee)).BeginInit();
+            this.groupBoxAdd.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -100,14 +104,16 @@
             this.tabControl1.Controls.Add(this.TabPlayers);
             this.tabControl1.Controls.Add(this.TabReferee);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tabControl1.Location = new System.Drawing.Point(3, 22);
+            this.tabControl1.Location = new System.Drawing.Point(3, 19);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1076, 187);
+            this.tabControl1.Size = new System.Drawing.Size(1076, 268);
             this.tabControl1.TabIndex = 0;
             // 
             // TabPlayers
             // 
+            this.TabPlayers.Controls.Add(this.buttonPlayerSortByLastName);
+            this.TabPlayers.Controls.Add(this.buttonPlayerSortByFirstName);
             this.TabPlayers.Controls.Add(this.buttonPlayerRemove);
             this.TabPlayers.Controls.Add(this.buttonPlayerAdd);
             this.TabPlayers.Controls.Add(this.buttonPlayerAutoAdd);
@@ -127,7 +133,7 @@
             this.TabPlayers.Location = new System.Drawing.Point(4, 22);
             this.TabPlayers.Name = "TabPlayers";
             this.TabPlayers.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPlayers.Size = new System.Drawing.Size(1068, 161);
+            this.TabPlayers.Size = new System.Drawing.Size(1068, 242);
             this.TabPlayers.TabIndex = 1;
             this.TabPlayers.Text = "Player";
             this.TabPlayers.UseVisualStyleBackColor = true;
@@ -175,7 +181,7 @@
             this.Gender});
             this.dataGridViewPlayer.Location = new System.Drawing.Point(324, 6);
             this.dataGridViewPlayer.Name = "dataGridViewPlayer";
-            this.dataGridViewPlayer.Size = new System.Drawing.Size(732, 149);
+            this.dataGridViewPlayer.Size = new System.Drawing.Size(732, 201);
             this.dataGridViewPlayer.TabIndex = 1;
             // 
             // No
@@ -328,6 +334,8 @@
             // 
             // TabReferee
             // 
+            this.TabReferee.Controls.Add(this.buttonRefereeSortByLastName);
+            this.TabReferee.Controls.Add(this.buttonRefereeSortByFirstName);
             this.TabReferee.Controls.Add(this.checkRefereeNeverRenewed);
             this.TabReferee.Controls.Add(this.labelRefereeLicenseRenewed);
             this.TabReferee.Controls.Add(this.labelRefereeLicenseAcquired);
@@ -352,120 +360,84 @@
             this.TabReferee.Location = new System.Drawing.Point(4, 22);
             this.TabReferee.Name = "TabReferee";
             this.TabReferee.Padding = new System.Windows.Forms.Padding(3);
-            this.TabReferee.Size = new System.Drawing.Size(1068, 161);
+            this.TabReferee.Size = new System.Drawing.Size(1068, 242);
             this.TabReferee.TabIndex = 0;
             this.TabReferee.Text = "Referee";
             this.TabReferee.UseVisualStyleBackColor = true;
             // 
-            // groupBoxAdd
+            // checkRefereeNeverRenewed
             // 
-            this.groupBoxAdd.Controls.Add(this.tabControl1);
-            this.groupBoxAdd.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBoxAdd.Location = new System.Drawing.Point(0, 376);
-            this.groupBoxAdd.Name = "groupBoxAdd";
-            this.groupBoxAdd.Size = new System.Drawing.Size(1082, 212);
-            this.groupBoxAdd.TabIndex = 1;
-            this.groupBoxAdd.TabStop = false;
-            this.groupBoxAdd.Text = "Add";
+            this.checkRefereeNeverRenewed.AutoSize = true;
+            this.checkRefereeNeverRenewed.Location = new System.Drawing.Point(344, 100);
+            this.checkRefereeNeverRenewed.Name = "checkRefereeNeverRenewed";
+            this.checkRefereeNeverRenewed.Size = new System.Drawing.Size(144, 17);
+            this.checkRefereeNeverRenewed.TabIndex = 22;
+            this.checkRefereeNeverRenewed.Text = "License Never Renewed";
+            this.checkRefereeNeverRenewed.UseVisualStyleBackColor = true;
+            this.checkRefereeNeverRenewed.CheckedChanged += new System.EventHandler(this.checkRefereeNeverRenewed_CheckedChanged);
             // 
-            // labelRefereeFirstName
+            // labelRefereeLicenseRenewed
             // 
-            this.labelRefereeFirstName.AutoSize = true;
-            this.labelRefereeFirstName.Location = new System.Drawing.Point(3, 3);
-            this.labelRefereeFirstName.Name = "labelRefereeFirstName";
-            this.labelRefereeFirstName.Size = new System.Drawing.Size(60, 13);
-            this.labelRefereeFirstName.TabIndex = 1;
-            this.labelRefereeFirstName.Text = "First Name:";
+            this.labelRefereeLicenseRenewed.AutoSize = true;
+            this.labelRefereeLicenseRenewed.Location = new System.Drawing.Point(341, 42);
+            this.labelRefereeLicenseRenewed.Name = "labelRefereeLicenseRenewed";
+            this.labelRefereeLicenseRenewed.Size = new System.Drawing.Size(97, 13);
+            this.labelRefereeLicenseRenewed.TabIndex = 21;
+            this.labelRefereeLicenseRenewed.Text = "Licence Renewed:";
             // 
-            // textRefereeFirstName
+            // labelRefereeLicenseAcquired
             // 
-            this.textRefereeFirstName.Location = new System.Drawing.Point(6, 19);
-            this.textRefereeFirstName.Name = "textRefereeFirstName";
-            this.textRefereeFirstName.Size = new System.Drawing.Size(143, 20);
-            this.textRefereeFirstName.TabIndex = 2;
+            this.labelRefereeLicenseAcquired.AutoSize = true;
+            this.labelRefereeLicenseAcquired.Location = new System.Drawing.Point(341, 3);
+            this.labelRefereeLicenseAcquired.Name = "labelRefereeLicenseAcquired";
+            this.labelRefereeLicenseAcquired.Size = new System.Drawing.Size(93, 13);
+            this.labelRefereeLicenseAcquired.TabIndex = 20;
+            this.labelRefereeLicenseAcquired.Text = "Licence Acquired:";
             // 
-            // labelRefereeMiddleName
+            // dateRefereeLicenseRenewed
             // 
-            this.labelRefereeMiddleName.AutoSize = true;
-            this.labelRefereeMiddleName.Location = new System.Drawing.Point(3, 42);
-            this.labelRefereeMiddleName.Name = "labelRefereeMiddleName";
-            this.labelRefereeMiddleName.Size = new System.Drawing.Size(72, 13);
-            this.labelRefereeMiddleName.TabIndex = 3;
-            this.labelRefereeMiddleName.Text = "Middle Name:";
+            this.dateRefereeLicenseRenewed.Location = new System.Drawing.Point(344, 57);
+            this.dateRefereeLicenseRenewed.Name = "dateRefereeLicenseRenewed";
+            this.dateRefereeLicenseRenewed.Size = new System.Drawing.Size(143, 20);
+            this.dateRefereeLicenseRenewed.TabIndex = 19;
+            this.dateRefereeLicenseRenewed.Value = new System.DateTime(2015, 3, 25, 0, 0, 0, 0);
             // 
-            // textRefereeMiddleName
+            // dateRefereeLicenseAcquired
             // 
-            this.textRefereeMiddleName.Location = new System.Drawing.Point(6, 58);
-            this.textRefereeMiddleName.Name = "textRefereeMiddleName";
-            this.textRefereeMiddleName.Size = new System.Drawing.Size(143, 20);
-            this.textRefereeMiddleName.TabIndex = 4;
+            this.dateRefereeLicenseAcquired.Location = new System.Drawing.Point(344, 19);
+            this.dateRefereeLicenseAcquired.Name = "dateRefereeLicenseAcquired";
+            this.dateRefereeLicenseAcquired.Size = new System.Drawing.Size(143, 20);
+            this.dateRefereeLicenseAcquired.TabIndex = 18;
+            this.dateRefereeLicenseAcquired.Value = new System.DateTime(2015, 3, 25, 0, 0, 0, 0);
             // 
-            // labelRefereeLastName
+            // buttonRefereeAutoAdd
             // 
-            this.labelRefereeLastName.AutoSize = true;
-            this.labelRefereeLastName.Location = new System.Drawing.Point(3, 81);
-            this.labelRefereeLastName.Name = "labelRefereeLastName";
-            this.labelRefereeLastName.Size = new System.Drawing.Size(61, 13);
-            this.labelRefereeLastName.TabIndex = 5;
-            this.labelRefereeLastName.Text = "Last Name:";
+            this.buttonRefereeAutoAdd.Location = new System.Drawing.Point(6, 132);
+            this.buttonRefereeAutoAdd.Name = "buttonRefereeAutoAdd";
+            this.buttonRefereeAutoAdd.Size = new System.Drawing.Size(69, 23);
+            this.buttonRefereeAutoAdd.TabIndex = 17;
+            this.buttonRefereeAutoAdd.Text = "Auto Add";
+            this.buttonRefereeAutoAdd.UseVisualStyleBackColor = true;
             // 
-            // textRefereeLastName
+            // buttonRefereeRemove
             // 
-            this.textRefereeLastName.Location = new System.Drawing.Point(6, 97);
-            this.textRefereeLastName.Name = "textRefereeLastName";
-            this.textRefereeLastName.Size = new System.Drawing.Size(143, 20);
-            this.textRefereeLastName.TabIndex = 6;
+            this.buttonRefereeRemove.Location = new System.Drawing.Point(249, 132);
+            this.buttonRefereeRemove.Name = "buttonRefereeRemove";
+            this.buttonRefereeRemove.Size = new System.Drawing.Size(69, 23);
+            this.buttonRefereeRemove.TabIndex = 16;
+            this.buttonRefereeRemove.Text = "Remove";
+            this.buttonRefereeRemove.UseVisualStyleBackColor = true;
+            this.buttonRefereeRemove.Click += new System.EventHandler(this.buttonRefereeRemove_Click);
             // 
-            // labelRefereeDOB
+            // buttonRefereeAdd
             // 
-            this.labelRefereeDOB.AutoSize = true;
-            this.labelRefereeDOB.Location = new System.Drawing.Point(172, 3);
-            this.labelRefereeDOB.Name = "labelRefereeDOB";
-            this.labelRefereeDOB.Size = new System.Drawing.Size(71, 13);
-            this.labelRefereeDOB.TabIndex = 7;
-            this.labelRefereeDOB.Text = "Date Of Birth:";
-            // 
-            // dateRefereeDOB
-            // 
-            this.dateRefereeDOB.Location = new System.Drawing.Point(175, 19);
-            this.dateRefereeDOB.Name = "dateRefereeDOB";
-            this.dateRefereeDOB.Size = new System.Drawing.Size(143, 20);
-            this.dateRefereeDOB.TabIndex = 8;
-            this.dateRefereeDOB.Value = new System.DateTime(2015, 3, 25, 0, 0, 0, 0);
-            // 
-            // comboRefereeNationality
-            // 
-            this.comboRefereeNationality.FormattingEnabled = true;
-            this.comboRefereeNationality.Location = new System.Drawing.Point(175, 57);
-            this.comboRefereeNationality.Name = "comboRefereeNationality";
-            this.comboRefereeNationality.Size = new System.Drawing.Size(143, 21);
-            this.comboRefereeNationality.TabIndex = 10;
-            // 
-            // labelRefereeNationality
-            // 
-            this.labelRefereeNationality.AutoSize = true;
-            this.labelRefereeNationality.Location = new System.Drawing.Point(172, 42);
-            this.labelRefereeNationality.Name = "labelRefereeNationality";
-            this.labelRefereeNationality.Size = new System.Drawing.Size(56, 13);
-            this.labelRefereeNationality.TabIndex = 11;
-            this.labelRefereeNationality.Text = "Nationality";
-            // 
-            // comboRefereeGender
-            // 
-            this.comboRefereeGender.FormattingEnabled = true;
-            this.comboRefereeGender.Location = new System.Drawing.Point(175, 96);
-            this.comboRefereeGender.Name = "comboRefereeGender";
-            this.comboRefereeGender.Size = new System.Drawing.Size(143, 21);
-            this.comboRefereeGender.TabIndex = 12;
-            // 
-            // labelRefereeGender
-            // 
-            this.labelRefereeGender.AutoSize = true;
-            this.labelRefereeGender.Location = new System.Drawing.Point(172, 80);
-            this.labelRefereeGender.Name = "labelRefereeGender";
-            this.labelRefereeGender.Size = new System.Drawing.Size(42, 13);
-            this.labelRefereeGender.TabIndex = 13;
-            this.labelRefereeGender.Text = "Gender";
+            this.buttonRefereeAdd.Location = new System.Drawing.Point(175, 132);
+            this.buttonRefereeAdd.Name = "buttonRefereeAdd";
+            this.buttonRefereeAdd.Size = new System.Drawing.Size(69, 23);
+            this.buttonRefereeAdd.TabIndex = 15;
+            this.buttonRefereeAdd.Text = "Add";
+            this.buttonRefereeAdd.UseVisualStyleBackColor = true;
+            this.buttonRefereeAdd.Click += new System.EventHandler(this.buttonRefereeAdd_Click);
             // 
             // dataGridViewReferee
             // 
@@ -483,82 +455,8 @@
             this.LicenseRenewed});
             this.dataGridViewReferee.Location = new System.Drawing.Point(493, 6);
             this.dataGridViewReferee.Name = "dataGridViewReferee";
-            this.dataGridViewReferee.Size = new System.Drawing.Size(563, 149);
+            this.dataGridViewReferee.Size = new System.Drawing.Size(563, 201);
             this.dataGridViewReferee.TabIndex = 14;
-            // 
-            // buttonRefereeAdd
-            // 
-            this.buttonRefereeAdd.Location = new System.Drawing.Point(175, 132);
-            this.buttonRefereeAdd.Name = "buttonRefereeAdd";
-            this.buttonRefereeAdd.Size = new System.Drawing.Size(69, 23);
-            this.buttonRefereeAdd.TabIndex = 15;
-            this.buttonRefereeAdd.Text = "Add";
-            this.buttonRefereeAdd.UseVisualStyleBackColor = true;
-            this.buttonRefereeAdd.Click += new System.EventHandler(this.buttonRefereeAdd_Click);
-            // 
-            // buttonRefereeRemove
-            // 
-            this.buttonRefereeRemove.Location = new System.Drawing.Point(249, 132);
-            this.buttonRefereeRemove.Name = "buttonRefereeRemove";
-            this.buttonRefereeRemove.Size = new System.Drawing.Size(69, 23);
-            this.buttonRefereeRemove.TabIndex = 16;
-            this.buttonRefereeRemove.Text = "Remove";
-            this.buttonRefereeRemove.UseVisualStyleBackColor = true;
-            this.buttonRefereeRemove.Click += new System.EventHandler(this.buttonRefereeRemove_Click);
-            // 
-            // buttonRefereeAutoAdd
-            // 
-            this.buttonRefereeAutoAdd.Location = new System.Drawing.Point(6, 132);
-            this.buttonRefereeAutoAdd.Name = "buttonRefereeAutoAdd";
-            this.buttonRefereeAutoAdd.Size = new System.Drawing.Size(69, 23);
-            this.buttonRefereeAutoAdd.TabIndex = 17;
-            this.buttonRefereeAutoAdd.Text = "Auto Add";
-            this.buttonRefereeAutoAdd.UseVisualStyleBackColor = true;
-            // 
-            // dateRefereeLicenseAcquired
-            // 
-            this.dateRefereeLicenseAcquired.Location = new System.Drawing.Point(344, 19);
-            this.dateRefereeLicenseAcquired.Name = "dateRefereeLicenseAcquired";
-            this.dateRefereeLicenseAcquired.Size = new System.Drawing.Size(143, 20);
-            this.dateRefereeLicenseAcquired.TabIndex = 18;
-            this.dateRefereeLicenseAcquired.Value = new System.DateTime(2015, 3, 25, 0, 0, 0, 0);
-            // 
-            // dateRefereeLicenseRenewed
-            // 
-            this.dateRefereeLicenseRenewed.Location = new System.Drawing.Point(344, 57);
-            this.dateRefereeLicenseRenewed.Name = "dateRefereeLicenseRenewed";
-            this.dateRefereeLicenseRenewed.Size = new System.Drawing.Size(143, 20);
-            this.dateRefereeLicenseRenewed.TabIndex = 19;
-            this.dateRefereeLicenseRenewed.Value = new System.DateTime(2015, 3, 25, 0, 0, 0, 0);
-            // 
-            // labelRefereeLicenseAcquired
-            // 
-            this.labelRefereeLicenseAcquired.AutoSize = true;
-            this.labelRefereeLicenseAcquired.Location = new System.Drawing.Point(341, 3);
-            this.labelRefereeLicenseAcquired.Name = "labelRefereeLicenseAcquired";
-            this.labelRefereeLicenseAcquired.Size = new System.Drawing.Size(93, 13);
-            this.labelRefereeLicenseAcquired.TabIndex = 20;
-            this.labelRefereeLicenseAcquired.Text = "Licence Acquired:";
-            // 
-            // labelRefereeLicenseRenewed
-            // 
-            this.labelRefereeLicenseRenewed.AutoSize = true;
-            this.labelRefereeLicenseRenewed.Location = new System.Drawing.Point(341, 42);
-            this.labelRefereeLicenseRenewed.Name = "labelRefereeLicenseRenewed";
-            this.labelRefereeLicenseRenewed.Size = new System.Drawing.Size(97, 13);
-            this.labelRefereeLicenseRenewed.TabIndex = 21;
-            this.labelRefereeLicenseRenewed.Text = "Licence Renewed:";
-            // 
-            // checkRefereeNeverRenewed
-            // 
-            this.checkRefereeNeverRenewed.AutoSize = true;
-            this.checkRefereeNeverRenewed.Location = new System.Drawing.Point(344, 100);
-            this.checkRefereeNeverRenewed.Name = "checkRefereeNeverRenewed";
-            this.checkRefereeNeverRenewed.Size = new System.Drawing.Size(144, 17);
-            this.checkRefereeNeverRenewed.TabIndex = 22;
-            this.checkRefereeNeverRenewed.Text = "License Never Renewed";
-            this.checkRefereeNeverRenewed.UseVisualStyleBackColor = true;
-            this.checkRefereeNeverRenewed.CheckedChanged += new System.EventHandler(this.checkRefereeNeverRenewed_CheckedChanged);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -619,6 +517,156 @@
             this.LicenseRenewed.HeaderText = "License Renewed";
             this.LicenseRenewed.Name = "LicenseRenewed";
             // 
+            // labelRefereeGender
+            // 
+            this.labelRefereeGender.AutoSize = true;
+            this.labelRefereeGender.Location = new System.Drawing.Point(172, 80);
+            this.labelRefereeGender.Name = "labelRefereeGender";
+            this.labelRefereeGender.Size = new System.Drawing.Size(42, 13);
+            this.labelRefereeGender.TabIndex = 13;
+            this.labelRefereeGender.Text = "Gender";
+            // 
+            // comboRefereeGender
+            // 
+            this.comboRefereeGender.FormattingEnabled = true;
+            this.comboRefereeGender.Location = new System.Drawing.Point(175, 96);
+            this.comboRefereeGender.Name = "comboRefereeGender";
+            this.comboRefereeGender.Size = new System.Drawing.Size(143, 21);
+            this.comboRefereeGender.TabIndex = 12;
+            // 
+            // labelRefereeNationality
+            // 
+            this.labelRefereeNationality.AutoSize = true;
+            this.labelRefereeNationality.Location = new System.Drawing.Point(172, 42);
+            this.labelRefereeNationality.Name = "labelRefereeNationality";
+            this.labelRefereeNationality.Size = new System.Drawing.Size(56, 13);
+            this.labelRefereeNationality.TabIndex = 11;
+            this.labelRefereeNationality.Text = "Nationality";
+            // 
+            // comboRefereeNationality
+            // 
+            this.comboRefereeNationality.FormattingEnabled = true;
+            this.comboRefereeNationality.Location = new System.Drawing.Point(175, 57);
+            this.comboRefereeNationality.Name = "comboRefereeNationality";
+            this.comboRefereeNationality.Size = new System.Drawing.Size(143, 21);
+            this.comboRefereeNationality.TabIndex = 10;
+            // 
+            // dateRefereeDOB
+            // 
+            this.dateRefereeDOB.Location = new System.Drawing.Point(175, 19);
+            this.dateRefereeDOB.Name = "dateRefereeDOB";
+            this.dateRefereeDOB.Size = new System.Drawing.Size(143, 20);
+            this.dateRefereeDOB.TabIndex = 8;
+            this.dateRefereeDOB.Value = new System.DateTime(2015, 3, 25, 0, 0, 0, 0);
+            // 
+            // labelRefereeDOB
+            // 
+            this.labelRefereeDOB.AutoSize = true;
+            this.labelRefereeDOB.Location = new System.Drawing.Point(172, 3);
+            this.labelRefereeDOB.Name = "labelRefereeDOB";
+            this.labelRefereeDOB.Size = new System.Drawing.Size(71, 13);
+            this.labelRefereeDOB.TabIndex = 7;
+            this.labelRefereeDOB.Text = "Date Of Birth:";
+            // 
+            // textRefereeLastName
+            // 
+            this.textRefereeLastName.Location = new System.Drawing.Point(6, 97);
+            this.textRefereeLastName.Name = "textRefereeLastName";
+            this.textRefereeLastName.Size = new System.Drawing.Size(143, 20);
+            this.textRefereeLastName.TabIndex = 6;
+            // 
+            // labelRefereeLastName
+            // 
+            this.labelRefereeLastName.AutoSize = true;
+            this.labelRefereeLastName.Location = new System.Drawing.Point(3, 81);
+            this.labelRefereeLastName.Name = "labelRefereeLastName";
+            this.labelRefereeLastName.Size = new System.Drawing.Size(61, 13);
+            this.labelRefereeLastName.TabIndex = 5;
+            this.labelRefereeLastName.Text = "Last Name:";
+            // 
+            // textRefereeMiddleName
+            // 
+            this.textRefereeMiddleName.Location = new System.Drawing.Point(6, 58);
+            this.textRefereeMiddleName.Name = "textRefereeMiddleName";
+            this.textRefereeMiddleName.Size = new System.Drawing.Size(143, 20);
+            this.textRefereeMiddleName.TabIndex = 4;
+            // 
+            // labelRefereeMiddleName
+            // 
+            this.labelRefereeMiddleName.AutoSize = true;
+            this.labelRefereeMiddleName.Location = new System.Drawing.Point(3, 42);
+            this.labelRefereeMiddleName.Name = "labelRefereeMiddleName";
+            this.labelRefereeMiddleName.Size = new System.Drawing.Size(72, 13);
+            this.labelRefereeMiddleName.TabIndex = 3;
+            this.labelRefereeMiddleName.Text = "Middle Name:";
+            // 
+            // textRefereeFirstName
+            // 
+            this.textRefereeFirstName.Location = new System.Drawing.Point(6, 19);
+            this.textRefereeFirstName.Name = "textRefereeFirstName";
+            this.textRefereeFirstName.Size = new System.Drawing.Size(143, 20);
+            this.textRefereeFirstName.TabIndex = 2;
+            // 
+            // labelRefereeFirstName
+            // 
+            this.labelRefereeFirstName.AutoSize = true;
+            this.labelRefereeFirstName.Location = new System.Drawing.Point(3, 3);
+            this.labelRefereeFirstName.Name = "labelRefereeFirstName";
+            this.labelRefereeFirstName.Size = new System.Drawing.Size(60, 13);
+            this.labelRefereeFirstName.TabIndex = 1;
+            this.labelRefereeFirstName.Text = "First Name:";
+            // 
+            // groupBoxAdd
+            // 
+            this.groupBoxAdd.Controls.Add(this.tabControl1);
+            this.groupBoxAdd.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBoxAdd.Location = new System.Drawing.Point(0, 298);
+            this.groupBoxAdd.Name = "groupBoxAdd";
+            this.groupBoxAdd.Size = new System.Drawing.Size(1082, 290);
+            this.groupBoxAdd.TabIndex = 1;
+            this.groupBoxAdd.TabStop = false;
+            this.groupBoxAdd.Text = "Add";
+            // 
+            // buttonPlayerSortByFirstName
+            // 
+            this.buttonPlayerSortByFirstName.Location = new System.Drawing.Point(944, 213);
+            this.buttonPlayerSortByFirstName.Name = "buttonPlayerSortByFirstName";
+            this.buttonPlayerSortByFirstName.Size = new System.Drawing.Size(112, 23);
+            this.buttonPlayerSortByFirstName.TabIndex = 15;
+            this.buttonPlayerSortByFirstName.Text = "Sort By First Name";
+            this.buttonPlayerSortByFirstName.UseVisualStyleBackColor = true;
+            this.buttonPlayerSortByFirstName.Click += new System.EventHandler(this.buttonPlayerSortByFirstName_Click);
+            // 
+            // buttonPlayerSortByLastName
+            // 
+            this.buttonPlayerSortByLastName.Location = new System.Drawing.Point(826, 213);
+            this.buttonPlayerSortByLastName.Name = "buttonPlayerSortByLastName";
+            this.buttonPlayerSortByLastName.Size = new System.Drawing.Size(112, 23);
+            this.buttonPlayerSortByLastName.TabIndex = 16;
+            this.buttonPlayerSortByLastName.Text = "Sort By Last Name";
+            this.buttonPlayerSortByLastName.UseVisualStyleBackColor = true;
+            this.buttonPlayerSortByLastName.Click += new System.EventHandler(this.buttonPlayerSortByLastName_Click);
+            // 
+            // buttonRefereeSortByFirstName
+            // 
+            this.buttonRefereeSortByFirstName.Location = new System.Drawing.Point(944, 213);
+            this.buttonRefereeSortByFirstName.Name = "buttonRefereeSortByFirstName";
+            this.buttonRefereeSortByFirstName.Size = new System.Drawing.Size(112, 23);
+            this.buttonRefereeSortByFirstName.TabIndex = 23;
+            this.buttonRefereeSortByFirstName.Text = "Sort By First Name";
+            this.buttonRefereeSortByFirstName.UseVisualStyleBackColor = true;
+            this.buttonRefereeSortByFirstName.Click += new System.EventHandler(this.buttonRefereeSortByFirstName_Click);
+            // 
+            // buttonRefereeSortByLastName
+            // 
+            this.buttonRefereeSortByLastName.Location = new System.Drawing.Point(826, 213);
+            this.buttonRefereeSortByLastName.Name = "buttonRefereeSortByLastName";
+            this.buttonRefereeSortByLastName.Size = new System.Drawing.Size(112, 23);
+            this.buttonRefereeSortByLastName.TabIndex = 24;
+            this.buttonRefereeSortByLastName.Text = "Sort By Last Name";
+            this.buttonRefereeSortByLastName.UseVisualStyleBackColor = true;
+            this.buttonRefereeSortByLastName.Click += new System.EventHandler(this.buttonRefereeSortByLastName_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -634,8 +682,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlayer)).EndInit();
             this.TabReferee.ResumeLayout(false);
             this.TabReferee.PerformLayout();
-            this.groupBoxAdd.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReferee)).EndInit();
+            this.groupBoxAdd.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -701,6 +749,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn LicenseAcquired;
         private System.Windows.Forms.DataGridViewTextBoxColumn LicenseRenewed;
+        private System.Windows.Forms.Button buttonPlayerSortByLastName;
+        private System.Windows.Forms.Button buttonPlayerSortByFirstName;
+        private System.Windows.Forms.Button buttonRefereeSortByLastName;
+        private System.Windows.Forms.Button buttonRefereeSortByFirstName;
     }
 }
 

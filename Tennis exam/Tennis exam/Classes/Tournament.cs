@@ -25,6 +25,7 @@ namespace Tennis_exam.Classes
             GameMaster = null;
         }
 
+        #region Add/Remove Player or Referee
         private bool Add(Object element, Object[] array)
         {
             int index = EmptyObjectArrayIndex(array);
@@ -69,25 +70,6 @@ namespace Tennis_exam.Classes
             }
         }
 
-        public void AddGamemaster(GameMaster gameMaster)
-        {
-            if(GameMaster == null)
-            {
-                GameMaster = gameMaster;
-            }
-            else
-            {
-                throw new Exception("You will have to remove the curent gamemaster.");
-            }           
-        }
-
-        public void SetGameMaster(Referee referee)
-        {
-            GameMaster gamemaster = new GameMaster();
-            gamemaster = (GameMaster)referee;
-            RemoveReferee(referee);
-        }
-
         public void RemovePlayer(Player player)
         {
             if (!Remove(player, Players))
@@ -103,6 +85,27 @@ namespace Tennis_exam.Classes
                 throw new Exception("No such referee");
             }
         }
+        #endregion
+
+        #region Add/Remove/Set Game master
+        public void AddGamemaster(GameMaster gameMaster)
+        {
+            if (GameMaster == null)
+            {
+                GameMaster = gameMaster;
+            }
+            else
+            {
+                throw new Exception("You will have to remove the curent gamemaster.");
+            }
+        }
+
+        public void SetGameMaster(Referee referee)
+        {
+            GameMaster gamemaster = new GameMaster();
+            gamemaster = (GameMaster)referee;
+            RemoveReferee(referee);
+        }
 
         public void RemoveGamemaster()
         {
@@ -114,9 +117,77 @@ namespace Tennis_exam.Classes
             {
                 throw new Exception("No gamemaster to delete.");
             }
+        }
+        #endregion
 
+        #region Sort Player or Referee
+        public void SortByFirstName(Player[] objectArray)
+        {
+            Array.Sort(objectArray,
+                delegate(Player x, Player y)
+                {
+                    if (x == null)
+                    {
+                        return y == null ? 0 : 1;
+                    }
+                    if (y == null)
+                    {
+                        return -1;
+                    }
+                    return x.FristName.CompareTo(y.FristName);
+                });
         }
 
+        public void SortByFirstName(Referee[] objectArray)
+        {
+            Array.Sort(objectArray,
+                delegate(Referee x, Referee y)
+                {
+                    if (x == null)
+                    {
+                        return y == null ? 0 : 1;
+                    }
+                    if (y == null)
+                    {
+                        return -1;
+                    }
+                    return x.FristName.CompareTo(y.FristName);
+                });
+        }
 
+        public void SortByLastName(Player[] objectArray)
+        {
+            Array.Sort(objectArray,
+                delegate(Player x, Player y)
+                {
+                    if (x == null)
+                    {
+                        return y == null ? 0 : 1;
+                    }
+                    if (y == null)
+                    {
+                        return -1;
+                    }
+                    return x.LastName.CompareTo(y.LastName);
+                });
+        }
+
+        public void SortByLastName(Referee[] objectArray)
+        {
+            Array.Sort(objectArray,
+                delegate(Referee x, Referee y)
+                {
+                    if (x == null)
+                    {
+                        return y == null ? 0 : 1;
+                    }
+                    if (y == null)
+                    {
+                        return -1;
+                    }
+                    return x.LastName.CompareTo(y.LastName);
+                });
+        }
+        #endregion
     }
 }

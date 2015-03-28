@@ -13,7 +13,7 @@ namespace Tennis_exam
 {
     public partial class MainWindow : Form
     {
-        private void DataGridSetup(DataGridView dataGrid, Player newPlayer)
+        private void DataGridAddElement(DataGridView dataGrid, Player newPlayer)
         {
             int n = dataGridViewPlayer.Rows.Add();
 
@@ -36,7 +36,7 @@ namespace Tennis_exam
             dataGrid.Rows[n].Cells[7].ValueType = typeof(Player.Genders);
         }
 
-        private void DataGridSetup(DataGridView dataGrid, Referee newReferee)
+        private void DataGridAddElement(DataGridView dataGrid, Referee newReferee)
         {
             int n = dataGridViewReferee.Rows.Add();
 
@@ -61,6 +61,28 @@ namespace Tennis_exam
             dataGrid.Rows[n].Cells[7].ValueType = typeof(Referee.Genders);
             dataGrid.Rows[n].Cells[8].ValueType = typeof(DateTime);
             dataGrid.Rows[n].Cells[9].ValueType = typeof(DateTime?);
+        }
+
+        private void PopulateDataGridView(DataGridView dataGrid, Player[] players)
+        {
+            foreach (Player player in players)
+            {
+                if (player != null)
+                {
+                    DataGridAddElement(dataGrid, player);
+                }
+            }
+        }
+
+        private void PopulateDataGridView(DataGridView dataGrid, Referee[] referees)
+        {
+            foreach (Referee referee in referees)
+            {
+                if (referee != null)
+                {
+                    DataGridAddElement(dataGrid, referee);
+                }
+            }
         }
     }
 }
