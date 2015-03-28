@@ -8,10 +8,6 @@ namespace Tennis_exam.Classes
 {
     internal class Player : Person
     {
-        /*
-        public int CompareTo(Player other)
-        {
-            return FristName.CompareTo(other.FristName);
-        }*/
+
     }
 }

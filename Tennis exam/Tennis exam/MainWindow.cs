@@ -30,8 +30,8 @@ namespace Tennis_exam
             comboRefereeGender.DataSource = Enum.GetValues(typeof(Referee.Genders));
             comboRefereeNationality.DataSource = Enum.GetValues(typeof(Referee.Nationalities));
         }
-        
 
+        #region Add/Remover player
         private void buttonAddPlayer_Click(object sender, EventArgs e)
         {
             Player newPlayer = new Player();
@@ -79,7 +79,9 @@ namespace Tennis_exam
                 }
             }
         }
+        #endregion
 
+        #region Add/Remove Referee
         private void buttonRefereeAdd_Click(object sender, EventArgs e)
         {
             Referee newReferee = new Referee();
@@ -148,7 +150,9 @@ namespace Tennis_exam
                 }
             }
         }
+        #endregion
 
+        #region Sort players/referes by first and last -name
         private void buttonPlayerSortByFirstName_Click(object sender, EventArgs e)
         {
             tournament.SortByFirstName(tournament.Players);
@@ -177,6 +181,39 @@ namespace Tennis_exam
             dataGridViewReferee.Rows.Clear();
             PopulateDataGridView(dataGridViewReferee, tournament.Referees);
         }
+        #endregion
+
+        #region Set/Add/Remove game master
+        private void buttonSetAsGameMaster_Click(object sender, EventArgs e)
+        {
+            int selectedRowCount = dataGridViewReferee.SelectedRows.Count;
+            try
+            {
+                if (selectedRowCount > 1)
+                {
+                    throw new Exception("You can only promote exactly one referee");
+                }
+                else if (selectedRowCount <= 0)
+                {
+                    throw new Exception("You will have to select exactly one referee.");
+                }
+                else if (dataGridViewReferee.SelectedRows[0].Cells[0].Value == null)
+                {
+                    throw new Exception("You can't promote an empty row");
+                }
+                else
+                {
+                    Referee referee = (Referee)dataGridViewReferee.SelectedRows[0].Cells[0].Value;
+                    tournament.SetGameMaster(referee);
+                    dataGridViewReferee.Rows.RemoveAt(dataGridViewReferee.SelectedRows[0].Index);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Can't remove referee", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        #endregion
 
     }
 }

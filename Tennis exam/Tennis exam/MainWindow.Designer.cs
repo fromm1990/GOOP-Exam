@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.TabPlayers = new System.Windows.Forms.TabPage();
+            this.tabPlayers = new System.Windows.Forms.TabPage();
             this.buttonPlayerRemove = new System.Windows.Forms.Button();
             this.buttonPlayerAdd = new System.Windows.Forms.Button();
             this.buttonPlayerAutoAdd = new System.Windows.Forms.Button();
@@ -54,7 +54,7 @@
             this.textPlayerMiddleName = new System.Windows.Forms.TextBox();
             this.textPlayerFirstName = new System.Windows.Forms.TextBox();
             this.labelPlayerMiddelName = new System.Windows.Forms.Label();
-            this.TabReferee = new System.Windows.Forms.TabPage();
+            this.tabReferee = new System.Windows.Forms.TabPage();
             this.checkRefereeNeverRenewed = new System.Windows.Forms.CheckBox();
             this.labelRefereeLicenseRenewed = new System.Windows.Forms.Label();
             this.labelRefereeLicenseAcquired = new System.Windows.Forms.Label();
@@ -91,18 +91,21 @@
             this.buttonPlayerSortByLastName = new System.Windows.Forms.Button();
             this.buttonRefereeSortByFirstName = new System.Windows.Forms.Button();
             this.buttonRefereeSortByLastName = new System.Windows.Forms.Button();
+            this.tabGameMaster = new System.Windows.Forms.TabPage();
+            this.buttonSetAsGameMaster = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
-            this.TabPlayers.SuspendLayout();
+            this.tabPlayers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlayer)).BeginInit();
-            this.TabReferee.SuspendLayout();
+            this.tabReferee.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReferee)).BeginInit();
             this.groupBoxAdd.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.TabPlayers);
-            this.tabControl1.Controls.Add(this.TabReferee);
+            this.tabControl1.Controls.Add(this.tabPlayers);
+            this.tabControl1.Controls.Add(this.tabReferee);
+            this.tabControl1.Controls.Add(this.tabGameMaster);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tabControl1.Location = new System.Drawing.Point(3, 19);
             this.tabControl1.Name = "tabControl1";
@@ -110,33 +113,33 @@
             this.tabControl1.Size = new System.Drawing.Size(1076, 268);
             this.tabControl1.TabIndex = 0;
             // 
-            // TabPlayers
+            // tabPlayers
             // 
-            this.TabPlayers.Controls.Add(this.buttonPlayerSortByLastName);
-            this.TabPlayers.Controls.Add(this.buttonPlayerSortByFirstName);
-            this.TabPlayers.Controls.Add(this.buttonPlayerRemove);
-            this.TabPlayers.Controls.Add(this.buttonPlayerAdd);
-            this.TabPlayers.Controls.Add(this.buttonPlayerAutoAdd);
-            this.TabPlayers.Controls.Add(this.dataGridViewPlayer);
-            this.TabPlayers.Controls.Add(this.labelPlayerGender);
-            this.TabPlayers.Controls.Add(this.comboPlayerGender);
-            this.TabPlayers.Controls.Add(this.labelPlayerNationality);
-            this.TabPlayers.Controls.Add(this.comboPlayerNationality);
-            this.TabPlayers.Controls.Add(this.datePlayerDOB);
-            this.TabPlayers.Controls.Add(this.labelPlayerDateOfBirth);
-            this.TabPlayers.Controls.Add(this.textPlayerLastName);
-            this.TabPlayers.Controls.Add(this.labelPlayerLastName);
-            this.TabPlayers.Controls.Add(this.labelPlayerFirstName);
-            this.TabPlayers.Controls.Add(this.textPlayerMiddleName);
-            this.TabPlayers.Controls.Add(this.textPlayerFirstName);
-            this.TabPlayers.Controls.Add(this.labelPlayerMiddelName);
-            this.TabPlayers.Location = new System.Drawing.Point(4, 22);
-            this.TabPlayers.Name = "TabPlayers";
-            this.TabPlayers.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPlayers.Size = new System.Drawing.Size(1068, 242);
-            this.TabPlayers.TabIndex = 1;
-            this.TabPlayers.Text = "Player";
-            this.TabPlayers.UseVisualStyleBackColor = true;
+            this.tabPlayers.Controls.Add(this.buttonPlayerSortByLastName);
+            this.tabPlayers.Controls.Add(this.buttonPlayerSortByFirstName);
+            this.tabPlayers.Controls.Add(this.buttonPlayerRemove);
+            this.tabPlayers.Controls.Add(this.buttonPlayerAdd);
+            this.tabPlayers.Controls.Add(this.buttonPlayerAutoAdd);
+            this.tabPlayers.Controls.Add(this.dataGridViewPlayer);
+            this.tabPlayers.Controls.Add(this.labelPlayerGender);
+            this.tabPlayers.Controls.Add(this.comboPlayerGender);
+            this.tabPlayers.Controls.Add(this.labelPlayerNationality);
+            this.tabPlayers.Controls.Add(this.comboPlayerNationality);
+            this.tabPlayers.Controls.Add(this.datePlayerDOB);
+            this.tabPlayers.Controls.Add(this.labelPlayerDateOfBirth);
+            this.tabPlayers.Controls.Add(this.textPlayerLastName);
+            this.tabPlayers.Controls.Add(this.labelPlayerLastName);
+            this.tabPlayers.Controls.Add(this.labelPlayerFirstName);
+            this.tabPlayers.Controls.Add(this.textPlayerMiddleName);
+            this.tabPlayers.Controls.Add(this.textPlayerFirstName);
+            this.tabPlayers.Controls.Add(this.labelPlayerMiddelName);
+            this.tabPlayers.Location = new System.Drawing.Point(4, 22);
+            this.tabPlayers.Name = "tabPlayers";
+            this.tabPlayers.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPlayers.Size = new System.Drawing.Size(1068, 242);
+            this.tabPlayers.TabIndex = 1;
+            this.tabPlayers.Text = "Player";
+            this.tabPlayers.UseVisualStyleBackColor = true;
             // 
             // buttonPlayerRemove
             // 
@@ -332,38 +335,39 @@
             this.labelPlayerMiddelName.TabIndex = 2;
             this.labelPlayerMiddelName.Text = "Middle Name:";
             // 
-            // TabReferee
+            // tabReferee
             // 
-            this.TabReferee.Controls.Add(this.buttonRefereeSortByLastName);
-            this.TabReferee.Controls.Add(this.buttonRefereeSortByFirstName);
-            this.TabReferee.Controls.Add(this.checkRefereeNeverRenewed);
-            this.TabReferee.Controls.Add(this.labelRefereeLicenseRenewed);
-            this.TabReferee.Controls.Add(this.labelRefereeLicenseAcquired);
-            this.TabReferee.Controls.Add(this.dateRefereeLicenseRenewed);
-            this.TabReferee.Controls.Add(this.dateRefereeLicenseAcquired);
-            this.TabReferee.Controls.Add(this.buttonRefereeAutoAdd);
-            this.TabReferee.Controls.Add(this.buttonRefereeRemove);
-            this.TabReferee.Controls.Add(this.buttonRefereeAdd);
-            this.TabReferee.Controls.Add(this.dataGridViewReferee);
-            this.TabReferee.Controls.Add(this.labelRefereeGender);
-            this.TabReferee.Controls.Add(this.comboRefereeGender);
-            this.TabReferee.Controls.Add(this.labelRefereeNationality);
-            this.TabReferee.Controls.Add(this.comboRefereeNationality);
-            this.TabReferee.Controls.Add(this.dateRefereeDOB);
-            this.TabReferee.Controls.Add(this.labelRefereeDOB);
-            this.TabReferee.Controls.Add(this.textRefereeLastName);
-            this.TabReferee.Controls.Add(this.labelRefereeLastName);
-            this.TabReferee.Controls.Add(this.textRefereeMiddleName);
-            this.TabReferee.Controls.Add(this.labelRefereeMiddleName);
-            this.TabReferee.Controls.Add(this.textRefereeFirstName);
-            this.TabReferee.Controls.Add(this.labelRefereeFirstName);
-            this.TabReferee.Location = new System.Drawing.Point(4, 22);
-            this.TabReferee.Name = "TabReferee";
-            this.TabReferee.Padding = new System.Windows.Forms.Padding(3);
-            this.TabReferee.Size = new System.Drawing.Size(1068, 242);
-            this.TabReferee.TabIndex = 0;
-            this.TabReferee.Text = "Referee";
-            this.TabReferee.UseVisualStyleBackColor = true;
+            this.tabReferee.Controls.Add(this.buttonSetAsGameMaster);
+            this.tabReferee.Controls.Add(this.buttonRefereeSortByLastName);
+            this.tabReferee.Controls.Add(this.buttonRefereeSortByFirstName);
+            this.tabReferee.Controls.Add(this.checkRefereeNeverRenewed);
+            this.tabReferee.Controls.Add(this.labelRefereeLicenseRenewed);
+            this.tabReferee.Controls.Add(this.labelRefereeLicenseAcquired);
+            this.tabReferee.Controls.Add(this.dateRefereeLicenseRenewed);
+            this.tabReferee.Controls.Add(this.dateRefereeLicenseAcquired);
+            this.tabReferee.Controls.Add(this.buttonRefereeAutoAdd);
+            this.tabReferee.Controls.Add(this.buttonRefereeRemove);
+            this.tabReferee.Controls.Add(this.buttonRefereeAdd);
+            this.tabReferee.Controls.Add(this.dataGridViewReferee);
+            this.tabReferee.Controls.Add(this.labelRefereeGender);
+            this.tabReferee.Controls.Add(this.comboRefereeGender);
+            this.tabReferee.Controls.Add(this.labelRefereeNationality);
+            this.tabReferee.Controls.Add(this.comboRefereeNationality);
+            this.tabReferee.Controls.Add(this.dateRefereeDOB);
+            this.tabReferee.Controls.Add(this.labelRefereeDOB);
+            this.tabReferee.Controls.Add(this.textRefereeLastName);
+            this.tabReferee.Controls.Add(this.labelRefereeLastName);
+            this.tabReferee.Controls.Add(this.textRefereeMiddleName);
+            this.tabReferee.Controls.Add(this.labelRefereeMiddleName);
+            this.tabReferee.Controls.Add(this.textRefereeFirstName);
+            this.tabReferee.Controls.Add(this.labelRefereeFirstName);
+            this.tabReferee.Location = new System.Drawing.Point(4, 22);
+            this.tabReferee.Name = "tabReferee";
+            this.tabReferee.Padding = new System.Windows.Forms.Padding(3);
+            this.tabReferee.Size = new System.Drawing.Size(1068, 242);
+            this.tabReferee.TabIndex = 0;
+            this.tabReferee.Text = "Referee";
+            this.tabReferee.UseVisualStyleBackColor = true;
             // 
             // checkRefereeNeverRenewed
             // 
@@ -667,6 +671,25 @@
             this.buttonRefereeSortByLastName.UseVisualStyleBackColor = true;
             this.buttonRefereeSortByLastName.Click += new System.EventHandler(this.buttonRefereeSortByLastName_Click);
             // 
+            // tabGameMaster
+            // 
+            this.tabGameMaster.Location = new System.Drawing.Point(4, 22);
+            this.tabGameMaster.Name = "tabGameMaster";
+            this.tabGameMaster.Size = new System.Drawing.Size(1068, 242);
+            this.tabGameMaster.TabIndex = 2;
+            this.tabGameMaster.Text = "Game Master";
+            this.tabGameMaster.UseVisualStyleBackColor = true;
+            // 
+            // buttonSetAsGameMaster
+            // 
+            this.buttonSetAsGameMaster.Location = new System.Drawing.Point(493, 213);
+            this.buttonSetAsGameMaster.Name = "buttonSetAsGameMaster";
+            this.buttonSetAsGameMaster.Size = new System.Drawing.Size(114, 23);
+            this.buttonSetAsGameMaster.TabIndex = 25;
+            this.buttonSetAsGameMaster.Text = "Set As Game Master";
+            this.buttonSetAsGameMaster.UseVisualStyleBackColor = true;
+            this.buttonSetAsGameMaster.Click += new System.EventHandler(this.buttonSetAsGameMaster_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -677,11 +700,11 @@
             this.Text = "Tennis Sim";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
-            this.TabPlayers.ResumeLayout(false);
-            this.TabPlayers.PerformLayout();
+            this.tabPlayers.ResumeLayout(false);
+            this.tabPlayers.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlayer)).EndInit();
-            this.TabReferee.ResumeLayout(false);
-            this.TabReferee.PerformLayout();
+            this.tabReferee.ResumeLayout(false);
+            this.tabReferee.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReferee)).EndInit();
             this.groupBoxAdd.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -692,8 +715,8 @@
 
         private System.Windows.Forms.GroupBox groupBoxAdd;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage TabReferee;
-        private System.Windows.Forms.TabPage TabPlayers;
+        private System.Windows.Forms.TabPage tabReferee;
+        private System.Windows.Forms.TabPage tabPlayers;
         private System.Windows.Forms.Label labelPlayerFirstName;
         private System.Windows.Forms.TextBox textPlayerFirstName;
         private System.Windows.Forms.Label labelPlayerMiddelName;
@@ -753,6 +776,8 @@
         private System.Windows.Forms.Button buttonPlayerSortByFirstName;
         private System.Windows.Forms.Button buttonRefereeSortByLastName;
         private System.Windows.Forms.Button buttonRefereeSortByFirstName;
+        private System.Windows.Forms.TabPage tabGameMaster;
+        private System.Windows.Forms.Button buttonSetAsGameMaster;
     }
 }
 

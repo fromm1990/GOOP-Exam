@@ -14,7 +14,7 @@ namespace Tennis_exam.Classes
         public DateTime EndsAt { get; set; }
         public Player[] Players { get; set; }
         public Referee[] Referees { get; set; }
-        public GameMaster GameMaster { get; set; }
+        public GameMaster GameMasterProp { get; set; }
         public int TournamentSize { get; set; }
 
         public Tournament(int amountOfPlayers)
@@ -22,7 +22,7 @@ namespace Tennis_exam.Classes
             int TournamentSize = amountOfPlayers;
             Players = new Player[TournamentSize];
             Referees = new Referee[TournamentSize];
-            GameMaster = null;
+            GameMasterProp = null;
         }
 
         #region Add/Remove Player or Referee
@@ -90,9 +90,9 @@ namespace Tennis_exam.Classes
         #region Add/Remove/Set Game master
         public void AddGamemaster(GameMaster gameMaster)
         {
-            if (GameMaster == null)
+            if (GameMasterProp == null)
             {
-                GameMaster = gameMaster;
+                GameMasterProp = gameMaster;
             }
             else
             {
@@ -102,16 +102,34 @@ namespace Tennis_exam.Classes
 
         public void SetGameMaster(Referee referee)
         {
-            GameMaster gamemaster = new GameMaster();
-            gamemaster = (GameMaster)referee;
-            RemoveReferee(referee);
+            if (GameMasterProp == null)
+            {
+                GameMaster gamemaster = new GameMaster();
+                //gamemaster = (GameMaster)referee;
+                gamemaster.FristName = referee.FristName;
+                gamemaster.MiddleName = referee.MiddleName;
+                gamemaster.LastName = referee.LastName;
+                gamemaster.DateOfBirth = referee.DateOfBirth;
+                gamemaster.Nationality = referee.Nationality;
+                gamemaster.Gender = referee.Gender;
+                gamemaster.LicenseAcquired = referee.LicenseAcquired;
+                gamemaster.LicenseLastRenewed = referee.LicenseLastRenewed;
+
+                GameMasterProp = gamemaster;
+                RemoveReferee(referee);
+            }
+            else
+            {
+                throw new Exception("You will have to remove the curent gamemaster.");
+            }
+
         }
 
         public void RemoveGamemaster()
         {
-            if (GameMaster != null)
+            if (GameMasterProp != null)
             {
-                GameMaster = null;
+                GameMasterProp = null;
             }
             else
             {
