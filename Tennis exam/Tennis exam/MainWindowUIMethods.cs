@@ -63,6 +63,31 @@ namespace Tennis_exam
             dataGrid.Rows[n].Cells[9].ValueType = typeof(DateTime?);
         }
 
+        private void DataGridAddElement(DataGridView dataGrid, GameMaster newGameMaster)
+        {
+            dataGrid.Rows[0].Cells[0].Value = newGameMaster;
+            dataGrid.Rows[0].Cells[1].Value = newGameMaster.FristName;
+            dataGrid.Rows[0].Cells[2].Value = newGameMaster.MiddleName;
+            dataGrid.Rows[0].Cells[3].Value = newGameMaster.LastName;
+            dataGrid.Rows[0].Cells[4].Value = newGameMaster.DateOfBirth;
+            dataGrid.Rows[0].Cells[5].Value = newGameMaster.CalcAge(newGameMaster.DateOfBirth);
+            dataGrid.Rows[0].Cells[6].Value = newGameMaster.Nationality;
+            dataGrid.Rows[0].Cells[7].Value = newGameMaster.Gender;
+            dataGrid.Rows[0].Cells[8].Value = newGameMaster.LicenseAcquired;
+            dataGrid.Rows[0].Cells[9].Value = newGameMaster.LicenseLastRenewed;
+
+            dataGrid.Rows[0].Cells[0].ValueType = typeof(GameMaster);
+            dataGrid.Rows[0].Cells[1].ValueType = typeof(string);
+            dataGrid.Rows[0].Cells[2].ValueType = typeof(string);
+            dataGrid.Rows[0].Cells[3].ValueType = typeof(string);
+            dataGrid.Rows[0].Cells[4].ValueType = typeof(DateTime);
+            dataGrid.Rows[0].Cells[5].ValueType = typeof(int);
+            dataGrid.Rows[0].Cells[6].ValueType = typeof(Referee.Nationalities);
+            dataGrid.Rows[0].Cells[7].ValueType = typeof(Referee.Genders);
+            dataGrid.Rows[0].Cells[8].ValueType = typeof(DateTime);
+            dataGrid.Rows[0].Cells[9].ValueType = typeof(DateTime?);
+        }
+
         private void PopulateDataGridView(DataGridView dataGrid, Player[] players)
         {
             foreach (Player player in players)

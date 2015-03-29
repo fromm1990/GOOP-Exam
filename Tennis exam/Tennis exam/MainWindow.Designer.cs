@@ -30,6 +30,8 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPlayers = new System.Windows.Forms.TabPage();
+            this.buttonPlayerSortByLastName = new System.Windows.Forms.Button();
+            this.buttonPlayerSortByFirstName = new System.Windows.Forms.Button();
             this.buttonPlayerRemove = new System.Windows.Forms.Button();
             this.buttonPlayerAdd = new System.Windows.Forms.Button();
             this.buttonPlayerAutoAdd = new System.Windows.Forms.Button();
@@ -55,6 +57,9 @@
             this.textPlayerFirstName = new System.Windows.Forms.TextBox();
             this.labelPlayerMiddelName = new System.Windows.Forms.Label();
             this.tabReferee = new System.Windows.Forms.TabPage();
+            this.buttonSetAsGameMaster = new System.Windows.Forms.Button();
+            this.buttonRefereeSortByLastName = new System.Windows.Forms.Button();
+            this.buttonRefereeSortByFirstName = new System.Windows.Forms.Button();
             this.checkRefereeNeverRenewed = new System.Windows.Forms.CheckBox();
             this.labelRefereeLicenseRenewed = new System.Windows.Forms.Label();
             this.labelRefereeLicenseAcquired = new System.Windows.Forms.Label();
@@ -86,19 +91,47 @@
             this.labelRefereeMiddleName = new System.Windows.Forms.Label();
             this.textRefereeFirstName = new System.Windows.Forms.TextBox();
             this.labelRefereeFirstName = new System.Windows.Forms.Label();
-            this.groupBoxAdd = new System.Windows.Forms.GroupBox();
-            this.buttonPlayerSortByFirstName = new System.Windows.Forms.Button();
-            this.buttonPlayerSortByLastName = new System.Windows.Forms.Button();
-            this.buttonRefereeSortByFirstName = new System.Windows.Forms.Button();
-            this.buttonRefereeSortByLastName = new System.Windows.Forms.Button();
             this.tabGameMaster = new System.Windows.Forms.TabPage();
-            this.buttonSetAsGameMaster = new System.Windows.Forms.Button();
+            this.groupBoxAdd = new System.Windows.Forms.GroupBox();
+            this.checkGMLicenseNeverRenewed = new System.Windows.Forms.CheckBox();
+            this.labelGMLicenseRenewed = new System.Windows.Forms.Label();
+            this.labelGMLicenseAcquired = new System.Windows.Forms.Label();
+            this.dateGMLicenseRenewed = new System.Windows.Forms.DateTimePicker();
+            this.dateGMLicenseAcquired = new System.Windows.Forms.DateTimePicker();
+            this.buttonGMAutoAdd = new System.Windows.Forms.Button();
+            this.buttonGMRemove = new System.Windows.Forms.Button();
+            this.buttonGMAdd = new System.Windows.Forms.Button();
+            this.labelGMGender = new System.Windows.Forms.Label();
+            this.comboGMGender = new System.Windows.Forms.ComboBox();
+            this.labelGMNationality = new System.Windows.Forms.Label();
+            this.comboGMNationality = new System.Windows.Forms.ComboBox();
+            this.dateGMDOB = new System.Windows.Forms.DateTimePicker();
+            this.labelGMDOB = new System.Windows.Forms.Label();
+            this.textGMLastName = new System.Windows.Forms.TextBox();
+            this.labelGMLastName = new System.Windows.Forms.Label();
+            this.textGMMiddleName = new System.Windows.Forms.TextBox();
+            this.labelGMMiddleName = new System.Windows.Forms.Label();
+            this.textGMFirstName = new System.Windows.Forms.TextBox();
+            this.labelGMFirstName = new System.Windows.Forms.Label();
+            this.dataGridViewGM = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPlayers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlayer)).BeginInit();
             this.tabReferee.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReferee)).BeginInit();
+            this.tabGameMaster.SuspendLayout();
             this.groupBoxAdd.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGM)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -140,6 +173,26 @@
             this.tabPlayers.TabIndex = 1;
             this.tabPlayers.Text = "Player";
             this.tabPlayers.UseVisualStyleBackColor = true;
+            // 
+            // buttonPlayerSortByLastName
+            // 
+            this.buttonPlayerSortByLastName.Location = new System.Drawing.Point(826, 213);
+            this.buttonPlayerSortByLastName.Name = "buttonPlayerSortByLastName";
+            this.buttonPlayerSortByLastName.Size = new System.Drawing.Size(112, 23);
+            this.buttonPlayerSortByLastName.TabIndex = 16;
+            this.buttonPlayerSortByLastName.Text = "Sort By Last Name";
+            this.buttonPlayerSortByLastName.UseVisualStyleBackColor = true;
+            this.buttonPlayerSortByLastName.Click += new System.EventHandler(this.buttonPlayerSortByLastName_Click);
+            // 
+            // buttonPlayerSortByFirstName
+            // 
+            this.buttonPlayerSortByFirstName.Location = new System.Drawing.Point(944, 213);
+            this.buttonPlayerSortByFirstName.Name = "buttonPlayerSortByFirstName";
+            this.buttonPlayerSortByFirstName.Size = new System.Drawing.Size(112, 23);
+            this.buttonPlayerSortByFirstName.TabIndex = 15;
+            this.buttonPlayerSortByFirstName.Text = "Sort By First Name";
+            this.buttonPlayerSortByFirstName.UseVisualStyleBackColor = true;
+            this.buttonPlayerSortByFirstName.Click += new System.EventHandler(this.buttonPlayerSortByFirstName_Click);
             // 
             // buttonPlayerRemove
             // 
@@ -369,6 +422,36 @@
             this.tabReferee.Text = "Referee";
             this.tabReferee.UseVisualStyleBackColor = true;
             // 
+            // buttonSetAsGameMaster
+            // 
+            this.buttonSetAsGameMaster.Location = new System.Drawing.Point(493, 213);
+            this.buttonSetAsGameMaster.Name = "buttonSetAsGameMaster";
+            this.buttonSetAsGameMaster.Size = new System.Drawing.Size(114, 23);
+            this.buttonSetAsGameMaster.TabIndex = 25;
+            this.buttonSetAsGameMaster.Text = "Set As Game Master";
+            this.buttonSetAsGameMaster.UseVisualStyleBackColor = true;
+            this.buttonSetAsGameMaster.Click += new System.EventHandler(this.buttonSetAsGameMaster_Click);
+            // 
+            // buttonRefereeSortByLastName
+            // 
+            this.buttonRefereeSortByLastName.Location = new System.Drawing.Point(826, 213);
+            this.buttonRefereeSortByLastName.Name = "buttonRefereeSortByLastName";
+            this.buttonRefereeSortByLastName.Size = new System.Drawing.Size(112, 23);
+            this.buttonRefereeSortByLastName.TabIndex = 24;
+            this.buttonRefereeSortByLastName.Text = "Sort By Last Name";
+            this.buttonRefereeSortByLastName.UseVisualStyleBackColor = true;
+            this.buttonRefereeSortByLastName.Click += new System.EventHandler(this.buttonRefereeSortByLastName_Click);
+            // 
+            // buttonRefereeSortByFirstName
+            // 
+            this.buttonRefereeSortByFirstName.Location = new System.Drawing.Point(944, 213);
+            this.buttonRefereeSortByFirstName.Name = "buttonRefereeSortByFirstName";
+            this.buttonRefereeSortByFirstName.Size = new System.Drawing.Size(112, 23);
+            this.buttonRefereeSortByFirstName.TabIndex = 23;
+            this.buttonRefereeSortByFirstName.Text = "Sort By First Name";
+            this.buttonRefereeSortByFirstName.UseVisualStyleBackColor = true;
+            this.buttonRefereeSortByFirstName.Click += new System.EventHandler(this.buttonRefereeSortByFirstName_Click);
+            // 
             // checkRefereeNeverRenewed
             // 
             this.checkRefereeNeverRenewed.AutoSize = true;
@@ -385,18 +468,18 @@
             this.labelRefereeLicenseRenewed.AutoSize = true;
             this.labelRefereeLicenseRenewed.Location = new System.Drawing.Point(341, 42);
             this.labelRefereeLicenseRenewed.Name = "labelRefereeLicenseRenewed";
-            this.labelRefereeLicenseRenewed.Size = new System.Drawing.Size(97, 13);
+            this.labelRefereeLicenseRenewed.Size = new System.Drawing.Size(96, 13);
             this.labelRefereeLicenseRenewed.TabIndex = 21;
-            this.labelRefereeLicenseRenewed.Text = "Licence Renewed:";
+            this.labelRefereeLicenseRenewed.Text = "License Renewed:";
             // 
             // labelRefereeLicenseAcquired
             // 
             this.labelRefereeLicenseAcquired.AutoSize = true;
             this.labelRefereeLicenseAcquired.Location = new System.Drawing.Point(341, 3);
             this.labelRefereeLicenseAcquired.Name = "labelRefereeLicenseAcquired";
-            this.labelRefereeLicenseAcquired.Size = new System.Drawing.Size(93, 13);
+            this.labelRefereeLicenseAcquired.Size = new System.Drawing.Size(92, 13);
             this.labelRefereeLicenseAcquired.TabIndex = 20;
-            this.labelRefereeLicenseAcquired.Text = "Licence Acquired:";
+            this.labelRefereeLicenseAcquired.Text = "License Acquired:";
             // 
             // dateRefereeLicenseRenewed
             // 
@@ -620,6 +703,36 @@
             this.labelRefereeFirstName.TabIndex = 1;
             this.labelRefereeFirstName.Text = "First Name:";
             // 
+            // tabGameMaster
+            // 
+            this.tabGameMaster.Controls.Add(this.dataGridViewGM);
+            this.tabGameMaster.Controls.Add(this.checkGMLicenseNeverRenewed);
+            this.tabGameMaster.Controls.Add(this.labelGMLicenseRenewed);
+            this.tabGameMaster.Controls.Add(this.labelGMLicenseAcquired);
+            this.tabGameMaster.Controls.Add(this.dateGMLicenseRenewed);
+            this.tabGameMaster.Controls.Add(this.dateGMLicenseAcquired);
+            this.tabGameMaster.Controls.Add(this.buttonGMAutoAdd);
+            this.tabGameMaster.Controls.Add(this.buttonGMRemove);
+            this.tabGameMaster.Controls.Add(this.buttonGMAdd);
+            this.tabGameMaster.Controls.Add(this.labelGMGender);
+            this.tabGameMaster.Controls.Add(this.comboGMGender);
+            this.tabGameMaster.Controls.Add(this.labelGMNationality);
+            this.tabGameMaster.Controls.Add(this.comboGMNationality);
+            this.tabGameMaster.Controls.Add(this.dateGMDOB);
+            this.tabGameMaster.Controls.Add(this.labelGMDOB);
+            this.tabGameMaster.Controls.Add(this.textGMLastName);
+            this.tabGameMaster.Controls.Add(this.labelGMLastName);
+            this.tabGameMaster.Controls.Add(this.textGMMiddleName);
+            this.tabGameMaster.Controls.Add(this.labelGMMiddleName);
+            this.tabGameMaster.Controls.Add(this.textGMFirstName);
+            this.tabGameMaster.Controls.Add(this.labelGMFirstName);
+            this.tabGameMaster.Location = new System.Drawing.Point(4, 22);
+            this.tabGameMaster.Name = "tabGameMaster";
+            this.tabGameMaster.Size = new System.Drawing.Size(1068, 242);
+            this.tabGameMaster.TabIndex = 2;
+            this.tabGameMaster.Text = "Game Master";
+            this.tabGameMaster.UseVisualStyleBackColor = true;
+            // 
             // groupBoxAdd
             // 
             this.groupBoxAdd.Controls.Add(this.tabControl1);
@@ -631,64 +744,256 @@
             this.groupBoxAdd.TabStop = false;
             this.groupBoxAdd.Text = "Add";
             // 
-            // buttonPlayerSortByFirstName
+            // checkGMLicenseNeverRenewed
             // 
-            this.buttonPlayerSortByFirstName.Location = new System.Drawing.Point(944, 213);
-            this.buttonPlayerSortByFirstName.Name = "buttonPlayerSortByFirstName";
-            this.buttonPlayerSortByFirstName.Size = new System.Drawing.Size(112, 23);
-            this.buttonPlayerSortByFirstName.TabIndex = 15;
-            this.buttonPlayerSortByFirstName.Text = "Sort By First Name";
-            this.buttonPlayerSortByFirstName.UseVisualStyleBackColor = true;
-            this.buttonPlayerSortByFirstName.Click += new System.EventHandler(this.buttonPlayerSortByFirstName_Click);
+            this.checkGMLicenseNeverRenewed.AutoSize = true;
+            this.checkGMLicenseNeverRenewed.Location = new System.Drawing.Point(344, 100);
+            this.checkGMLicenseNeverRenewed.Name = "checkGMLicenseNeverRenewed";
+            this.checkGMLicenseNeverRenewed.Size = new System.Drawing.Size(144, 17);
+            this.checkGMLicenseNeverRenewed.TabIndex = 42;
+            this.checkGMLicenseNeverRenewed.Text = "License Never Renewed";
+            this.checkGMLicenseNeverRenewed.UseVisualStyleBackColor = true;
+            this.checkGMLicenseNeverRenewed.CheckedChanged += new System.EventHandler(this.checkGMLicenseNeverRenewed_CheckedChanged);
             // 
-            // buttonPlayerSortByLastName
+            // labelGMLicenseRenewed
             // 
-            this.buttonPlayerSortByLastName.Location = new System.Drawing.Point(826, 213);
-            this.buttonPlayerSortByLastName.Name = "buttonPlayerSortByLastName";
-            this.buttonPlayerSortByLastName.Size = new System.Drawing.Size(112, 23);
-            this.buttonPlayerSortByLastName.TabIndex = 16;
-            this.buttonPlayerSortByLastName.Text = "Sort By Last Name";
-            this.buttonPlayerSortByLastName.UseVisualStyleBackColor = true;
-            this.buttonPlayerSortByLastName.Click += new System.EventHandler(this.buttonPlayerSortByLastName_Click);
+            this.labelGMLicenseRenewed.AutoSize = true;
+            this.labelGMLicenseRenewed.Location = new System.Drawing.Point(341, 42);
+            this.labelGMLicenseRenewed.Name = "labelGMLicenseRenewed";
+            this.labelGMLicenseRenewed.Size = new System.Drawing.Size(96, 13);
+            this.labelGMLicenseRenewed.TabIndex = 41;
+            this.labelGMLicenseRenewed.Text = "License Renewed:";
             // 
-            // buttonRefereeSortByFirstName
+            // labelGMLicenseAcquired
             // 
-            this.buttonRefereeSortByFirstName.Location = new System.Drawing.Point(944, 213);
-            this.buttonRefereeSortByFirstName.Name = "buttonRefereeSortByFirstName";
-            this.buttonRefereeSortByFirstName.Size = new System.Drawing.Size(112, 23);
-            this.buttonRefereeSortByFirstName.TabIndex = 23;
-            this.buttonRefereeSortByFirstName.Text = "Sort By First Name";
-            this.buttonRefereeSortByFirstName.UseVisualStyleBackColor = true;
-            this.buttonRefereeSortByFirstName.Click += new System.EventHandler(this.buttonRefereeSortByFirstName_Click);
+            this.labelGMLicenseAcquired.AutoSize = true;
+            this.labelGMLicenseAcquired.Location = new System.Drawing.Point(341, 3);
+            this.labelGMLicenseAcquired.Name = "labelGMLicenseAcquired";
+            this.labelGMLicenseAcquired.Size = new System.Drawing.Size(92, 13);
+            this.labelGMLicenseAcquired.TabIndex = 40;
+            this.labelGMLicenseAcquired.Text = "License Acquired:";
             // 
-            // buttonRefereeSortByLastName
+            // dateGMLicenseRenewed
             // 
-            this.buttonRefereeSortByLastName.Location = new System.Drawing.Point(826, 213);
-            this.buttonRefereeSortByLastName.Name = "buttonRefereeSortByLastName";
-            this.buttonRefereeSortByLastName.Size = new System.Drawing.Size(112, 23);
-            this.buttonRefereeSortByLastName.TabIndex = 24;
-            this.buttonRefereeSortByLastName.Text = "Sort By Last Name";
-            this.buttonRefereeSortByLastName.UseVisualStyleBackColor = true;
-            this.buttonRefereeSortByLastName.Click += new System.EventHandler(this.buttonRefereeSortByLastName_Click);
+            this.dateGMLicenseRenewed.Location = new System.Drawing.Point(344, 57);
+            this.dateGMLicenseRenewed.Name = "dateGMLicenseRenewed";
+            this.dateGMLicenseRenewed.Size = new System.Drawing.Size(143, 20);
+            this.dateGMLicenseRenewed.TabIndex = 39;
+            this.dateGMLicenseRenewed.Value = new System.DateTime(2015, 3, 25, 0, 0, 0, 0);
             // 
-            // tabGameMaster
+            // dateGMLicenseAcquired
             // 
-            this.tabGameMaster.Location = new System.Drawing.Point(4, 22);
-            this.tabGameMaster.Name = "tabGameMaster";
-            this.tabGameMaster.Size = new System.Drawing.Size(1068, 242);
-            this.tabGameMaster.TabIndex = 2;
-            this.tabGameMaster.Text = "Game Master";
-            this.tabGameMaster.UseVisualStyleBackColor = true;
+            this.dateGMLicenseAcquired.Location = new System.Drawing.Point(344, 19);
+            this.dateGMLicenseAcquired.Name = "dateGMLicenseAcquired";
+            this.dateGMLicenseAcquired.Size = new System.Drawing.Size(143, 20);
+            this.dateGMLicenseAcquired.TabIndex = 38;
+            this.dateGMLicenseAcquired.Value = new System.DateTime(2015, 3, 25, 0, 0, 0, 0);
             // 
-            // buttonSetAsGameMaster
+            // buttonGMAutoAdd
             // 
-            this.buttonSetAsGameMaster.Location = new System.Drawing.Point(493, 213);
-            this.buttonSetAsGameMaster.Name = "buttonSetAsGameMaster";
-            this.buttonSetAsGameMaster.Size = new System.Drawing.Size(114, 23);
-            this.buttonSetAsGameMaster.TabIndex = 25;
-            this.buttonSetAsGameMaster.Text = "Set As Game Master";
-            this.buttonSetAsGameMaster.UseVisualStyleBackColor = true;
-            this.buttonSetAsGameMaster.Click += new System.EventHandler(this.buttonSetAsGameMaster_Click);
+            this.buttonGMAutoAdd.Location = new System.Drawing.Point(6, 132);
+            this.buttonGMAutoAdd.Name = "buttonGMAutoAdd";
+            this.buttonGMAutoAdd.Size = new System.Drawing.Size(69, 23);
+            this.buttonGMAutoAdd.TabIndex = 37;
+            this.buttonGMAutoAdd.Text = "Auto Add";
+            this.buttonGMAutoAdd.UseVisualStyleBackColor = true;
+            // 
+            // buttonGMRemove
+            // 
+            this.buttonGMRemove.Location = new System.Drawing.Point(249, 132);
+            this.buttonGMRemove.Name = "buttonGMRemove";
+            this.buttonGMRemove.Size = new System.Drawing.Size(69, 23);
+            this.buttonGMRemove.TabIndex = 36;
+            this.buttonGMRemove.Text = "Remove";
+            this.buttonGMRemove.UseVisualStyleBackColor = true;
+            this.buttonGMRemove.Click += new System.EventHandler(this.buttonGMRemove_Click);
+            // 
+            // buttonGMAdd
+            // 
+            this.buttonGMAdd.Location = new System.Drawing.Point(175, 132);
+            this.buttonGMAdd.Name = "buttonGMAdd";
+            this.buttonGMAdd.Size = new System.Drawing.Size(69, 23);
+            this.buttonGMAdd.TabIndex = 35;
+            this.buttonGMAdd.Text = "Add";
+            this.buttonGMAdd.UseVisualStyleBackColor = true;
+            this.buttonGMAdd.Click += new System.EventHandler(this.buttonGMAdd_Click);
+            // 
+            // labelGMGender
+            // 
+            this.labelGMGender.AutoSize = true;
+            this.labelGMGender.Location = new System.Drawing.Point(172, 80);
+            this.labelGMGender.Name = "labelGMGender";
+            this.labelGMGender.Size = new System.Drawing.Size(42, 13);
+            this.labelGMGender.TabIndex = 34;
+            this.labelGMGender.Text = "Gender";
+            // 
+            // comboGMGender
+            // 
+            this.comboGMGender.FormattingEnabled = true;
+            this.comboGMGender.Location = new System.Drawing.Point(175, 96);
+            this.comboGMGender.Name = "comboGMGender";
+            this.comboGMGender.Size = new System.Drawing.Size(143, 21);
+            this.comboGMGender.TabIndex = 33;
+            // 
+            // labelGMNationality
+            // 
+            this.labelGMNationality.AutoSize = true;
+            this.labelGMNationality.Location = new System.Drawing.Point(172, 42);
+            this.labelGMNationality.Name = "labelGMNationality";
+            this.labelGMNationality.Size = new System.Drawing.Size(56, 13);
+            this.labelGMNationality.TabIndex = 32;
+            this.labelGMNationality.Text = "Nationality";
+            // 
+            // comboGMNationality
+            // 
+            this.comboGMNationality.FormattingEnabled = true;
+            this.comboGMNationality.Location = new System.Drawing.Point(175, 57);
+            this.comboGMNationality.Name = "comboGMNationality";
+            this.comboGMNationality.Size = new System.Drawing.Size(143, 21);
+            this.comboGMNationality.TabIndex = 31;
+            // 
+            // dateGMDOB
+            // 
+            this.dateGMDOB.Location = new System.Drawing.Point(175, 19);
+            this.dateGMDOB.Name = "dateGMDOB";
+            this.dateGMDOB.Size = new System.Drawing.Size(143, 20);
+            this.dateGMDOB.TabIndex = 30;
+            this.dateGMDOB.Value = new System.DateTime(2015, 3, 25, 0, 0, 0, 0);
+            // 
+            // labelGMDOB
+            // 
+            this.labelGMDOB.AutoSize = true;
+            this.labelGMDOB.Location = new System.Drawing.Point(172, 3);
+            this.labelGMDOB.Name = "labelGMDOB";
+            this.labelGMDOB.Size = new System.Drawing.Size(71, 13);
+            this.labelGMDOB.TabIndex = 29;
+            this.labelGMDOB.Text = "Date Of Birth:";
+            // 
+            // textGMLastName
+            // 
+            this.textGMLastName.Location = new System.Drawing.Point(6, 97);
+            this.textGMLastName.Name = "textGMLastName";
+            this.textGMLastName.Size = new System.Drawing.Size(143, 20);
+            this.textGMLastName.TabIndex = 28;
+            // 
+            // labelGMLastName
+            // 
+            this.labelGMLastName.AutoSize = true;
+            this.labelGMLastName.Location = new System.Drawing.Point(3, 81);
+            this.labelGMLastName.Name = "labelGMLastName";
+            this.labelGMLastName.Size = new System.Drawing.Size(61, 13);
+            this.labelGMLastName.TabIndex = 27;
+            this.labelGMLastName.Text = "Last Name:";
+            // 
+            // textGMMiddleName
+            // 
+            this.textGMMiddleName.Location = new System.Drawing.Point(6, 58);
+            this.textGMMiddleName.Name = "textGMMiddleName";
+            this.textGMMiddleName.Size = new System.Drawing.Size(143, 20);
+            this.textGMMiddleName.TabIndex = 26;
+            // 
+            // labelGMMiddleName
+            // 
+            this.labelGMMiddleName.AutoSize = true;
+            this.labelGMMiddleName.Location = new System.Drawing.Point(3, 42);
+            this.labelGMMiddleName.Name = "labelGMMiddleName";
+            this.labelGMMiddleName.Size = new System.Drawing.Size(72, 13);
+            this.labelGMMiddleName.TabIndex = 25;
+            this.labelGMMiddleName.Text = "Middle Name:";
+            // 
+            // textGMFirstName
+            // 
+            this.textGMFirstName.Location = new System.Drawing.Point(6, 19);
+            this.textGMFirstName.Name = "textGMFirstName";
+            this.textGMFirstName.Size = new System.Drawing.Size(143, 20);
+            this.textGMFirstName.TabIndex = 24;
+            // 
+            // labelGMFirstName
+            // 
+            this.labelGMFirstName.AutoSize = true;
+            this.labelGMFirstName.Location = new System.Drawing.Point(3, 3);
+            this.labelGMFirstName.Name = "labelGMFirstName";
+            this.labelGMFirstName.Size = new System.Drawing.Size(60, 13);
+            this.labelGMFirstName.TabIndex = 23;
+            this.labelGMFirstName.Text = "First Name:";
+            // 
+            // dataGridViewGM
+            // 
+            this.dataGridViewGM.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewGM.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn11,
+            this.dataGridViewTextBoxColumn12,
+            this.dataGridViewTextBoxColumn13,
+            this.dataGridViewTextBoxColumn14,
+            this.dataGridViewTextBoxColumn15,
+            this.dataGridViewTextBoxColumn16,
+            this.dataGridViewTextBoxColumn17,
+            this.dataGridViewTextBoxColumn18});
+            this.dataGridViewGM.Location = new System.Drawing.Point(493, 6);
+            this.dataGridViewGM.Name = "dataGridViewGM";
+            this.dataGridViewGM.Size = new System.Drawing.Size(563, 72);
+            this.dataGridViewGM.TabIndex = 43;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.HeaderText = "Object";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.Visible = false;
+            this.dataGridViewTextBoxColumn9.Width = 35;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.HeaderText = "Frist Name";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.HeaderText = "Middle Name";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.HeaderText = "Last Name";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.HeaderText = "Date Of Birth";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.HeaderText = "Age";
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.HeaderText = "Nationality";
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            this.dataGridViewTextBoxColumn15.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.HeaderText = "Gender";
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            this.dataGridViewTextBoxColumn16.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.HeaderText = "License Acquired";
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            // 
+            // dataGridViewTextBoxColumn18
+            // 
+            this.dataGridViewTextBoxColumn18.HeaderText = "License Renewed";
+            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
             // 
             // MainWindow
             // 
@@ -706,7 +1011,10 @@
             this.tabReferee.ResumeLayout(false);
             this.tabReferee.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReferee)).EndInit();
+            this.tabGameMaster.ResumeLayout(false);
+            this.tabGameMaster.PerformLayout();
             this.groupBoxAdd.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGM)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -778,6 +1086,37 @@
         private System.Windows.Forms.Button buttonRefereeSortByFirstName;
         private System.Windows.Forms.TabPage tabGameMaster;
         private System.Windows.Forms.Button buttonSetAsGameMaster;
+        private System.Windows.Forms.CheckBox checkGMLicenseNeverRenewed;
+        private System.Windows.Forms.Label labelGMLicenseRenewed;
+        private System.Windows.Forms.Label labelGMLicenseAcquired;
+        private System.Windows.Forms.DateTimePicker dateGMLicenseRenewed;
+        private System.Windows.Forms.DateTimePicker dateGMLicenseAcquired;
+        private System.Windows.Forms.Button buttonGMAutoAdd;
+        private System.Windows.Forms.Button buttonGMRemove;
+        private System.Windows.Forms.Button buttonGMAdd;
+        private System.Windows.Forms.Label labelGMGender;
+        private System.Windows.Forms.ComboBox comboGMGender;
+        private System.Windows.Forms.Label labelGMNationality;
+        private System.Windows.Forms.ComboBox comboGMNationality;
+        private System.Windows.Forms.DateTimePicker dateGMDOB;
+        private System.Windows.Forms.Label labelGMDOB;
+        private System.Windows.Forms.TextBox textGMLastName;
+        private System.Windows.Forms.Label labelGMLastName;
+        private System.Windows.Forms.TextBox textGMMiddleName;
+        private System.Windows.Forms.Label labelGMMiddleName;
+        private System.Windows.Forms.TextBox textGMFirstName;
+        private System.Windows.Forms.Label labelGMFirstName;
+        private System.Windows.Forms.DataGridView dataGridViewGM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
     }
 }
 

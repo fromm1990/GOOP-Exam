@@ -29,6 +29,8 @@ namespace Tennis_exam
             comboPlayerNationality.DataSource = Enum.GetValues(typeof(Player.Nationalities));
             comboRefereeGender.DataSource = Enum.GetValues(typeof(Referee.Genders));
             comboRefereeNationality.DataSource = Enum.GetValues(typeof(Referee.Nationalities));
+            comboGMGender.DataSource = Enum.GetValues(typeof(GameMaster.Genders));
+            comboGMNationality.DataSource = Enum.GetValues(typeof(GameMaster.Nationalities));
         }
 
         #region Add/Remover player
@@ -206,6 +208,7 @@ namespace Tennis_exam
                     Referee referee = (Referee)dataGridViewReferee.SelectedRows[0].Cells[0].Value;
                     tournament.SetGameMaster(referee);
                     dataGridViewReferee.Rows.RemoveAt(dataGridViewReferee.SelectedRows[0].Index);
+                    DataGridAddElement(dataGridViewGM, tournament.GameMasterProp);
                 }
             }
             catch (Exception ex)
@@ -213,7 +216,65 @@ namespace Tennis_exam
                 MessageBox.Show(ex.Message, "Can't remove referee", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        #endregion
 
+        private void buttonGMAdd_Click(object sender, EventArgs e)
+        {
+            GameMaster newGameMaster = new GameMaster();
+            try
+            {
+                newGameMaster.FristName = textGMFirstName.Text;
+                newGameMaster.MiddleName = textGMMiddleName.Text;
+                newGameMaster.LastName = textGMLastName.Text;
+                newGameMaster.DateOfBirth = dateGMDOB.Value;
+                newGameMaster.Nationality = (int)comboGMNationality.SelectedValue;
+                newGameMaster.Gender = (int)comboGMGender.SelectedValue;
+                newGameMaster.LicenseAcquired = dateGMLicenseAcquired.Value;
+
+                if (dateGMLicenseRenewed.Enabled == false)
+                {
+                    newGameMaster.LicenseLastRenewed = null;
+                }
+                else
+                {
+                    newGameMaster.LicenseLastRenewed = dateGMLicenseRenewed.Value;
+                }
+
+
+                tournament.AddGameMaster(newGameMaster);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Can't add game master", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            DataGridAddElement(dataGridViewGM, newGameMaster);
+
+            //Resets the text fields after submit
+            textGMFirstName.Text = null;
+            textGMMiddleName.Text = null;
+            textGMLastName.Text = null;
+            dateGMDOB.Value = DateTime.Today;
+            comboGMGender.SelectedIndex = 0;
+            comboGMNationality.SelectedIndex = 0;
+        }
+
+        private void checkGMLicenseNeverRenewed_CheckedChanged(object sender, EventArgs e)
+        {
+            if (dateGMLicenseRenewed.Enabled == true)
+            {
+                dateGMLicenseRenewed.Enabled = false;
+            }
+            else
+            {
+                dateGMLicenseRenewed.Enabled = true;
+            }
+        }
+
+        private void buttonGMRemove_Click(object sender, EventArgs e)
+        {
+            tournament.RemoveGamemaster();
+            dataGridViewGM.Rows.Clear();
+        }
+        #endregion
     }
 }

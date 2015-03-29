@@ -88,7 +88,7 @@ namespace Tennis_exam.Classes
         #endregion
 
         #region Add/Remove/Set Game master
-        public void AddGamemaster(GameMaster gameMaster)
+        public void AddGameMaster(GameMaster gameMaster)
         {
             if (GameMasterProp == null)
             {
