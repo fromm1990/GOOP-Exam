@@ -8,6 +8,8 @@ namespace Tennis_exam.Classes
 {
     class Tournament : Common
     {
+        public enum TournamentTypes { SingleMale, SingleFemale, DoubleMale, DoubleFemale, MixDouble }
+
         public string Name { get; set; }
         public DateTime Year { get; set; }
         public DateTime StartsAt { get; set; }
@@ -16,13 +18,15 @@ namespace Tennis_exam.Classes
         public Referee[] Referees { get; set; }
         public GameMaster GameMasterProp { get; set; }
         public int TournamentSize { get; set; }
+        public int TournamentType { get; set; }
 
-        public Tournament(int amountOfPlayers)
+        public Tournament(int amountOfPlayers, int tournamentType)
         {
-            int TournamentSize = amountOfPlayers;
+            TournamentSize = amountOfPlayers;
             Players = new Player[TournamentSize];
             Referees = new Referee[TournamentSize];
             GameMasterProp = null;
+            TournamentType = tournamentType;
         }
 
         #region Add/Remove Player or Referee

@@ -222,6 +222,7 @@
             this.buttonPlayerAutoAdd.TabIndex = 12;
             this.buttonPlayerAutoAdd.Text = "Auto Add";
             this.buttonPlayerAutoAdd.UseVisualStyleBackColor = true;
+            this.buttonPlayerAutoAdd.Click += new System.EventHandler(this.buttonPlayerAutoAdd_Click);
             // 
             // dataGridViewPlayer
             // 

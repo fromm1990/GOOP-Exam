@@ -22,7 +22,7 @@ namespace Tennis_exam
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            tournament = new Tournament(16);
+            tournament = new Tournament(16, 1);
 
             //Setting up Data sources for combo boxes
             comboPlayerGender.DataSource = Enum.GetValues(typeof(Player.Genders));
@@ -276,5 +276,16 @@ namespace Tennis_exam
             dataGridViewGM.Rows.Clear();
         }
         #endregion
+
+        private void buttonPlayerAutoAdd_Click(object sender, EventArgs e)
+        {
+            AutoFillData autoAdd = new AutoFillData();
+
+            for (int i = 0; i < tournament.TournamentSize; i++)
+            {
+                tournament.AddPlayer(autoAdd.AutoCreatePlayer("female"));
+            }
+            PopulateDataGridView(dataGridViewPlayer, tournament.Players);
+        }
     }
 }
