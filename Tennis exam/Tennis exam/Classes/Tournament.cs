@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Tennis_exam.Classes
 {
+    public enum TournamentTypes { SingleMale, SingleFemale, DoubleMale, DoubleFemale, MixDouble }
+    
     class Tournament : Common
     {
-        public enum TournamentTypes { SingleMale, SingleFemale, DoubleMale, DoubleFemale, MixDouble }
-
         public string Name { get; set; }
-        public DateTime Year { get; set; }
+        public int Year { get; set; }
         public DateTime StartsAt { get; set; }
         public DateTime EndsAt { get; set; }
         public Player[] Players { get; set; }
@@ -20,11 +20,12 @@ namespace Tennis_exam.Classes
         public int TournamentSize { get; set; }
         public int TournamentType { get; set; }
 
-        public Tournament(int amountOfPlayers, int tournamentType)
+        public Tournament(string name, int year, DateTime startsAt, DateTime endsAt, int amountOfPlayers, int tournamentType)
         {
+            Name = name;
             TournamentSize = amountOfPlayers;
             Players = new Player[TournamentSize];
-            Referees = new Referee[TournamentSize];
+            Referees = new Referee[TournamentSize/2];
             GameMasterProp = null;
             TournamentType = tournamentType;
         }

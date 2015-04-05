@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Tennis_exam.Classes
 {
-    class AutoFillData : Person
+    public enum Nationalities { Albania, Belgium, Colombia, Denmark, England, France, Greece, Holland, Italy }
+    public enum Genders { Male, Female }
+
+    class AutoFillData
     {
         enum FirstNameMale { Anders, Bent, Charles, Danni, Erik, Finn, Gert, Hans, Ib }
         enum FirstNameFemale { Anni, Belina, Christina, Dina, Elisa, Fie, Gita, Henrietta, Ine }
@@ -38,10 +41,34 @@ namespace Tennis_exam.Classes
             return newPlayer;
         }
 
+        public Referee AutoCreateReferee(string gender)
+        {
+            Referee newReferee = new Referee();
+
+            if (gender == "male")
+            {
+                newReferee.FristName = Enum.GetName(typeof(FirstNameMale), RandomIndex());
+                newReferee.Gender = (int)Genders.Male;
+            }
+            else if (gender == "female")
+            {
+                newReferee.FristName = Enum.GetName(typeof(FirstNameFemale), RandomIndex());
+                newReferee.Gender = (int)Genders.Female;
+            }
+            newReferee.MiddleName = Enum.GetName(typeof(MiddleNames), RandomIndex());
+            newReferee.LastName = Enum.GetName(typeof(LastNames), RandomIndex());
+            newReferee.DateOfBirth = RandomBirthDate();
+            newReferee.Nationality = RandomIndex();
+            newReferee.LicenseAcquired = RandomBirthDate();
+            newReferee.LicenseLastRenewed = RandomBirthDate();
+
+            return newReferee;
+        }
+
         private int RandomIndex()
         {
-            int firstNameIndex = rand.Next(0, 8);
-            return firstNameIndex;
+            int randomIndex = rand.Next(0, 8);
+            return randomIndex;
         }
         
         private DateTime RandomBirthDate()

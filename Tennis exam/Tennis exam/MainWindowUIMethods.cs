@@ -32,8 +32,8 @@ namespace Tennis_exam
             dataGrid.Rows[n].Cells[3].ValueType = typeof(string);
             dataGrid.Rows[n].Cells[4].ValueType = typeof(DateTime);
             dataGrid.Rows[n].Cells[5].ValueType = typeof(int);
-            dataGrid.Rows[n].Cells[6].ValueType = typeof(Player.Nationalities);
-            dataGrid.Rows[n].Cells[7].ValueType = typeof(Player.Genders);
+            dataGrid.Rows[n].Cells[6].ValueType = typeof(Nationalities);
+            dataGrid.Rows[n].Cells[7].ValueType = typeof(Genders);
         }
 
         private void DataGridAddElement(DataGridView dataGrid, Referee newReferee)
@@ -57,8 +57,8 @@ namespace Tennis_exam
             dataGrid.Rows[n].Cells[3].ValueType = typeof(string);
             dataGrid.Rows[n].Cells[4].ValueType = typeof(DateTime);
             dataGrid.Rows[n].Cells[5].ValueType = typeof(int);
-            dataGrid.Rows[n].Cells[6].ValueType = typeof(Referee.Nationalities);
-            dataGrid.Rows[n].Cells[7].ValueType = typeof(Referee.Genders);
+            dataGrid.Rows[n].Cells[6].ValueType = typeof(Nationalities);
+            dataGrid.Rows[n].Cells[7].ValueType = typeof(Genders);
             dataGrid.Rows[n].Cells[8].ValueType = typeof(DateTime);
             dataGrid.Rows[n].Cells[9].ValueType = typeof(DateTime?);
         }
@@ -82,8 +82,8 @@ namespace Tennis_exam
             dataGrid.Rows[0].Cells[3].ValueType = typeof(string);
             dataGrid.Rows[0].Cells[4].ValueType = typeof(DateTime);
             dataGrid.Rows[0].Cells[5].ValueType = typeof(int);
-            dataGrid.Rows[0].Cells[6].ValueType = typeof(Referee.Nationalities);
-            dataGrid.Rows[0].Cells[7].ValueType = typeof(Referee.Genders);
+            dataGrid.Rows[0].Cells[6].ValueType = typeof(Nationalities);
+            dataGrid.Rows[0].Cells[7].ValueType = typeof(Genders);
             dataGrid.Rows[0].Cells[8].ValueType = typeof(DateTime);
             dataGrid.Rows[0].Cells[9].ValueType = typeof(DateTime?);
         }

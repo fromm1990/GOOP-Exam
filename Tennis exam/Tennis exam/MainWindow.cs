@@ -22,16 +22,35 @@ namespace Tennis_exam
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            tournament = new Tournament(16, 1);
+            groupBoxAdd.Enabled = false;
+            groupBoxGame.Enabled = false;
 
             //Setting up Data sources for combo boxes
-            comboPlayerGender.DataSource = Enum.GetValues(typeof(Player.Genders));
-            comboPlayerNationality.DataSource = Enum.GetValues(typeof(Player.Nationalities));
-            comboRefereeGender.DataSource = Enum.GetValues(typeof(Referee.Genders));
-            comboRefereeNationality.DataSource = Enum.GetValues(typeof(Referee.Nationalities));
-            comboGMGender.DataSource = Enum.GetValues(typeof(GameMaster.Genders));
-            comboGMNationality.DataSource = Enum.GetValues(typeof(GameMaster.Nationalities));
+            comboPlayerGender.DataSource = Enum.GetValues(typeof(Genders));
+            comboPlayerNationality.DataSource = Enum.GetValues(typeof(Nationalities));
+            comboRefereeGender.DataSource = Enum.GetValues(typeof(Genders));
+            comboRefereeNationality.DataSource = Enum.GetValues(typeof(Nationalities));
+            comboGMGender.DataSource = Enum.GetValues(typeof(Genders));
+            comboGMNationality.DataSource = Enum.GetValues(typeof(Nationalities));
+            comboTournamentType.DataSource = Enum.GetValues(typeof(TournamentTypes));
         }
+        
+        #region Create Tournament
+        private void buttonTournamentCreate_Click(object sender, EventArgs e)
+        {
+            string name = textTournamentName.Text;
+            int year = Convert.ToInt32(textTournamentYear.Text);
+            DateTime startsAt = dateTimeTournamentStartsAt.Value;
+            DateTime endsAt = dateTimeTournamentEndsAt.Value;
+            int amountOfPlayers = Convert.ToInt32(comboTournamentAmountOfPlayers.SelectedItem);
+            int type = (int)comboTournamentType.SelectedValue;
+
+            tournament = new Tournament(name, year, startsAt, endsAt, amountOfPlayers, type);
+
+            groupBoxTournament.Enabled = false;
+            groupBoxAdd.Enabled = true;
+        }
+        #endregion
 
         #region Add/Remover player
         private void buttonAddPlayer_Click(object sender, EventArgs e)
@@ -277,6 +296,8 @@ namespace Tennis_exam
         }
         #endregion
 
+        #region AutoFillData
+
         private void buttonPlayerAutoAdd_Click(object sender, EventArgs e)
         {
             AutoFillData autoAdd = new AutoFillData();
@@ -287,5 +308,22 @@ namespace Tennis_exam
             }
             PopulateDataGridView(dataGridViewPlayer, tournament.Players);
         }
+
+        private void buttonRefereeAutoAdd_Click(object sender, EventArgs e)
+        {
+            AutoFillData autoAdd = new AutoFillData();
+
+            for (int i = 0; i < tournament.TournamentSize / 4; i++)
+            {
+                tournament.AddReferee(autoAdd.AutoCreateReferee("female"));
+            }
+            for (int i = 0; i < tournament.TournamentSize / 4; i++)
+            {
+                tournament.AddReferee(autoAdd.AutoCreateReferee("male"));
+            }
+            PopulateDataGridView(dataGridViewReferee, tournament.Referees);
+        }
+        #endregion
+
     }
 }

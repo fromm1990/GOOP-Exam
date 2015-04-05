@@ -92,7 +92,17 @@
             this.textRefereeFirstName = new System.Windows.Forms.TextBox();
             this.labelRefereeFirstName = new System.Windows.Forms.Label();
             this.tabGameMaster = new System.Windows.Forms.TabPage();
-            this.groupBoxAdd = new System.Windows.Forms.GroupBox();
+            this.dataGridViewGM = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.checkGMLicenseNeverRenewed = new System.Windows.Forms.CheckBox();
             this.labelGMLicenseRenewed = new System.Windows.Forms.Label();
             this.labelGMLicenseAcquired = new System.Windows.Forms.Label();
@@ -113,25 +123,35 @@
             this.labelGMMiddleName = new System.Windows.Forms.Label();
             this.textGMFirstName = new System.Windows.Forms.TextBox();
             this.labelGMFirstName = new System.Windows.Forms.Label();
-            this.dataGridViewGM = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBoxAdd = new System.Windows.Forms.GroupBox();
+            this.textTournamentName = new System.Windows.Forms.TextBox();
+            this.dateTimeTournamentStartsAt = new System.Windows.Forms.DateTimePicker();
+            this.dateTimeTournamentEndsAt = new System.Windows.Forms.DateTimePicker();
+            this.labelTournamentName = new System.Windows.Forms.Label();
+            this.groupBoxTournament = new System.Windows.Forms.GroupBox();
+            this.labelTournamentYear = new System.Windows.Forms.Label();
+            this.textTournamentYear = new System.Windows.Forms.TextBox();
+            this.labelTournamentStartsAt = new System.Windows.Forms.Label();
+            this.labelTournamentEndsAt = new System.Windows.Forms.Label();
+            this.comboTournamentAmountOfPlayers = new System.Windows.Forms.ComboBox();
+            this.groupBoxGame = new System.Windows.Forms.GroupBox();
+            this.labelTournamentAmountOfPlayers = new System.Windows.Forms.Label();
+            this.comboTournamentType = new System.Windows.Forms.ComboBox();
+            this.labelTournamentType = new System.Windows.Forms.Label();
+            this.buttonTournamentCreate = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Winner = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPlayers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlayer)).BeginInit();
             this.tabReferee.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReferee)).BeginInit();
             this.tabGameMaster.SuspendLayout();
-            this.groupBoxAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGM)).BeginInit();
+            this.groupBoxAdd.SuspendLayout();
+            this.groupBoxTournament.SuspendLayout();
+            this.groupBoxGame.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -506,6 +526,7 @@
             this.buttonRefereeAutoAdd.TabIndex = 17;
             this.buttonRefereeAutoAdd.Text = "Auto Add";
             this.buttonRefereeAutoAdd.UseVisualStyleBackColor = true;
+            this.buttonRefereeAutoAdd.Click += new System.EventHandler(this.buttonRefereeAutoAdd_Click);
             // 
             // buttonRefereeRemove
             // 
@@ -734,16 +755,83 @@
             this.tabGameMaster.Text = "Game Master";
             this.tabGameMaster.UseVisualStyleBackColor = true;
             // 
-            // groupBoxAdd
+            // dataGridViewGM
             // 
-            this.groupBoxAdd.Controls.Add(this.tabControl1);
-            this.groupBoxAdd.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBoxAdd.Location = new System.Drawing.Point(0, 298);
-            this.groupBoxAdd.Name = "groupBoxAdd";
-            this.groupBoxAdd.Size = new System.Drawing.Size(1082, 290);
-            this.groupBoxAdd.TabIndex = 1;
-            this.groupBoxAdd.TabStop = false;
-            this.groupBoxAdd.Text = "Add";
+            this.dataGridViewGM.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewGM.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn11,
+            this.dataGridViewTextBoxColumn12,
+            this.dataGridViewTextBoxColumn13,
+            this.dataGridViewTextBoxColumn14,
+            this.dataGridViewTextBoxColumn15,
+            this.dataGridViewTextBoxColumn16,
+            this.dataGridViewTextBoxColumn17,
+            this.dataGridViewTextBoxColumn18});
+            this.dataGridViewGM.Location = new System.Drawing.Point(493, 6);
+            this.dataGridViewGM.Name = "dataGridViewGM";
+            this.dataGridViewGM.Size = new System.Drawing.Size(563, 72);
+            this.dataGridViewGM.TabIndex = 43;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.HeaderText = "Object";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.Visible = false;
+            this.dataGridViewTextBoxColumn9.Width = 35;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.HeaderText = "Frist Name";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.HeaderText = "Middle Name";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.HeaderText = "Last Name";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.HeaderText = "Date Of Birth";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.HeaderText = "Age";
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.HeaderText = "Nationality";
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            this.dataGridViewTextBoxColumn15.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.HeaderText = "Gender";
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            this.dataGridViewTextBoxColumn16.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.HeaderText = "License Acquired";
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            // 
+            // dataGridViewTextBoxColumn18
+            // 
+            this.dataGridViewTextBoxColumn18.HeaderText = "License Renewed";
+            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
             // 
             // checkGMLicenseNeverRenewed
             // 
@@ -918,89 +1006,191 @@
             this.labelGMFirstName.TabIndex = 23;
             this.labelGMFirstName.Text = "First Name:";
             // 
-            // dataGridViewGM
+            // groupBoxAdd
             // 
-            this.dataGridViewGM.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewGM.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn9,
-            this.dataGridViewTextBoxColumn10,
-            this.dataGridViewTextBoxColumn11,
-            this.dataGridViewTextBoxColumn12,
-            this.dataGridViewTextBoxColumn13,
-            this.dataGridViewTextBoxColumn14,
-            this.dataGridViewTextBoxColumn15,
-            this.dataGridViewTextBoxColumn16,
-            this.dataGridViewTextBoxColumn17,
-            this.dataGridViewTextBoxColumn18});
-            this.dataGridViewGM.Location = new System.Drawing.Point(493, 6);
-            this.dataGridViewGM.Name = "dataGridViewGM";
-            this.dataGridViewGM.Size = new System.Drawing.Size(563, 72);
-            this.dataGridViewGM.TabIndex = 43;
+            this.groupBoxAdd.Controls.Add(this.tabControl1);
+            this.groupBoxAdd.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBoxAdd.Location = new System.Drawing.Point(0, 298);
+            this.groupBoxAdd.Name = "groupBoxAdd";
+            this.groupBoxAdd.Size = new System.Drawing.Size(1082, 290);
+            this.groupBoxAdd.TabIndex = 1;
+            this.groupBoxAdd.TabStop = false;
+            this.groupBoxAdd.Text = "Add";
             // 
-            // dataGridViewTextBoxColumn9
+            // textTournamentName
             // 
-            this.dataGridViewTextBoxColumn9.HeaderText = "Object";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.Visible = false;
-            this.dataGridViewTextBoxColumn9.Width = 35;
+            this.textTournamentName.Location = new System.Drawing.Point(12, 32);
+            this.textTournamentName.Name = "textTournamentName";
+            this.textTournamentName.Size = new System.Drawing.Size(152, 20);
+            this.textTournamentName.TabIndex = 2;
             // 
-            // dataGridViewTextBoxColumn10
+            // dateTimeTournamentStartsAt
             // 
-            this.dataGridViewTextBoxColumn10.HeaderText = "Frist Name";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            this.dateTimeTournamentStartsAt.Location = new System.Drawing.Point(13, 110);
+            this.dateTimeTournamentStartsAt.Name = "dateTimeTournamentStartsAt";
+            this.dateTimeTournamentStartsAt.Size = new System.Drawing.Size(151, 20);
+            this.dateTimeTournamentStartsAt.TabIndex = 6;
+            this.dateTimeTournamentStartsAt.Value = new System.DateTime(2015, 4, 5, 0, 0, 0, 0);
             // 
-            // dataGridViewTextBoxColumn11
+            // dateTimeTournamentEndsAt
             // 
-            this.dataGridViewTextBoxColumn11.HeaderText = "Middle Name";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            this.dateTimeTournamentEndsAt.Location = new System.Drawing.Point(13, 149);
+            this.dateTimeTournamentEndsAt.Name = "dateTimeTournamentEndsAt";
+            this.dateTimeTournamentEndsAt.Size = new System.Drawing.Size(151, 20);
+            this.dateTimeTournamentEndsAt.TabIndex = 8;
+            this.dateTimeTournamentEndsAt.Value = new System.DateTime(2015, 4, 5, 0, 0, 0, 0);
             // 
-            // dataGridViewTextBoxColumn12
+            // labelTournamentName
             // 
-            this.dataGridViewTextBoxColumn12.HeaderText = "Last Name";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            this.dataGridViewTextBoxColumn12.ReadOnly = true;
+            this.labelTournamentName.AutoSize = true;
+            this.labelTournamentName.Location = new System.Drawing.Point(10, 16);
+            this.labelTournamentName.Name = "labelTournamentName";
+            this.labelTournamentName.Size = new System.Drawing.Size(38, 13);
+            this.labelTournamentName.TabIndex = 1;
+            this.labelTournamentName.Text = "Name:";
             // 
-            // dataGridViewTextBoxColumn13
+            // groupBoxTournament
             // 
-            this.dataGridViewTextBoxColumn13.HeaderText = "Date Of Birth";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.ReadOnly = true;
+            this.groupBoxTournament.Controls.Add(this.buttonTournamentCreate);
+            this.groupBoxTournament.Controls.Add(this.labelTournamentType);
+            this.groupBoxTournament.Controls.Add(this.comboTournamentType);
+            this.groupBoxTournament.Controls.Add(this.labelTournamentAmountOfPlayers);
+            this.groupBoxTournament.Controls.Add(this.comboTournamentAmountOfPlayers);
+            this.groupBoxTournament.Controls.Add(this.labelTournamentEndsAt);
+            this.groupBoxTournament.Controls.Add(this.labelTournamentStartsAt);
+            this.groupBoxTournament.Controls.Add(this.textTournamentYear);
+            this.groupBoxTournament.Controls.Add(this.labelTournamentYear);
+            this.groupBoxTournament.Controls.Add(this.labelTournamentName);
+            this.groupBoxTournament.Controls.Add(this.textTournamentName);
+            this.groupBoxTournament.Controls.Add(this.dateTimeTournamentEndsAt);
+            this.groupBoxTournament.Controls.Add(this.dateTimeTournamentStartsAt);
+            this.groupBoxTournament.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBoxTournament.Location = new System.Drawing.Point(0, 0);
+            this.groupBoxTournament.Name = "groupBoxTournament";
+            this.groupBoxTournament.Size = new System.Drawing.Size(184, 298);
+            this.groupBoxTournament.TabIndex = 7;
+            this.groupBoxTournament.TabStop = false;
+            this.groupBoxTournament.Text = "Tournament";
             // 
-            // dataGridViewTextBoxColumn14
+            // labelTournamentYear
             // 
-            this.dataGridViewTextBoxColumn14.HeaderText = "Age";
-            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            this.dataGridViewTextBoxColumn14.Width = 50;
+            this.labelTournamentYear.AutoSize = true;
+            this.labelTournamentYear.Location = new System.Drawing.Point(10, 55);
+            this.labelTournamentYear.Name = "labelTournamentYear";
+            this.labelTournamentYear.Size = new System.Drawing.Size(32, 13);
+            this.labelTournamentYear.TabIndex = 3;
+            this.labelTournamentYear.Text = "Year:";
             // 
-            // dataGridViewTextBoxColumn15
+            // textTournamentYear
             // 
-            this.dataGridViewTextBoxColumn15.HeaderText = "Nationality";
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            this.dataGridViewTextBoxColumn15.ReadOnly = true;
+            this.textTournamentYear.Location = new System.Drawing.Point(13, 71);
+            this.textTournamentYear.Name = "textTournamentYear";
+            this.textTournamentYear.Size = new System.Drawing.Size(151, 20);
+            this.textTournamentYear.TabIndex = 4;
             // 
-            // dataGridViewTextBoxColumn16
+            // labelTournamentStartsAt
             // 
-            this.dataGridViewTextBoxColumn16.HeaderText = "Gender";
-            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            this.dataGridViewTextBoxColumn16.ReadOnly = true;
+            this.labelTournamentStartsAt.AutoSize = true;
+            this.labelTournamentStartsAt.Location = new System.Drawing.Point(10, 94);
+            this.labelTournamentStartsAt.Name = "labelTournamentStartsAt";
+            this.labelTournamentStartsAt.Size = new System.Drawing.Size(50, 13);
+            this.labelTournamentStartsAt.TabIndex = 5;
+            this.labelTournamentStartsAt.Text = "Starts At:";
             // 
-            // dataGridViewTextBoxColumn17
+            // labelTournamentEndsAt
             // 
-            this.dataGridViewTextBoxColumn17.HeaderText = "License Acquired";
-            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            this.labelTournamentEndsAt.AutoSize = true;
+            this.labelTournamentEndsAt.Location = new System.Drawing.Point(10, 133);
+            this.labelTournamentEndsAt.Name = "labelTournamentEndsAt";
+            this.labelTournamentEndsAt.Size = new System.Drawing.Size(47, 13);
+            this.labelTournamentEndsAt.TabIndex = 7;
+            this.labelTournamentEndsAt.Text = "Ends At:";
             // 
-            // dataGridViewTextBoxColumn18
+            // comboTournamentAmountOfPlayers
             // 
-            this.dataGridViewTextBoxColumn18.HeaderText = "License Renewed";
-            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
+            this.comboTournamentAmountOfPlayers.FormattingEnabled = true;
+            this.comboTournamentAmountOfPlayers.Items.AddRange(new object[] {
+            "8",
+            "16",
+            "32",
+            "64"});
+            this.comboTournamentAmountOfPlayers.Location = new System.Drawing.Point(13, 188);
+            this.comboTournamentAmountOfPlayers.Name = "comboTournamentAmountOfPlayers";
+            this.comboTournamentAmountOfPlayers.Size = new System.Drawing.Size(151, 21);
+            this.comboTournamentAmountOfPlayers.TabIndex = 10;
+            this.comboTournamentAmountOfPlayers.Text = "Select amount";
+            // 
+            // groupBoxGame
+            // 
+            this.groupBoxGame.Controls.Add(this.dataGridView1);
+            this.groupBoxGame.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxGame.Location = new System.Drawing.Point(184, 0);
+            this.groupBoxGame.Name = "groupBoxGame";
+            this.groupBoxGame.Size = new System.Drawing.Size(898, 298);
+            this.groupBoxGame.TabIndex = 8;
+            this.groupBoxGame.TabStop = false;
+            this.groupBoxGame.Text = "Game";
+            // 
+            // labelTournamentAmountOfPlayers
+            // 
+            this.labelTournamentAmountOfPlayers.AutoSize = true;
+            this.labelTournamentAmountOfPlayers.Location = new System.Drawing.Point(10, 172);
+            this.labelTournamentAmountOfPlayers.Name = "labelTournamentAmountOfPlayers";
+            this.labelTournamentAmountOfPlayers.Size = new System.Drawing.Size(97, 13);
+            this.labelTournamentAmountOfPlayers.TabIndex = 9;
+            this.labelTournamentAmountOfPlayers.Text = "Amount Of Players:";
+            // 
+            // comboTournamentType
+            // 
+            this.comboTournamentType.FormattingEnabled = true;
+            this.comboTournamentType.Location = new System.Drawing.Point(13, 228);
+            this.comboTournamentType.Name = "comboTournamentType";
+            this.comboTournamentType.Size = new System.Drawing.Size(152, 21);
+            this.comboTournamentType.TabIndex = 12;
+            this.comboTournamentType.Text = "Select type";
+            // 
+            // labelTournamentType
+            // 
+            this.labelTournamentType.AutoSize = true;
+            this.labelTournamentType.Location = new System.Drawing.Point(10, 212);
+            this.labelTournamentType.Name = "labelTournamentType";
+            this.labelTournamentType.Size = new System.Drawing.Size(94, 13);
+            this.labelTournamentType.TabIndex = 11;
+            this.labelTournamentType.Text = "Tournament Type:";
+            // 
+            // buttonTournamentCreate
+            // 
+            this.buttonTournamentCreate.Location = new System.Drawing.Point(89, 255);
+            this.buttonTournamentCreate.Name = "buttonTournamentCreate";
+            this.buttonTournamentCreate.Size = new System.Drawing.Size(75, 23);
+            this.buttonTournamentCreate.TabIndex = 15;
+            this.buttonTournamentCreate.Text = "Create";
+            this.buttonTournamentCreate.UseVisualStyleBackColor = true;
+            this.buttonTournamentCreate.Click += new System.EventHandler(this.buttonTournamentCreate_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Winner});
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 16);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(892, 153);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // Winner
+            // 
+            this.Winner.HeaderText = "Winner";
+            this.Winner.Name = "Winner";
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1082, 588);
+            this.Controls.Add(this.groupBoxGame);
+            this.Controls.Add(this.groupBoxTournament);
             this.Controls.Add(this.groupBoxAdd);
             this.Name = "MainWindow";
             this.Text = "Tennis Sim";
@@ -1014,8 +1204,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReferee)).EndInit();
             this.tabGameMaster.ResumeLayout(false);
             this.tabGameMaster.PerformLayout();
-            this.groupBoxAdd.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGM)).EndInit();
+            this.groupBoxAdd.ResumeLayout(false);
+            this.groupBoxTournament.ResumeLayout(false);
+            this.groupBoxTournament.PerformLayout();
+            this.groupBoxGame.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1118,6 +1312,23 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
+        private System.Windows.Forms.TextBox textTournamentName;
+        private System.Windows.Forms.DateTimePicker dateTimeTournamentStartsAt;
+        private System.Windows.Forms.DateTimePicker dateTimeTournamentEndsAt;
+        private System.Windows.Forms.Label labelTournamentName;
+        private System.Windows.Forms.GroupBox groupBoxTournament;
+        private System.Windows.Forms.Label labelTournamentYear;
+        private System.Windows.Forms.Label labelTournamentEndsAt;
+        private System.Windows.Forms.Label labelTournamentStartsAt;
+        private System.Windows.Forms.TextBox textTournamentYear;
+        private System.Windows.Forms.ComboBox comboTournamentAmountOfPlayers;
+        private System.Windows.Forms.GroupBox groupBoxGame;
+        private System.Windows.Forms.Label labelTournamentAmountOfPlayers;
+        private System.Windows.Forms.Label labelTournamentType;
+        private System.Windows.Forms.ComboBox comboTournamentType;
+        private System.Windows.Forms.Button buttonTournamentCreate;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Winner;
     }
 }
 

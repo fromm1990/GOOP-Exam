@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 namespace Tennis_exam.Classes
 {
     internal abstract class Person
-    {
-        public enum Nationalities { Albania, Belgium, Colombia, Denmark, England, France, Greece, Holland, Italy }
-        public enum Genders { Male, Female }
+    {     
         private string firstName;
         private string lastName;
 
