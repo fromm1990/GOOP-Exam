@@ -35,7 +35,6 @@ namespace Tennis_exam.Classes
             Round = 1;
             Rand = new Random();
         }
-        public Tournament() {}
 
         #region Add/Remove Player or Referee
         private bool Add(Object element, Object[] array)
@@ -314,6 +313,7 @@ namespace Tennis_exam.Classes
                 case TournamentTypes.SingleMale:
                 case TournamentTypes.SingleFemale:
                     InitializeSingle();
+                    //PlaySingleRound();
                     break;
                 case TournamentTypes.DoubleMale:
                 case TournamentTypes.DoubleFemale:
@@ -323,6 +323,17 @@ namespace Tennis_exam.Classes
                     InitializeMixDouble();
                     break;
             }
+        }
+
+        public void PlaySingleRound()
+        {
+            Round++;
+            for (int i = 0; i < 2; i++)
+            {
+                Game newGame = new Game(Games[i].GameWinner[0], Games[i + 1].GameWinner[0], Rand);
+                newGame.PlayGame(3);
+            }
+
         }
 
         

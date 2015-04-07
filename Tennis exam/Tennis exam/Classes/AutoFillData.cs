@@ -31,7 +31,7 @@ namespace Tennis_exam.Classes
             else if (gender == "female")
             {
                 newPlayer.FristName = Enum.GetName(typeof(FirstNameFemale), RandomIndex());
-                newPlayer.Gender = (int)Genders.Female;
+                newPlayer.Gender = Genders.Female;
             }
             newPlayer.MiddleName = Enum.GetName(typeof(MiddleNames), RandomIndex());
             newPlayer.LastName = Enum.GetName(typeof(LastNames), RandomIndex());
@@ -48,12 +48,12 @@ namespace Tennis_exam.Classes
             if (gender == "male")
             {
                 newReferee.FristName = Enum.GetName(typeof(FirstNameMale), RandomIndex());
-                newReferee.Gender = (int)Genders.Male;
+                newReferee.Gender = Genders.Male;
             }
             else if (gender == "female")
             {
                 newReferee.FristName = Enum.GetName(typeof(FirstNameFemale), RandomIndex());
-                newReferee.Gender = (int)Genders.Female;
+                newReferee.Gender = Genders.Female;
             }
             newReferee.MiddleName = Enum.GetName(typeof(MiddleNames), RandomIndex());
             newReferee.LastName = Enum.GetName(typeof(LastNames), RandomIndex());

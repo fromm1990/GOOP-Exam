@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tennis_exam.Classes
 {
-    internal class Game : Tournament
+    internal class Game
     {
         public Player[,] Participants { get; set; }
         public Player[] GameWinner { get; set; }
@@ -46,8 +46,6 @@ namespace Tennis_exam.Classes
             Participants[1, 0] = team2[0];
             Participants[1, 1] = team2[1];
         }
-
-        public Game() { }
         #endregion
 
         public void PlayGame(int sets)

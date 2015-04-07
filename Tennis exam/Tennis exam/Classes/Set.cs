@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tennis_exam.Classes
 {
-    internal class Set : Game
+    internal class Set
     {
         public int Score1 { get; set; }
         public int Score2 { get; set; }
