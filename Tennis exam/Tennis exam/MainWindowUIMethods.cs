@@ -15,7 +15,7 @@ namespace Tennis_exam
     {
         private void DataGridAddElement(DataGridView dataGrid, Player newPlayer)
         {
-            int n = dataGridViewPlayer.Rows.Add();
+            int n = dataGrid.Rows.Add();
 
             dataGrid.Rows[n].Cells[0].Value = newPlayer;
             dataGrid.Rows[n].Cells[1].Value = newPlayer.FristName;
@@ -38,7 +38,7 @@ namespace Tennis_exam
 
         private void DataGridAddElement(DataGridView dataGrid, Referee newReferee)
         {
-            int n = dataGridViewReferee.Rows.Add();
+            int n = dataGrid.Rows.Add();
 
             dataGrid.Rows[n].Cells[0].Value = newReferee;
             dataGrid.Rows[n].Cells[1].Value = newReferee.FristName;
@@ -88,6 +88,40 @@ namespace Tennis_exam
             dataGrid.Rows[0].Cells[9].ValueType = typeof(DateTime?);
         }
 
+        private void DataGridAddElement(DataGridView dataGrid, Game newGame)
+        {
+            int n = dataGrid.Rows.Add();
+
+            if (tournament.TournamentType == TournamentTypes.SingleMale || tournament.TournamentType == TournamentTypes.SingleFemale)
+            {
+                dataGrid.Rows[n].Cells[0].Value = newGame;
+                dataGrid.Rows[n].Cells[1].Value = newGame.GameWinner[0].FullName;
+                dataGrid.Rows[n].Cells[2].Value = newGame.GameLoser[0].FullName;
+                dataGrid.Rows[n].Cells[3].Value = newGame.DisplayableResult;
+                dataGrid.Rows[n].Cells[4].Value = tournament.Round;
+
+                dataGrid.Rows[n].Cells[0].ValueType = typeof(Game);
+                dataGrid.Rows[n].Cells[1].ValueType = typeof(string);
+                dataGrid.Rows[n].Cells[2].ValueType = typeof(string);
+                dataGrid.Rows[n].Cells[3].ValueType = typeof(string);
+                dataGrid.Rows[n].Cells[3].ValueType = typeof(int);
+            }
+            else
+            {
+                dataGrid.Rows[n].Cells[0].Value = newGame;
+                dataGrid.Rows[n].Cells[1].Value = newGame.GameWinner[0].FullName + " & " + newGame.GameWinner[1].FullName;
+                dataGrid.Rows[n].Cells[2].Value = newGame.GameLoser[0].FullName + " & " + newGame.GameLoser[1].FullName;
+                dataGrid.Rows[n].Cells[3].Value = newGame.DisplayableResult;
+                dataGrid.Rows[n].Cells[4].Value = tournament.Round;
+
+                dataGrid.Rows[n].Cells[0].ValueType = typeof(Game);
+                dataGrid.Rows[n].Cells[1].ValueType = typeof(string);
+                dataGrid.Rows[n].Cells[2].ValueType = typeof(string);
+                dataGrid.Rows[n].Cells[3].ValueType = typeof(string);
+                dataGrid.Rows[n].Cells[3].ValueType = typeof(int);
+            }
+        }
+
         private void PopulateDataGridView(DataGridView dataGrid, Player[] players)
         {
             foreach (Player player in players)
@@ -106,6 +140,17 @@ namespace Tennis_exam
                 if (referee != null)
                 {
                     DataGridAddElement(dataGrid, referee);
+                }
+            }
+        }
+
+        private void PopulateDataGridView(DataGridView dataGrid, Game[] games)
+        {
+            foreach (Game game in games)
+            {
+                if (game != null)
+                {
+                    DataGridAddElement(dataGrid, game);
                 }
             }
         }

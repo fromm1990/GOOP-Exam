@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tennis_exam.Classes
 {
-    class Common
+    internal class Common
     {
         public int EmptyObjectArrayIndex(Object[] array)
         {

@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace Tennis_exam.Classes
 {
-    class Set
+    internal class Set : Game
     {
-        private Random rand = new Random();
-
         public int Score1 { get; set; }
         public int Score2 { get; set; }
 
-        public void PlaySet()
+        public void PlaySet(Random rand)
         {
             if (rand.Next(0, 100) < 49)
             {

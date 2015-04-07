@@ -8,7 +8,7 @@ namespace Tennis_exam.Classes
 {
     public enum TournamentTypes { SingleMale, SingleFemale, DoubleMale, DoubleFemale, MixDouble }
     
-    class Tournament : Common
+    internal class Tournament : Common
     {
         public string Name { get; set; }
         public int Year { get; set; }
@@ -18,9 +18,12 @@ namespace Tennis_exam.Classes
         public Referee[] Referees { get; set; }
         public GameMaster GameMasterProp { get; set; }
         public int TournamentSize { get; set; }
-        public int TournamentType { get; set; }
+        public TournamentTypes TournamentType { get; set; }
+        public Game[] Games { get; set; }
+        public int Round { get; set; }
+        private Random Rand { get; set; }
 
-        public Tournament(string name, int year, DateTime startsAt, DateTime endsAt, int amountOfPlayers, int tournamentType)
+        public Tournament(string name, int year, DateTime startsAt, DateTime endsAt, int amountOfPlayers, TournamentTypes tournamentType)
         {
             Name = name;
             TournamentSize = amountOfPlayers;
@@ -28,7 +31,11 @@ namespace Tennis_exam.Classes
             Referees = new Referee[TournamentSize/2];
             GameMasterProp = null;
             TournamentType = tournamentType;
+            Games = new Game[TournamentSize / 2];
+            Round = 1;
+            Rand = new Random();
         }
+        public Tournament() {}
 
         #region Add/Remove Player or Referee
         private bool Add(Object element, Object[] array)
@@ -212,5 +219,112 @@ namespace Tennis_exam.Classes
                 });
         }
         #endregion
+
+        #region Initialize gametypes
+        private void InitializeSingle()
+        {
+            int j = Players.Length - 1;
+            Random rand = new Random();
+
+            for (int i = 0; i <= j; i++)
+            {
+                Game newGame = new Game(Players[i], Players[j], rand);
+                newGame.PlayGame(3);
+                Games[i] = newGame;
+                j--;
+            }
+        }
+
+        private void InitializeDouble()
+        {
+            int j = Players.Length - 1;
+            Random rand = new Random();
+
+            for (int i = 0; i <= j; i += 2)
+            {
+                Player[] team1 = new Player[2];
+                Player[] team2 = new Player[2];
+
+                team1[0] = Players[i];
+                team1[1] = Players[i + 1];
+                team2[0] = Players[j];
+                team2[1] = Players[j - 1];
+
+                Game newGame = new Game(team1, team2, rand);
+                newGame.PlayGame(3);
+                Games[i] = newGame;
+                j-= 2;
+            }
+        }
+
+        private void InitializeMixDouble()
+        {
+            Player[] newPlayerArray = (Player[])Players.Clone();
+            int j = 0;
+
+            for (int i = 0; i < newPlayerArray.Length; i += 4)
+            {
+                Player[] team1 = new Player[2];
+                Player[] team2 = new Player[2];
+
+                team1[0] = Players[SearchForMale(newPlayerArray)];
+                team1[1] = Players[SearchForFemale(newPlayerArray)];
+                team2[0] = Players[SearchForMale(newPlayerArray)];
+                team2[1] = Players[SearchForFemale(newPlayerArray)];
+
+                Game newGame = new Game(team1, team2, Rand);
+                newGame.PlayGame(3);
+                Games[j] = newGame;
+                j++;
+            }
+        }
+
+        private int SearchForMale(Player[] players)
+        {
+            for (int i = 0; i < players.Length; i++)
+            {
+                if (players[i] != null && players[i].Gender == Genders.Male)
+                {
+                    players[i] = null;
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        private int SearchForFemale(Player[] players)
+        {
+
+            for (int i = 0; i < players.Length; i++)
+            {
+                if (players[i] != null && players[i].Gender == Genders.Female)
+                {
+                    players[i] = null;
+                    return i;
+                }
+            }
+            return -1;
+        }
+        #endregion
+
+        public void PlayTournament(TournamentTypes tournamentType)
+        {
+            switch (tournamentType)
+            {
+                case TournamentTypes.SingleMale:
+                case TournamentTypes.SingleFemale:
+                    InitializeSingle();
+                    break;
+                case TournamentTypes.DoubleMale:
+                case TournamentTypes.DoubleFemale:
+                    InitializeDouble();
+                    break;
+                case TournamentTypes.MixDouble:
+                    InitializeMixDouble();
+                    break;
+            }
+        }
+
+        
     }
 }

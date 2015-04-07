@@ -139,8 +139,13 @@
             this.comboTournamentType = new System.Windows.Forms.ComboBox();
             this.labelTournamentType = new System.Windows.Forms.Label();
             this.buttonTournamentCreate = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewGames = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.Object = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Winner = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Loser = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Result = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Round = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPlayers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlayer)).BeginInit();
@@ -151,7 +156,7 @@
             this.groupBoxAdd.SuspendLayout();
             this.groupBoxTournament.SuspendLayout();
             this.groupBoxGame.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGames)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -1122,7 +1127,8 @@
             // 
             // groupBoxGame
             // 
-            this.groupBoxGame.Controls.Add(this.dataGridView1);
+            this.groupBoxGame.Controls.Add(this.button1);
+            this.groupBoxGame.Controls.Add(this.dataGridViewGames);
             this.groupBoxGame.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxGame.Location = new System.Drawing.Point(184, 0);
             this.groupBoxGame.Name = "groupBoxGame";
@@ -1168,21 +1174,60 @@
             this.buttonTournamentCreate.UseVisualStyleBackColor = true;
             this.buttonTournamentCreate.Click += new System.EventHandler(this.buttonTournamentCreate_Click);
             // 
-            // dataGridView1
+            // dataGridViewGames
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Winner});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 16);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(892, 153);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridViewGames.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewGames.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Object,
+            this.Winner,
+            this.Loser,
+            this.Result,
+            this.Round});
+            this.dataGridViewGames.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dataGridViewGames.Location = new System.Drawing.Point(3, 16);
+            this.dataGridViewGames.Name = "dataGridViewGames";
+            this.dataGridViewGames.Size = new System.Drawing.Size(892, 153);
+            this.dataGridViewGames.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.button1.Location = new System.Drawing.Point(3, 255);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(892, 40);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Play";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // Object
+            // 
+            this.Object.HeaderText = "Object";
+            this.Object.Name = "Object";
+            this.Object.Visible = false;
             // 
             // Winner
             // 
             this.Winner.HeaderText = "Winner";
             this.Winner.Name = "Winner";
+            this.Winner.Width = 150;
+            // 
+            // Loser
+            // 
+            this.Loser.HeaderText = "Loser";
+            this.Loser.Name = "Loser";
+            this.Loser.Width = 150;
+            // 
+            // Result
+            // 
+            this.Result.HeaderText = "Result";
+            this.Result.Name = "Result";
+            // 
+            // Round
+            // 
+            this.Round.HeaderText = "Round";
+            this.Round.Name = "Round";
+            this.Round.Width = 50;
             // 
             // MainWindow
             // 
@@ -1209,7 +1254,7 @@
             this.groupBoxTournament.ResumeLayout(false);
             this.groupBoxTournament.PerformLayout();
             this.groupBoxGame.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGames)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1327,8 +1372,13 @@
         private System.Windows.Forms.Label labelTournamentType;
         private System.Windows.Forms.ComboBox comboTournamentType;
         private System.Windows.Forms.Button buttonTournamentCreate;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewGames;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Object;
         private System.Windows.Forms.DataGridViewTextBoxColumn Winner;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Loser;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Result;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Round;
     }
 }
 

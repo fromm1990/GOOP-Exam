@@ -23,7 +23,7 @@ namespace Tennis_exam
         private void Form1_Load(object sender, EventArgs e)
         {
             groupBoxAdd.Enabled = false;
-            groupBoxGame.Enabled = false;
+            //groupBoxGame.Enabled = false;
 
             //Setting up Data sources for combo boxes
             comboPlayerGender.DataSource = Enum.GetValues(typeof(Genders));
@@ -43,7 +43,7 @@ namespace Tennis_exam
             DateTime startsAt = dateTimeTournamentStartsAt.Value;
             DateTime endsAt = dateTimeTournamentEndsAt.Value;
             int amountOfPlayers = Convert.ToInt32(comboTournamentAmountOfPlayers.SelectedItem);
-            int type = (int)comboTournamentType.SelectedValue;
+            TournamentTypes type = (TournamentTypes)comboTournamentType.SelectedValue;
 
             tournament = new Tournament(name, year, startsAt, endsAt, amountOfPlayers, type);
 
@@ -63,7 +63,7 @@ namespace Tennis_exam
                 newPlayer.LastName = textPlayerLastName.Text;
                 newPlayer.DateOfBirth = datePlayerDOB.Value;
                 newPlayer.Nationality = (int)comboPlayerNationality.SelectedValue;
-                newPlayer.Gender = (int)comboPlayerGender.SelectedValue;
+                newPlayer.Gender = (Genders)comboPlayerGender.SelectedValue;
 
                 tournament.AddPlayer(newPlayer);
             }
@@ -113,7 +113,7 @@ namespace Tennis_exam
                 newReferee.LastName = textRefereeLastName.Text;
                 newReferee.DateOfBirth = dateRefereeDOB.Value;
                 newReferee.Nationality = (int)comboRefereeNationality.SelectedValue;
-                newReferee.Gender = (int)comboRefereeGender.SelectedValue;
+                newReferee.Gender = (Genders)comboRefereeGender.SelectedValue;
                 newReferee.LicenseAcquired = dateRefereeLicenseAcquired.Value;
 
                 if (dateRefereeLicenseRenewed.Enabled == false)
@@ -246,7 +246,7 @@ namespace Tennis_exam
                 newGameMaster.LastName = textGMLastName.Text;
                 newGameMaster.DateOfBirth = dateGMDOB.Value;
                 newGameMaster.Nationality = (int)comboGMNationality.SelectedValue;
-                newGameMaster.Gender = (int)comboGMGender.SelectedValue;
+                newGameMaster.Gender = (Genders)comboGMGender.SelectedValue;
                 newGameMaster.LicenseAcquired = dateGMLicenseAcquired.Value;
 
                 if (dateGMLicenseRenewed.Enabled == false)
@@ -302,11 +302,38 @@ namespace Tennis_exam
         {
             AutoFillData autoAdd = new AutoFillData();
 
-            for (int i = 0; i < tournament.TournamentSize; i++)
+            switch (tournament.TournamentType)
             {
-                tournament.AddPlayer(autoAdd.AutoCreatePlayer("female"));
+                case TournamentTypes.SingleFemale:
+                case TournamentTypes.DoubleFemale:
+                    for (int i = 0; i < tournament.TournamentSize; i++)
+                    {
+                        tournament.AddPlayer(autoAdd.AutoCreatePlayer("female"));
+                    }
+                    PopulateDataGridView(dataGridViewPlayer, tournament.Players);
+                    break;
+                case TournamentTypes.SingleMale:
+                case TournamentTypes.DoubleMale:
+                    for (int i = 0; i < tournament.TournamentSize; i++)
+                    {
+                        tournament.AddPlayer(autoAdd.AutoCreatePlayer("male"));
+                    }
+                    PopulateDataGridView(dataGridViewPlayer, tournament.Players);
+                    break;
+                case TournamentTypes.MixDouble:
+                    for (int i = 0; i < tournament.TournamentSize / 2; i++)
+                    {
+                        tournament.AddPlayer(autoAdd.AutoCreatePlayer("female"));
+                    }
+                    for (int i = 0; i < tournament.TournamentSize / 2; i++)
+                    {
+                        tournament.AddPlayer(autoAdd.AutoCreatePlayer("male"));
+                    }
+                    PopulateDataGridView(dataGridViewPlayer, tournament.Players);
+                    break;
             }
-            PopulateDataGridView(dataGridViewPlayer, tournament.Players);
+
+            
         }
 
         private void buttonRefereeAutoAdd_Click(object sender, EventArgs e)
@@ -324,6 +351,14 @@ namespace Tennis_exam
             PopulateDataGridView(dataGridViewReferee, tournament.Referees);
         }
         #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            tournament.PlayTournament(tournament.TournamentType);
+            PopulateDataGridView(dataGridViewGames, tournament.Games);
+
+            
+        }
 
     }
 }

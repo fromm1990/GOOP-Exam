@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tennis_exam.Classes
 {
-    internal abstract class Person
+    internal abstract class Person : Tournament
     {     
         private string firstName;
         private string lastName;
@@ -52,9 +52,24 @@ namespace Tennis_exam.Classes
                 };
             }
         }
+        public string FullName 
+        {
+            get 
+            {
+                if (MiddleName == "")
+                {
+                    return firstName + " " + LastName;
+                }
+                else
+                {
+                    return firstName + " " + MiddleName[0] + ". " + LastName; 
+                }
+                
+            }
+        }
         public DateTime DateOfBirth { get; set; }
         public int Nationality { get; set; }
-        public int Gender { get; set; }
+        public Genders Gender { get; set; }
 
         public int CalcAge(DateTime DOB)
         {
