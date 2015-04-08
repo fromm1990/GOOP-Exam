@@ -98,7 +98,7 @@ namespace Tennis_exam
                 dataGrid.Rows[n].Cells[1].Value = newGame.GameWinner[0].FullName;
                 dataGrid.Rows[n].Cells[2].Value = newGame.GameLoser[0].FullName;
                 dataGrid.Rows[n].Cells[3].Value = newGame.DisplayableResult;
-                dataGrid.Rows[n].Cells[4].Value = tournament.Round;
+                dataGrid.Rows[n].Cells[4].Value = newGame.Round;
 
                 dataGrid.Rows[n].Cells[0].ValueType = typeof(Game);
                 dataGrid.Rows[n].Cells[1].ValueType = typeof(string);
@@ -112,7 +112,7 @@ namespace Tennis_exam
                 dataGrid.Rows[n].Cells[1].Value = newGame.GameWinner[0].FullName + " & " + newGame.GameWinner[1].FullName;
                 dataGrid.Rows[n].Cells[2].Value = newGame.GameLoser[0].FullName + " & " + newGame.GameLoser[1].FullName;
                 dataGrid.Rows[n].Cells[3].Value = newGame.DisplayableResult;
-                dataGrid.Rows[n].Cells[4].Value = tournament.Round;
+                dataGrid.Rows[n].Cells[4].Value = newGame.Round;
 
                 dataGrid.Rows[n].Cells[0].ValueType = typeof(Game);
                 dataGrid.Rows[n].Cells[1].ValueType = typeof(string);

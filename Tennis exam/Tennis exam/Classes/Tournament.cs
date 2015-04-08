@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Tennis_exam.Classes
 {
     public enum TournamentTypes { SingleMale, SingleFemale, DoubleMale, DoubleFemale, MixDouble }
-    
+
     internal class Tournament : Common
     {
         public string Name { get; set; }
@@ -23,15 +23,16 @@ namespace Tennis_exam.Classes
         public int Round { get; set; }
         private Random Rand { get; set; }
 
-        public Tournament(string name, int year, DateTime startsAt, DateTime endsAt, int amountOfPlayers, TournamentTypes tournamentType)
+        public Tournament(string name, DateTime startsAt, DateTime endsAt, int amountOfPlayers, TournamentTypes tournamentType)
         {
             Name = name;
             TournamentSize = amountOfPlayers;
             Players = new Player[TournamentSize];
-            Referees = new Referee[TournamentSize/2];
+            Referees = new Referee[TournamentSize / 2];
             GameMasterProp = null;
             TournamentType = tournamentType;
             Games = new List<Game>();
+            Year = startsAt.Year;
             Round = 1;
             Rand = new Random();
         }
@@ -223,12 +224,10 @@ namespace Tennis_exam.Classes
         private void InitializeSingle()
         {
             int j = Players.Length - 1;
-            Random rand = new Random();
 
             for (int i = 0; i <= j; i++)
             {
                 Game newGame = new Game(Players[i], Players[j], Round, Rand);
-                newGame.PlayGame(3);
                 Games.Add(newGame);
                 j--;
             }
@@ -237,7 +236,6 @@ namespace Tennis_exam.Classes
         private void InitializeDouble()
         {
             int j = Players.Length - 1;
-            Random rand = new Random();
 
             for (int i = 0; i <= j; i += 2)
             {
@@ -249,10 +247,9 @@ namespace Tennis_exam.Classes
                 team2[0] = Players[j];
                 team2[1] = Players[j - 1];
 
-                Game newGame = new Game(team1, team2, Round, rand);
-                newGame.PlayGame(3);
+                Game newGame = new Game(team1, team2, Round, Rand);
                 Games.Add(newGame);
-                j-= 2;
+                j -= 2;
             }
         }
 
@@ -272,7 +269,6 @@ namespace Tennis_exam.Classes
                 team2[1] = Players[SearchForFemale(newPlayerArray)];
 
                 Game newGame = new Game(team1, team2, Round, Rand);
-                newGame.PlayGame(3);
                 Games.Add(newGame);
                 j++;
             }
@@ -306,6 +302,7 @@ namespace Tennis_exam.Classes
         }
         #endregion
 
+        #region Play tournament
         public void PlayTournament(TournamentTypes tournamentType)
         {
             switch (tournamentType)
@@ -313,29 +310,145 @@ namespace Tennis_exam.Classes
                 case TournamentTypes.SingleMale:
                 case TournamentTypes.SingleFemale:
                     InitializeSingle();
-                    //PlaySingleRound();
+                    PlayAllSingleRounds();
                     break;
                 case TournamentTypes.DoubleMale:
                 case TournamentTypes.DoubleFemale:
                     InitializeDouble();
+                    PlayAllDoubleRounds();
                     break;
                 case TournamentTypes.MixDouble:
                     InitializeMixDouble();
+                    PlayAllDoubleRounds();
                     break;
             }
         }
-        /*
-        private void PlaySingleRound()
-        {
-            Round++;
-            for (int i = 0; i < ; i++)
-            {
-                if (Games[i].Round == Round-- && Games[i] != null)
-                {
 
+        private void PlayAllSingleRounds()
+        {
+            int totalRounds = (int)Math.Log(TournamentSize, 2);
+
+            if (Round == 1)
+            {
+                for (int i = 0; i < Games.Count; i++ )
+                {
+                    Games[i].PlayGame(3);
                 }
+                Round++;
             }
 
-        }*/
+            while (Round <= totalRounds)
+            {
+                int offset = (int)Math.Pow(2, (totalRounds - (Round - 1)));
+                int start = Games.Count - offset;
+                int end = Games.Count;
+
+                while (start < end)
+                {
+                    Player player1 = Games[start].GameWinner[0];
+                    Player player2 = Games[start + 1].GameWinner[0];
+                    Game newGame = new Game(player1, player2, Round, Rand);
+                    newGame.PlayGame(3);
+                    Games.Add(newGame);
+                    start += 2;
+                }
+                Round++;
+            }
+        }
+
+        private void PlayAllDoubleRounds()
+        {
+            int totalRounds = (int)Math.Log(TournamentSize/2, 2);
+
+            if (Round == 1)
+            {
+                for (int i = 0; i < Games.Count; i++)
+                {
+                    Games[i].PlayGame(3);
+                }
+                Round++;
+            }
+
+            while (Round <= totalRounds)
+            {
+                int offset = (int)Math.Pow(2, (totalRounds - (Round - 1)));
+                int start = Games.Count - offset;
+                int end = Games.Count;
+
+                while (start < end)
+                {
+                    Player[] team1 = new Player[2];
+                    Player[] team2 = new Player[2];
+
+                    team1[0] = Games[start].GameWinner[0];
+                    team1[1] = Games[start].GameWinner[1];
+                    team2[0] = Games[start + 1].GameWinner[0];
+                    team2[1] = Games[start + 1].GameWinner[1];
+
+                    Game newGame = new Game(team1, team2, Round, Rand);
+                    newGame.PlayGame(3);
+                    Games.Add(newGame);
+                    start += 2;
+                }
+                Round++;
+            }
+        }
+        #endregion
+
+        private int LastPlayedRound()
+        {
+            return Games[Games.Count - 1].Round;
+        }
+
+        public bool IsTurnamentActive()
+        {
+            if (IsSingle())
+            {
+                return LastPlayedRound() != (int)Math.Log(TournamentSize, 2) ? true : false;
+            }
+            else
+            {
+                return LastPlayedRound() != (int)Math.Log(TournamentSize / 2, 2) ? true : false;
+            }
+        }
+
+        public Player[] TournamentWinner()
+        {
+            if (!IsTurnamentActive())
+            {
+                if (IsSingle())
+                {
+                    Player[] tournamentWinner = new Player[1];
+                    tournamentWinner[0] = Games[Games.Count - 1].GameWinner[0];
+                    return tournamentWinner;
+                }
+                else
+                {
+                    Player[] tournamentWinner = new Player[2];
+                    tournamentWinner[0] = Games[Games.Count - 1].GameWinner[0];
+                    tournamentWinner[1] = Games[Games.Count - 1].GameWinner[1];
+                    return tournamentWinner;
+                }
+            }
+            else
+            {
+                throw new Exception("The winner is not found yet.");
+            }         
+        }
+
+        public bool IsSingle()
+        {
+            return  TournamentType == TournamentTypes.SingleFemale || 
+                    TournamentType == TournamentTypes.SingleMale 
+                    ? true : false;
+        }
+
+        public bool IsDouble()
+        {
+            return  TournamentType == TournamentTypes.DoubleFemale || 
+                    TournamentType == TournamentTypes.DoubleMale || 
+                    TournamentType == TournamentTypes.MixDouble 
+                    ? true : false;
+        }
     }
 }

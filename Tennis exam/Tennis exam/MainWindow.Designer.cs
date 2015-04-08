@@ -129,23 +129,22 @@
             this.dateTimeTournamentEndsAt = new System.Windows.Forms.DateTimePicker();
             this.labelTournamentName = new System.Windows.Forms.Label();
             this.groupBoxTournament = new System.Windows.Forms.GroupBox();
-            this.labelTournamentYear = new System.Windows.Forms.Label();
-            this.textTournamentYear = new System.Windows.Forms.TextBox();
-            this.labelTournamentStartsAt = new System.Windows.Forms.Label();
-            this.labelTournamentEndsAt = new System.Windows.Forms.Label();
-            this.comboTournamentAmountOfPlayers = new System.Windows.Forms.ComboBox();
-            this.groupBoxGame = new System.Windows.Forms.GroupBox();
-            this.labelTournamentAmountOfPlayers = new System.Windows.Forms.Label();
-            this.comboTournamentType = new System.Windows.Forms.ComboBox();
-            this.labelTournamentType = new System.Windows.Forms.Label();
             this.buttonTournamentCreate = new System.Windows.Forms.Button();
+            this.labelTournamentType = new System.Windows.Forms.Label();
+            this.comboTournamentType = new System.Windows.Forms.ComboBox();
+            this.labelTournamentAmountOfPlayers = new System.Windows.Forms.Label();
+            this.comboTournamentAmountOfPlayers = new System.Windows.Forms.ComboBox();
+            this.labelTournamentEndsAt = new System.Windows.Forms.Label();
+            this.labelTournamentStartsAt = new System.Windows.Forms.Label();
+            this.groupBoxGame = new System.Windows.Forms.GroupBox();
+            this.buttonTournamentPlay = new System.Windows.Forms.Button();
             this.dataGridViewGames = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             this.Object = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Winner = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Loser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Result = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Round = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelTournamentWinner = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPlayers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlayer)).BeginInit();
@@ -1031,7 +1030,7 @@
             // 
             // dateTimeTournamentStartsAt
             // 
-            this.dateTimeTournamentStartsAt.Location = new System.Drawing.Point(13, 110);
+            this.dateTimeTournamentStartsAt.Location = new System.Drawing.Point(13, 72);
             this.dateTimeTournamentStartsAt.Name = "dateTimeTournamentStartsAt";
             this.dateTimeTournamentStartsAt.Size = new System.Drawing.Size(151, 20);
             this.dateTimeTournamentStartsAt.TabIndex = 6;
@@ -1039,7 +1038,7 @@
             // 
             // dateTimeTournamentEndsAt
             // 
-            this.dateTimeTournamentEndsAt.Location = new System.Drawing.Point(13, 149);
+            this.dateTimeTournamentEndsAt.Location = new System.Drawing.Point(13, 111);
             this.dateTimeTournamentEndsAt.Name = "dateTimeTournamentEndsAt";
             this.dateTimeTournamentEndsAt.Size = new System.Drawing.Size(151, 20);
             this.dateTimeTournamentEndsAt.TabIndex = 8;
@@ -1063,8 +1062,6 @@
             this.groupBoxTournament.Controls.Add(this.comboTournamentAmountOfPlayers);
             this.groupBoxTournament.Controls.Add(this.labelTournamentEndsAt);
             this.groupBoxTournament.Controls.Add(this.labelTournamentStartsAt);
-            this.groupBoxTournament.Controls.Add(this.textTournamentYear);
-            this.groupBoxTournament.Controls.Add(this.labelTournamentYear);
             this.groupBoxTournament.Controls.Add(this.labelTournamentName);
             this.groupBoxTournament.Controls.Add(this.textTournamentName);
             this.groupBoxTournament.Controls.Add(this.dateTimeTournamentEndsAt);
@@ -1077,39 +1074,42 @@
             this.groupBoxTournament.TabStop = false;
             this.groupBoxTournament.Text = "Tournament";
             // 
-            // labelTournamentYear
+            // buttonTournamentCreate
             // 
-            this.labelTournamentYear.AutoSize = true;
-            this.labelTournamentYear.Location = new System.Drawing.Point(10, 55);
-            this.labelTournamentYear.Name = "labelTournamentYear";
-            this.labelTournamentYear.Size = new System.Drawing.Size(32, 13);
-            this.labelTournamentYear.TabIndex = 3;
-            this.labelTournamentYear.Text = "Year:";
+            this.buttonTournamentCreate.Location = new System.Drawing.Point(89, 217);
+            this.buttonTournamentCreate.Name = "buttonTournamentCreate";
+            this.buttonTournamentCreate.Size = new System.Drawing.Size(75, 23);
+            this.buttonTournamentCreate.TabIndex = 15;
+            this.buttonTournamentCreate.Text = "Create";
+            this.buttonTournamentCreate.UseVisualStyleBackColor = true;
+            this.buttonTournamentCreate.Click += new System.EventHandler(this.buttonTournamentCreate_Click);
             // 
-            // textTournamentYear
+            // labelTournamentType
             // 
-            this.textTournamentYear.Location = new System.Drawing.Point(13, 71);
-            this.textTournamentYear.Name = "textTournamentYear";
-            this.textTournamentYear.Size = new System.Drawing.Size(151, 20);
-            this.textTournamentYear.TabIndex = 4;
+            this.labelTournamentType.AutoSize = true;
+            this.labelTournamentType.Location = new System.Drawing.Point(10, 174);
+            this.labelTournamentType.Name = "labelTournamentType";
+            this.labelTournamentType.Size = new System.Drawing.Size(94, 13);
+            this.labelTournamentType.TabIndex = 11;
+            this.labelTournamentType.Text = "Tournament Type:";
             // 
-            // labelTournamentStartsAt
+            // comboTournamentType
             // 
-            this.labelTournamentStartsAt.AutoSize = true;
-            this.labelTournamentStartsAt.Location = new System.Drawing.Point(10, 94);
-            this.labelTournamentStartsAt.Name = "labelTournamentStartsAt";
-            this.labelTournamentStartsAt.Size = new System.Drawing.Size(50, 13);
-            this.labelTournamentStartsAt.TabIndex = 5;
-            this.labelTournamentStartsAt.Text = "Starts At:";
+            this.comboTournamentType.FormattingEnabled = true;
+            this.comboTournamentType.Location = new System.Drawing.Point(13, 190);
+            this.comboTournamentType.Name = "comboTournamentType";
+            this.comboTournamentType.Size = new System.Drawing.Size(152, 21);
+            this.comboTournamentType.TabIndex = 12;
+            this.comboTournamentType.Text = "Select type";
             // 
-            // labelTournamentEndsAt
+            // labelTournamentAmountOfPlayers
             // 
-            this.labelTournamentEndsAt.AutoSize = true;
-            this.labelTournamentEndsAt.Location = new System.Drawing.Point(10, 133);
-            this.labelTournamentEndsAt.Name = "labelTournamentEndsAt";
-            this.labelTournamentEndsAt.Size = new System.Drawing.Size(47, 13);
-            this.labelTournamentEndsAt.TabIndex = 7;
-            this.labelTournamentEndsAt.Text = "Ends At:";
+            this.labelTournamentAmountOfPlayers.AutoSize = true;
+            this.labelTournamentAmountOfPlayers.Location = new System.Drawing.Point(10, 134);
+            this.labelTournamentAmountOfPlayers.Name = "labelTournamentAmountOfPlayers";
+            this.labelTournamentAmountOfPlayers.Size = new System.Drawing.Size(81, 13);
+            this.labelTournamentAmountOfPlayers.TabIndex = 9;
+            this.labelTournamentAmountOfPlayers.Text = "Players/Teams:";
             // 
             // comboTournamentAmountOfPlayers
             // 
@@ -1119,15 +1119,34 @@
             "16",
             "32",
             "64"});
-            this.comboTournamentAmountOfPlayers.Location = new System.Drawing.Point(13, 188);
+            this.comboTournamentAmountOfPlayers.Location = new System.Drawing.Point(13, 150);
             this.comboTournamentAmountOfPlayers.Name = "comboTournamentAmountOfPlayers";
             this.comboTournamentAmountOfPlayers.Size = new System.Drawing.Size(151, 21);
             this.comboTournamentAmountOfPlayers.TabIndex = 10;
             this.comboTournamentAmountOfPlayers.Text = "Select amount";
             // 
+            // labelTournamentEndsAt
+            // 
+            this.labelTournamentEndsAt.AutoSize = true;
+            this.labelTournamentEndsAt.Location = new System.Drawing.Point(10, 95);
+            this.labelTournamentEndsAt.Name = "labelTournamentEndsAt";
+            this.labelTournamentEndsAt.Size = new System.Drawing.Size(47, 13);
+            this.labelTournamentEndsAt.TabIndex = 7;
+            this.labelTournamentEndsAt.Text = "Ends At:";
+            // 
+            // labelTournamentStartsAt
+            // 
+            this.labelTournamentStartsAt.AutoSize = true;
+            this.labelTournamentStartsAt.Location = new System.Drawing.Point(10, 56);
+            this.labelTournamentStartsAt.Name = "labelTournamentStartsAt";
+            this.labelTournamentStartsAt.Size = new System.Drawing.Size(50, 13);
+            this.labelTournamentStartsAt.TabIndex = 5;
+            this.labelTournamentStartsAt.Text = "Starts At:";
+            // 
             // groupBoxGame
             // 
-            this.groupBoxGame.Controls.Add(this.button1);
+            this.groupBoxGame.Controls.Add(this.labelTournamentWinner);
+            this.groupBoxGame.Controls.Add(this.buttonTournamentPlay);
             this.groupBoxGame.Controls.Add(this.dataGridViewGames);
             this.groupBoxGame.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxGame.Location = new System.Drawing.Point(184, 0);
@@ -1137,42 +1156,16 @@
             this.groupBoxGame.TabStop = false;
             this.groupBoxGame.Text = "Game";
             // 
-            // labelTournamentAmountOfPlayers
+            // buttonTournamentPlay
             // 
-            this.labelTournamentAmountOfPlayers.AutoSize = true;
-            this.labelTournamentAmountOfPlayers.Location = new System.Drawing.Point(10, 172);
-            this.labelTournamentAmountOfPlayers.Name = "labelTournamentAmountOfPlayers";
-            this.labelTournamentAmountOfPlayers.Size = new System.Drawing.Size(97, 13);
-            this.labelTournamentAmountOfPlayers.TabIndex = 9;
-            this.labelTournamentAmountOfPlayers.Text = "Amount Of Players:";
-            // 
-            // comboTournamentType
-            // 
-            this.comboTournamentType.FormattingEnabled = true;
-            this.comboTournamentType.Location = new System.Drawing.Point(13, 228);
-            this.comboTournamentType.Name = "comboTournamentType";
-            this.comboTournamentType.Size = new System.Drawing.Size(152, 21);
-            this.comboTournamentType.TabIndex = 12;
-            this.comboTournamentType.Text = "Select type";
-            // 
-            // labelTournamentType
-            // 
-            this.labelTournamentType.AutoSize = true;
-            this.labelTournamentType.Location = new System.Drawing.Point(10, 212);
-            this.labelTournamentType.Name = "labelTournamentType";
-            this.labelTournamentType.Size = new System.Drawing.Size(94, 13);
-            this.labelTournamentType.TabIndex = 11;
-            this.labelTournamentType.Text = "Tournament Type:";
-            // 
-            // buttonTournamentCreate
-            // 
-            this.buttonTournamentCreate.Location = new System.Drawing.Point(89, 255);
-            this.buttonTournamentCreate.Name = "buttonTournamentCreate";
-            this.buttonTournamentCreate.Size = new System.Drawing.Size(75, 23);
-            this.buttonTournamentCreate.TabIndex = 15;
-            this.buttonTournamentCreate.Text = "Create";
-            this.buttonTournamentCreate.UseVisualStyleBackColor = true;
-            this.buttonTournamentCreate.Click += new System.EventHandler(this.buttonTournamentCreate_Click);
+            this.buttonTournamentPlay.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.buttonTournamentPlay.Location = new System.Drawing.Point(3, 255);
+            this.buttonTournamentPlay.Name = "buttonTournamentPlay";
+            this.buttonTournamentPlay.Size = new System.Drawing.Size(892, 40);
+            this.buttonTournamentPlay.TabIndex = 9;
+            this.buttonTournamentPlay.Text = "Play";
+            this.buttonTournamentPlay.UseVisualStyleBackColor = true;
+            this.buttonTournamentPlay.Click += new System.EventHandler(this.buttonTournamentPlay_Click);
             // 
             // dataGridViewGames
             // 
@@ -1186,19 +1179,8 @@
             this.dataGridViewGames.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridViewGames.Location = new System.Drawing.Point(3, 16);
             this.dataGridViewGames.Name = "dataGridViewGames";
-            this.dataGridViewGames.Size = new System.Drawing.Size(892, 153);
+            this.dataGridViewGames.Size = new System.Drawing.Size(892, 205);
             this.dataGridViewGames.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button1.Location = new System.Drawing.Point(3, 255);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(892, 40);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Play";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Object
             // 
@@ -1229,6 +1211,17 @@
             this.Round.Name = "Round";
             this.Round.Width = 50;
             // 
+            // labelTournamentWinner
+            // 
+            this.labelTournamentWinner.AutoSize = true;
+            this.labelTournamentWinner.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelTournamentWinner.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTournamentWinner.Location = new System.Drawing.Point(3, 221);
+            this.labelTournamentWinner.Name = "labelTournamentWinner";
+            this.labelTournamentWinner.Size = new System.Drawing.Size(208, 25);
+            this.labelTournamentWinner.TabIndex = 10;
+            this.labelTournamentWinner.Text = "Tournament winner: ";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1254,6 +1247,7 @@
             this.groupBoxTournament.ResumeLayout(false);
             this.groupBoxTournament.PerformLayout();
             this.groupBoxGame.ResumeLayout(false);
+            this.groupBoxGame.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGames)).EndInit();
             this.ResumeLayout(false);
 
@@ -1362,10 +1356,8 @@
         private System.Windows.Forms.DateTimePicker dateTimeTournamentEndsAt;
         private System.Windows.Forms.Label labelTournamentName;
         private System.Windows.Forms.GroupBox groupBoxTournament;
-        private System.Windows.Forms.Label labelTournamentYear;
         private System.Windows.Forms.Label labelTournamentEndsAt;
         private System.Windows.Forms.Label labelTournamentStartsAt;
-        private System.Windows.Forms.TextBox textTournamentYear;
         private System.Windows.Forms.ComboBox comboTournamentAmountOfPlayers;
         private System.Windows.Forms.GroupBox groupBoxGame;
         private System.Windows.Forms.Label labelTournamentAmountOfPlayers;
@@ -1373,12 +1365,13 @@
         private System.Windows.Forms.ComboBox comboTournamentType;
         private System.Windows.Forms.Button buttonTournamentCreate;
         private System.Windows.Forms.DataGridView dataGridViewGames;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonTournamentPlay;
         private System.Windows.Forms.DataGridViewTextBoxColumn Object;
         private System.Windows.Forms.DataGridViewTextBoxColumn Winner;
         private System.Windows.Forms.DataGridViewTextBoxColumn Loser;
         private System.Windows.Forms.DataGridViewTextBoxColumn Result;
         private System.Windows.Forms.DataGridViewTextBoxColumn Round;
+        private System.Windows.Forms.Label labelTournamentWinner;
     }
 }
 

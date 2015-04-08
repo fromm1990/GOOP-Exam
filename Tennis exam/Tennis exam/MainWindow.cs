@@ -38,17 +38,32 @@ namespace Tennis_exam
         #region Create Tournament
         private void buttonTournamentCreate_Click(object sender, EventArgs e)
         {
-            string name = textTournamentName.Text;
-            int year = Convert.ToInt32(textTournamentYear.Text);
-            DateTime startsAt = dateTimeTournamentStartsAt.Value;
-            DateTime endsAt = dateTimeTournamentEndsAt.Value;
-            int amountOfPlayers = Convert.ToInt32(comboTournamentAmountOfPlayers.SelectedItem);
-            TournamentTypes type = (TournamentTypes)comboTournamentType.SelectedValue;
+            try
+            {
+                string name = textTournamentName.Text;
+                DateTime startsAt = dateTimeTournamentStartsAt.Value;
+                DateTime endsAt = dateTimeTournamentEndsAt.Value;
+                int amountOfPlayers = Convert.ToInt32(comboTournamentAmountOfPlayers.SelectedItem);
+                TournamentTypes type = (TournamentTypes)comboTournamentType.SelectedValue;
 
-            tournament = new Tournament(name, year, startsAt, endsAt, amountOfPlayers, type);
+                switch (type)
+                {
+                    case TournamentTypes.DoubleFemale:
+                    case TournamentTypes.DoubleMale:
+                    case TournamentTypes.MixDouble:
+                        amountOfPlayers = amountOfPlayers * 2;
+                        break;
+                }
 
-            groupBoxTournament.Enabled = false;
-            groupBoxAdd.Enabled = true;
+                tournament = new Tournament(name, startsAt, endsAt, amountOfPlayers, type);
+                
+                groupBoxTournament.Enabled = false;
+                groupBoxAdd.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Can't create tournament", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }    
         }
         #endregion
 
@@ -66,23 +81,21 @@ namespace Tennis_exam
                 newPlayer.Gender = (Genders)comboPlayerGender.SelectedValue;
 
                 tournament.AddPlayer(newPlayer);
+
+                DataGridAddElement(dataGridViewPlayer, newPlayer);
+
+                //Resets the text fields after submit
+                textPlayerFirstName.Text = null;
+                textPlayerMiddleName.Text = null;
+                textPlayerLastName.Text = null;
+                datePlayerDOB.Value = DateTime.Today;
+                comboPlayerGender.SelectedIndex = 0;
+                comboPlayerNationality.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Can't add player", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
-            DataGridAddElement(dataGridViewPlayer, newPlayer);
-
-            //Resets the text fields after submit
-            textPlayerFirstName.Text = null;
-            textPlayerMiddleName.Text = null;
-            textPlayerLastName.Text = null;
-            datePlayerDOB.Value = DateTime.Today;
-            comboPlayerGender.SelectedIndex = 0;
-            comboPlayerNationality.SelectedIndex = 0;
-
-
         }
 
         private void buttonPlayerRemove_Click(object sender, EventArgs e)
@@ -123,25 +136,24 @@ namespace Tennis_exam
                 else
                 {
                     newReferee.LicenseLastRenewed = dateRefereeLicenseRenewed.Value;
-                }
-                
+                }              
 
                 tournament.AddReferee(newReferee);
+
+                DataGridAddElement(dataGridViewReferee, newReferee);
+
+                //Resets the text fields after submit
+                textRefereeFirstName.Text = null;
+                textRefereeMiddleName.Text = null;
+                textRefereeLastName.Text = null;
+                dateRefereeDOB.Value = DateTime.Today;
+                comboRefereeGender.SelectedIndex = 0;
+                comboRefereeNationality.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Can't add player", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            DataGridAddElement(dataGridViewReferee, newReferee);
-
-            //Resets the text fields after submit
-            textRefereeFirstName.Text = null;
-            textRefereeMiddleName.Text = null;
-            textRefereeLastName.Text = null;
-            dateRefereeDOB.Value = DateTime.Today;
-            comboRefereeGender.SelectedIndex = 0;
-            comboRefereeNationality.SelectedIndex = 0;
         }
 
         private void checkRefereeNeverRenewed_CheckedChanged(object sender, EventArgs e)
@@ -260,21 +272,21 @@ namespace Tennis_exam
 
 
                 tournament.AddGameMaster(newGameMaster);
+
+                DataGridAddElement(dataGridViewGM, newGameMaster);
+
+                //Resets the text fields after submit
+                textGMFirstName.Text = null;
+                textGMMiddleName.Text = null;
+                textGMLastName.Text = null;
+                dateGMDOB.Value = DateTime.Today;
+                comboGMGender.SelectedIndex = 0;
+                comboGMNationality.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Can't add game master", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            DataGridAddElement(dataGridViewGM, newGameMaster);
-
-            //Resets the text fields after submit
-            textGMFirstName.Text = null;
-            textGMMiddleName.Text = null;
-            textGMLastName.Text = null;
-            dateGMDOB.Value = DateTime.Today;
-            comboGMGender.SelectedIndex = 0;
-            comboGMNationality.SelectedIndex = 0;
         }
 
         private void checkGMLicenseNeverRenewed_CheckedChanged(object sender, EventArgs e)
@@ -352,12 +364,27 @@ namespace Tennis_exam
         }
         #endregion
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonTournamentPlay_Click(object sender, EventArgs e)
         {
             tournament.PlayTournament(tournament.TournamentType);
             PopulateDataGridView(dataGridViewGames, tournament.Games);
+            try
+            {
+                if (tournament.IsSingle())
+                {
+                    labelTournamentWinner.Text = "Tournament winner: " + tournament.TournamentWinner()[0].FullName;
+                }
+                else
+                {
+                    labelTournamentWinner.Text = "Tournament winner: " + tournament.TournamentWinner()[0].FullName + 
+                                                                 " and " + tournament.TournamentWinner()[1].FullName;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Can't add player", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
-            
         }
 
     }
