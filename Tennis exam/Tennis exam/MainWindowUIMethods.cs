@@ -144,14 +144,11 @@ namespace Tennis_exam
             }
         }
 
-        private void PopulateDataGridView(DataGridView dataGrid, Game[] games)
+        private void PopulateDataGridView(DataGridView dataGrid, List<Game> games)
         {
             foreach (Game game in games)
             {
-                if (game != null)
-                {
-                    DataGridAddElement(dataGrid, game);
-                }
+                DataGridAddElement(dataGrid, game);
             }
         }
 

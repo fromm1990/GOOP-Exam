@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tennis_exam.Classes
 {
-    internal abstract class Person : Tournament
+    internal abstract class Person
     {     
         private string firstName;
         private string lastName;

@@ -19,7 +19,7 @@ namespace Tennis_exam.Classes
         public GameMaster GameMasterProp { get; set; }
         public int TournamentSize { get; set; }
         public TournamentTypes TournamentType { get; set; }
-        public Game[] Games { get; set; }
+        public List<Game> Games { get; set; }
         public int Round { get; set; }
         private Random Rand { get; set; }
 
@@ -31,7 +31,7 @@ namespace Tennis_exam.Classes
             Referees = new Referee[TournamentSize/2];
             GameMasterProp = null;
             TournamentType = tournamentType;
-            Games = new Game[TournamentSize / 2];
+            Games = new List<Game>();
             Round = 1;
             Rand = new Random();
         }
@@ -227,9 +227,9 @@ namespace Tennis_exam.Classes
 
             for (int i = 0; i <= j; i++)
             {
-                Game newGame = new Game(Players[i], Players[j], rand);
+                Game newGame = new Game(Players[i], Players[j], Round, Rand);
                 newGame.PlayGame(3);
-                Games[i] = newGame;
+                Games.Add(newGame);
                 j--;
             }
         }
@@ -249,9 +249,9 @@ namespace Tennis_exam.Classes
                 team2[0] = Players[j];
                 team2[1] = Players[j - 1];
 
-                Game newGame = new Game(team1, team2, rand);
+                Game newGame = new Game(team1, team2, Round, rand);
                 newGame.PlayGame(3);
-                Games[i] = newGame;
+                Games.Add(newGame);
                 j-= 2;
             }
         }
@@ -271,9 +271,9 @@ namespace Tennis_exam.Classes
                 team2[0] = Players[SearchForMale(newPlayerArray)];
                 team2[1] = Players[SearchForFemale(newPlayerArray)];
 
-                Game newGame = new Game(team1, team2, Rand);
+                Game newGame = new Game(team1, team2, Round, Rand);
                 newGame.PlayGame(3);
-                Games[j] = newGame;
+                Games.Add(newGame);
                 j++;
             }
         }
@@ -324,18 +324,18 @@ namespace Tennis_exam.Classes
                     break;
             }
         }
-
-        public void PlaySingleRound()
+        /*
+        private void PlaySingleRound()
         {
             Round++;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < ; i++)
             {
-                Game newGame = new Game(Games[i].GameWinner[0], Games[i + 1].GameWinner[0], Rand);
-                newGame.PlayGame(3);
+                if (Games[i].Round == Round-- && Games[i] != null)
+                {
+
+                }
             }
 
-        }
-
-        
+        }*/
     }
 }
