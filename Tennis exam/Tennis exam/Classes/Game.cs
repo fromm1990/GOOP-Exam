@@ -8,11 +8,13 @@ namespace Tennis_exam.Classes
 {
     internal class Game
     {
+        public enum GameTypes { Single, Double }
+
         public Player[,] Participants { get; set; }
         public Player[] GameWinner { get; set; }
         public Player[] GameLoser { get; set; }
         public Set[] Sets { set; get; }
-        public string GameType { get; set; }
+        public GameTypes GameType { get; set; }
         public Referee GameReferee { get; set; }
         private Random Rand { get; set; }
         public string DisplayableResult { get; set; }
@@ -20,31 +22,50 @@ namespace Tennis_exam.Classes
 
         #region Constructor
         // Constructor to single matches
-        public Game(Player player1, Player player2, Referee referee, int round, Random rand)
+        public Game(Player player1, Player player2, Referee referee, int round, Random rand, TournamentTypes tournamentType)
         {
             Participants = new Player[2, 1];
             GameWinner = new Player[1];
             GameLoser = new Player[1];
-            GameReferee = referee;
-            Sets = new Set[3];
-            GameType = "single";
+            GameReferee = referee;           
+            GameType = GameTypes.Single;
             Round = round;
             Rand = rand;
+
+            switch (tournamentType)
+            {
+                case TournamentTypes.SingleFemale:
+                    Sets = new Set[3];
+                    break;
+                case TournamentTypes.SingleMale:
+                    Sets = new Set[5];
+                    break;
+            }
 
             Participants[0, 0] = player1;
             Participants[1, 0] = player2;
         }
         // Constructor to double matches
-        public Game(Player[] team1, Player[] team2, Referee referee, int round, Random rand)
+        public Game(Player[] team1, Player[] team2, Referee referee, int round, Random rand, TournamentTypes tournamentType)
         {
             Participants = new Player[2, 2];
             GameWinner = new Player[2];
             GameLoser = new Player[2];
             GameReferee = referee;
-            Sets = new Set[3];
-            GameType = "double";
+            GameType = GameTypes.Double;
             Round = round;
             Rand = rand;
+
+            switch (tournamentType)
+            {
+                case TournamentTypes.DoubleFemale:
+                    Sets = new Set[3];
+                    break;
+                case TournamentTypes.DoubleMale:
+                case TournamentTypes.MixDouble:
+                    Sets = new Set[5];
+                    break;
+            }
 
             Participants[0, 0] = team1[0];
             Participants[0, 1] = team1[1];
@@ -53,12 +74,12 @@ namespace Tennis_exam.Classes
         }
         #endregion
 
-        public void PlayGame(int sets)
+        public void PlayGame()
         {
             var player1GameScore = 0;
             var player2GameScore = 0;
 
-            for (var i = 0; i < sets; i++)
+            for (var i = 0; i < Sets.Length; i++)
             {
                 var newSet = new Set();
                 newSet.PlaySet(Rand);
@@ -79,7 +100,7 @@ namespace Tennis_exam.Classes
 
         private void SetGameStatus(int player1Score, int player2Score)
         {
-            if ( GameType == "single")
+            if ( GameType == GameTypes.Single)
             {
                 if (player1Score > player2Score)
                 {
@@ -92,7 +113,7 @@ namespace Tennis_exam.Classes
                     GameLoser[0] = Participants[0, 0];
                 }
             }
-            else
+            else if (GameType == GameTypes.Double)
             {
                 if (player1Score > player2Score)
                 {
@@ -108,7 +129,11 @@ namespace Tennis_exam.Classes
                     GameLoser[0] = Participants[0, 0];
                     GameLoser[1] = Participants[0, 1];
                 }
-            }       
+            }
+            else
+            {
+                throw new Exception("Unknown gametype.");
+            }
         }
 
         private void BuildDispResult(int player1Score, int player2Score)

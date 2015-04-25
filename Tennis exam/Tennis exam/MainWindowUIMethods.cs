@@ -92,7 +92,7 @@ namespace Tennis_exam
         {
             int n = dataGrid.Rows.Add();
 
-            if (tournament.TournamentType == TournamentTypes.SingleMale || tournament.TournamentType == TournamentTypes.SingleFemale)
+            if (tournament.IsSingle())
             {
                 dataGrid.Rows[n].Cells[0].Value = newGame;
                 dataGrid.Rows[n].Cells[1].Value = newGame.Round;
@@ -108,19 +108,21 @@ namespace Tennis_exam
                 dataGrid.Rows[n].Cells[4].ValueType = typeof(string);
                 dataGrid.Rows[n].Cells[5].ValueType = typeof(string);             
             }
-            else
+            else if(tournament.IsDouble())
             {
                 dataGrid.Rows[n].Cells[0].Value = newGame;
                 dataGrid.Rows[n].Cells[1].Value = newGame.Round;
                 dataGrid.Rows[n].Cells[2].Value = newGame.GameWinner[0].FullName + " & " + newGame.GameWinner[1].FullName;
                 dataGrid.Rows[n].Cells[3].Value = newGame.GameLoser[0].FullName + " & " + newGame.GameLoser[1].FullName;
                 dataGrid.Rows[n].Cells[4].Value = newGame.DisplayableResult;
+                dataGrid.Rows[n].Cells[5].Value = newGame.GameReferee.FullName;
                 
                 dataGrid.Rows[n].Cells[0].ValueType = typeof(Game);
                 dataGrid.Rows[n].Cells[1].ValueType = typeof(int);
                 dataGrid.Rows[n].Cells[2].ValueType = typeof(string);
                 dataGrid.Rows[n].Cells[3].ValueType = typeof(string);
-                dataGrid.Rows[n].Cells[4].ValueType = typeof(string);     
+                dataGrid.Rows[n].Cells[4].ValueType = typeof(string);
+                dataGrid.Rows[n].Cells[4].ValueType = typeof(string); 
             }
         }
 

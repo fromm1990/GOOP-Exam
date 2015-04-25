@@ -19,16 +19,17 @@ namespace Tennis_exam.Classes
 
         Random rand = new Random();
 
-        public Player AutoCreatePlayer(string gender)
+        #region Auto create players
+        private Player AutoCreatePlayer(Genders gender)
         {
             Player newPlayer = new Player();
-            
-            if (gender == "male")
+
+            if (gender == Genders.Male)
             {
                 newPlayer.FristName = Enum.GetName(typeof(FirstNameMale), RandomIndex());
                 newPlayer.Gender = (int)Genders.Male;
             }
-            else if (gender == "female")
+            else if (gender == Genders.Female)
             {
                 newPlayer.FristName = Enum.GetName(typeof(FirstNameFemale), RandomIndex());
                 newPlayer.Gender = Genders.Female;
@@ -41,16 +42,49 @@ namespace Tennis_exam.Classes
             return newPlayer;
         }
 
-        public Referee AutoCreateReferee(string gender)
+        public void AutoAddPlayers(Tournament tournament)
+        {
+            switch (tournament.TournamentType)
+            {
+                case TournamentTypes.SingleFemale:
+                case TournamentTypes.DoubleFemale:
+                    for (int i = 0; i < tournament.TournamentSize; i++)
+                    {
+                        tournament.AddPlayer(AutoCreatePlayer(Genders.Female));
+                    }
+                    break;
+                case TournamentTypes.SingleMale:
+                case TournamentTypes.DoubleMale:
+                    for (int i = 0; i < tournament.TournamentSize; i++)
+                    {
+                        tournament.AddPlayer(AutoCreatePlayer(Genders.Male));
+                    }
+                    break;
+                case TournamentTypes.MixDouble:
+                    for (int i = 0; i < tournament.TournamentSize / 2; i++)
+                    {
+                        tournament.AddPlayer(AutoCreatePlayer(Genders.Female));
+                    }
+                    for (int i = 0; i < tournament.TournamentSize / 2; i++)
+                    {
+                        tournament.AddPlayer(AutoCreatePlayer(Genders.Male));
+                    }
+                    break;
+            }
+        }
+        #endregion
+
+        #region Auto create referees
+        private Referee AutoCreateReferee(Genders gender)
         {
             Referee newReferee = new Referee();
 
-            if (gender == "male")
+            if (gender == Genders.Male)
             {
                 newReferee.FristName = Enum.GetName(typeof(FirstNameMale), RandomIndex());
                 newReferee.Gender = Genders.Male;
             }
-            else if (gender == "female")
+            else if (gender == Genders.Female)
             {
                 newReferee.FristName = Enum.GetName(typeof(FirstNameFemale), RandomIndex());
                 newReferee.Gender = Genders.Female;
@@ -65,12 +99,44 @@ namespace Tennis_exam.Classes
             return newReferee;
         }
 
+        public void AutoAddReferees(Tournament tournament)
+        {
+            switch (tournament.TournamentType)
+            {
+                case TournamentTypes.SingleFemale:
+                case TournamentTypes.SingleMale:
+                    for (int i = 0; i < tournament.TournamentSize / 4; i++)
+                    {
+                        tournament.AddReferee(AutoCreateReferee(Genders.Female));
+                    }
+                    for (int i = 0; i < tournament.TournamentSize / 4; i++)
+                    {
+                        tournament.AddReferee(AutoCreateReferee(Genders.Male));
+                    }
+                    break;
+                case TournamentTypes.DoubleFemale:
+                case TournamentTypes.DoubleMale:
+                case TournamentTypes.MixDouble:
+                    for (int i = 0; i < tournament.TournamentSize / 8; i++)
+                    {
+                        tournament.AddReferee(AutoCreateReferee(Genders.Female));
+                    }
+                    for (int i = 0; i < tournament.TournamentSize / 8; i++)
+                    {
+                        tournament.AddReferee(AutoCreateReferee(Genders.Male));
+                    }
+                    break;
+            }
+
+        }
+        #endregion
+
         private int RandomIndex()
         {
             int randomIndex = rand.Next(0, 8);
             return randomIndex;
         }
-        
+
         private DateTime RandomBirthDate()
         {
             DateTime start = new DateTime(1980, 1, 1);

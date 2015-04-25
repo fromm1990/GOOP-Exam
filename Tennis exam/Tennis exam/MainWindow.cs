@@ -313,53 +313,14 @@ namespace Tennis_exam
         private void buttonPlayerAutoAdd_Click(object sender, EventArgs e)
         {
             AutoFillData autoAdd = new AutoFillData();
-
-            switch (tournament.TournamentType)
-            {
-                case TournamentTypes.SingleFemale:
-                case TournamentTypes.DoubleFemale:
-                    for (int i = 0; i < tournament.TournamentSize; i++)
-                    {
-                        tournament.AddPlayer(autoAdd.AutoCreatePlayer("female"));
-                    }
-                    PopulateDataGridView(dataGridViewPlayer, tournament.Players);
-                    break;
-                case TournamentTypes.SingleMale:
-                case TournamentTypes.DoubleMale:
-                    for (int i = 0; i < tournament.TournamentSize; i++)
-                    {
-                        tournament.AddPlayer(autoAdd.AutoCreatePlayer("male"));
-                    }
-                    PopulateDataGridView(dataGridViewPlayer, tournament.Players);
-                    break;
-                case TournamentTypes.MixDouble:
-                    for (int i = 0; i < tournament.TournamentSize / 2; i++)
-                    {
-                        tournament.AddPlayer(autoAdd.AutoCreatePlayer("female"));
-                    }
-                    for (int i = 0; i < tournament.TournamentSize / 2; i++)
-                    {
-                        tournament.AddPlayer(autoAdd.AutoCreatePlayer("male"));
-                    }
-                    PopulateDataGridView(dataGridViewPlayer, tournament.Players);
-                    break;
-            }
-
-            
+            autoAdd.AutoAddPlayers(tournament);
+            PopulateDataGridView(dataGridViewPlayer, tournament.Players);
         }
 
         private void buttonRefereeAutoAdd_Click(object sender, EventArgs e)
         {
             AutoFillData autoAdd = new AutoFillData();
-
-            for (int i = 0; i < tournament.TournamentSize / 4; i++)
-            {
-                tournament.AddReferee(autoAdd.AutoCreateReferee("female"));
-            }
-            for (int i = 0; i < tournament.TournamentSize / 4; i++)
-            {
-                tournament.AddReferee(autoAdd.AutoCreateReferee("male"));
-            }
+            autoAdd.AutoAddReferees(tournament);
             PopulateDataGridView(dataGridViewReferee, tournament.Referees);
         }
         #endregion
@@ -382,16 +343,13 @@ namespace Tennis_exam
                 else
                 {
                     throw new Exception("Unknown tournament type.");
-                }
-
-                
+                }       
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Can't add player", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
-
     }
 }
