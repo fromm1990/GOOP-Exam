@@ -55,12 +55,12 @@ namespace Tennis_exam.Classes
 
         public void PlayGame(int sets)
         {
-            int player1GameScore = 0;
-            int player2GameScore = 0;
+            var player1GameScore = 0;
+            var player2GameScore = 0;
 
-            for (int i = 0; i < sets; i++)
+            for (var i = 0; i < sets; i++)
             {
-                Set newSet = new Set();
+                var newSet = new Set();
                 newSet.PlaySet(Rand);
                 Sets[i] = newSet;
 
