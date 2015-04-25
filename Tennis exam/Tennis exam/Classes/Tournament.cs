@@ -157,15 +157,12 @@ namespace Tennis_exam.Classes
         
         private void InitializeSingle()
         {
-            int j = Players.Count - 1;
-            int k = 0;
-
-            for (int i = 0; i <= j; i++)
+            var j = Players.Count - 1;
+            for (var i = 0; i <= j; i++)
             {
-                Game newGame = new Game(Players[i], Players[j], Referees[k] , Round, Rand);
+                var newGame = new Game(Players[i], Players[j], Referees[i] , Round, Rand);
                 Games.Add(newGame);
                 j--;
-                k++;
             }
         }
 
@@ -197,7 +194,7 @@ namespace Tennis_exam.Classes
             int j = 0;
             int k = 0;
 
-            for (int i = 0; i < newPlayerList.Count; i += 4)
+            for (int i = 0; i < Players.Count; i += 4)
             {
                 Player[] team1 = new Player[2];
                 Player[] team2 = new Player[2];
@@ -230,21 +227,34 @@ namespace Tennis_exam.Classes
         #endregion
 
         #region Play tournament
-        public void PlayTournament(TournamentTypes tournamentType)
+        public void PlayTournament()
         {
-            switch (tournamentType)
+            
+            switch (TournamentType)
             {
                 case TournamentTypes.SingleMale:
                 case TournamentTypes.SingleFemale:
+                    if (Referees.Count < TournamentSize / 2)
+                    {
+                        throw new Exception("You will need " + TournamentSize / 2 + " referees in order to start the tournament. You Currently have " + Referees.Count + " referees.");
+                    }
                     InitializeSingle();
                     PlayAllSingleRounds();
                     break;
                 case TournamentTypes.DoubleMale:
                 case TournamentTypes.DoubleFemale:
+                    if (Referees.Count < TournamentSize / 4)
+                    {
+                        throw new Exception("You will need " + TournamentSize / 4 + " referees in order to start the tournament. You Currently have " + Referees.Count + " referees.");
+                    }
                     InitializeDouble();
                     PlayAllDoubleRounds();
                     break;
                 case TournamentTypes.MixDouble:
+                    if (Referees.Count < TournamentSize / 2)
+                    {
+                        throw new Exception("You will need " + TournamentSize / 4 + " referees in order to start the tournament. You Currently have " + Referees.Count + " referees.");
+                    }
                     InitializeMixDouble();
                     PlayAllDoubleRounds();
                     break;
@@ -286,7 +296,7 @@ namespace Tennis_exam.Classes
 
         private void PlayAllDoubleRounds()
         {
-            int totalRounds = (int)Math.Log(TournamentSize/2, 2);
+            int totalRounds = (int)Math.Log(TournamentSize / 2, 2);
 
             if (Round == 1)
             {
@@ -326,7 +336,7 @@ namespace Tennis_exam.Classes
 
         private int LastPlayedRound()
         {
-            return Games[Games.Count - 1].Round;
+            return Games.Last().Round;
         }
 
         public bool IsTurnamentActive()

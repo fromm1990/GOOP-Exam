@@ -366,19 +366,25 @@ namespace Tennis_exam
 
         private void buttonTournamentPlay_Click(object sender, EventArgs e)
         {
-            tournament.PlayTournament(tournament.TournamentType);
-            PopulateDataGridView(dataGridViewGames, tournament.Games);
             try
             {
+                tournament.PlayTournament();
+                PopulateDataGridView(dataGridViewGames, tournament.Games);
                 if (tournament.IsSingle())
                 {
                     labelTournamentWinner.Text = "Tournament winner: " + tournament.TournamentWinner()[0].FullName;
                 }
-                else
+                else if (tournament.IsDouble())
                 {
                     labelTournamentWinner.Text = "Tournament winner: " + tournament.TournamentWinner()[0].FullName + 
                                                                  " and " + tournament.TournamentWinner()[1].FullName;
                 }
+                else
+                {
+                    throw new Exception("Unknown tournament type.");
+                }
+
+                
             }
             catch (Exception ex)
             {
