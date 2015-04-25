@@ -224,18 +224,21 @@ namespace Tennis_exam.Classes
         private void InitializeSingle()
         {
             int j = Players.Length - 1;
+            int k = 0;
 
             for (int i = 0; i <= j; i++)
             {
-                Game newGame = new Game(Players[i], Players[j], Round, Rand);
+                Game newGame = new Game(Players[i], Players[j], Referees[k] , Round, Rand);
                 Games.Add(newGame);
                 j--;
+                k++;
             }
         }
 
         private void InitializeDouble()
         {
             int j = Players.Length - 1;
+            int k = 0;
 
             for (int i = 0; i <= j; i += 2)
             {
@@ -247,9 +250,10 @@ namespace Tennis_exam.Classes
                 team2[0] = Players[j];
                 team2[1] = Players[j - 1];
 
-                Game newGame = new Game(team1, team2, Round, Rand);
+                Game newGame = new Game(team1, team2, Referees[k], Round, Rand);
                 Games.Add(newGame);
                 j -= 2;
+                k++;
             }
         }
 
@@ -257,6 +261,7 @@ namespace Tennis_exam.Classes
         {
             Player[] newPlayerArray = (Player[])Players.Clone();
             int j = 0;
+            int k = 0;
 
             for (int i = 0; i < newPlayerArray.Length; i += 4)
             {
@@ -268,9 +273,10 @@ namespace Tennis_exam.Classes
                 team2[0] = Players[SearchForMale(newPlayerArray)];
                 team2[1] = Players[SearchForFemale(newPlayerArray)];
 
-                Game newGame = new Game(team1, team2, Round, Rand);
+                Game newGame = new Game(team1, team2, Referees[k], Round, Rand);
                 Games.Add(newGame);
                 j++;
+                k++;
             }
         }
 
@@ -347,7 +353,8 @@ namespace Tennis_exam.Classes
                 {
                     Player player1 = Games[start].GameWinner[0];
                     Player player2 = Games[start + 1].GameWinner[0];
-                    Game newGame = new Game(player1, player2, Round, Rand);
+                    Referee referee = Games[start].GameReferee;
+                    Game newGame = new Game(player1, player2, referee, Round, Rand);
                     newGame.PlayGame(3);
                     Games.Add(newGame);
                     start += 2;
@@ -378,14 +385,15 @@ namespace Tennis_exam.Classes
                 while (start < end)
                 {
                     Player[] team1 = new Player[2];
-                    Player[] team2 = new Player[2];
+                    Player[] team2 = new Player[2];                   
 
                     team1[0] = Games[start].GameWinner[0];
                     team1[1] = Games[start].GameWinner[1];
                     team2[0] = Games[start + 1].GameWinner[0];
                     team2[1] = Games[start + 1].GameWinner[1];
+                    Referee referee = Games[start].GameReferee;
 
-                    Game newGame = new Game(team1, team2, Round, Rand);
+                    Game newGame = new Game(team1, team2, referee, Round, Rand);
                     newGame.PlayGame(3);
                     Games.Add(newGame);
                     start += 2;

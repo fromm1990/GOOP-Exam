@@ -139,12 +139,13 @@
             this.groupBoxGame = new System.Windows.Forms.GroupBox();
             this.buttonTournamentPlay = new System.Windows.Forms.Button();
             this.dataGridViewGames = new System.Windows.Forms.DataGridView();
+            this.labelTournamentWinner = new System.Windows.Forms.Label();
             this.Object = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Round = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Winner = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Loser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Result = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Round = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.labelTournamentWinner = new System.Windows.Forms.Label();
+            this.Referee = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPlayers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlayer)).BeginInit();
@@ -1172,21 +1173,39 @@
             this.dataGridViewGames.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewGames.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Object,
+            this.Round,
             this.Winner,
             this.Loser,
             this.Result,
-            this.Round});
+            this.Referee});
             this.dataGridViewGames.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridViewGames.Location = new System.Drawing.Point(3, 16);
             this.dataGridViewGames.Name = "dataGridViewGames";
             this.dataGridViewGames.Size = new System.Drawing.Size(892, 205);
             this.dataGridViewGames.TabIndex = 0;
             // 
+            // labelTournamentWinner
+            // 
+            this.labelTournamentWinner.AutoSize = true;
+            this.labelTournamentWinner.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelTournamentWinner.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTournamentWinner.Location = new System.Drawing.Point(3, 221);
+            this.labelTournamentWinner.Name = "labelTournamentWinner";
+            this.labelTournamentWinner.Size = new System.Drawing.Size(208, 25);
+            this.labelTournamentWinner.TabIndex = 10;
+            this.labelTournamentWinner.Text = "Tournament winner: ";
+            // 
             // Object
             // 
             this.Object.HeaderText = "Object";
             this.Object.Name = "Object";
             this.Object.Visible = false;
+            // 
+            // Round
+            // 
+            this.Round.HeaderText = "Round";
+            this.Round.Name = "Round";
+            this.Round.Width = 50;
             // 
             // Winner
             // 
@@ -1205,22 +1224,10 @@
             this.Result.HeaderText = "Result";
             this.Result.Name = "Result";
             // 
-            // Round
+            // Referee
             // 
-            this.Round.HeaderText = "Round";
-            this.Round.Name = "Round";
-            this.Round.Width = 50;
-            // 
-            // labelTournamentWinner
-            // 
-            this.labelTournamentWinner.AutoSize = true;
-            this.labelTournamentWinner.Dock = System.Windows.Forms.DockStyle.Top;
-            this.labelTournamentWinner.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTournamentWinner.Location = new System.Drawing.Point(3, 221);
-            this.labelTournamentWinner.Name = "labelTournamentWinner";
-            this.labelTournamentWinner.Size = new System.Drawing.Size(208, 25);
-            this.labelTournamentWinner.TabIndex = 10;
-            this.labelTournamentWinner.Text = "Tournament winner: ";
+            this.Referee.HeaderText = "Referee";
+            this.Referee.Name = "Referee";
             // 
             // MainWindow
             // 
@@ -1366,12 +1373,13 @@
         private System.Windows.Forms.Button buttonTournamentCreate;
         private System.Windows.Forms.DataGridView dataGridViewGames;
         private System.Windows.Forms.Button buttonTournamentPlay;
+        private System.Windows.Forms.Label labelTournamentWinner;
         private System.Windows.Forms.DataGridViewTextBoxColumn Object;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Round;
         private System.Windows.Forms.DataGridViewTextBoxColumn Winner;
         private System.Windows.Forms.DataGridViewTextBoxColumn Loser;
         private System.Windows.Forms.DataGridViewTextBoxColumn Result;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Round;
-        private System.Windows.Forms.Label labelTournamentWinner;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Referee;
     }
 }
 

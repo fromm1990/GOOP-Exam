@@ -13,18 +13,19 @@ namespace Tennis_exam.Classes
         public Player[] GameLoser { get; set; }
         public Set[] Sets { set; get; }
         public string GameType { get; set; }
-        public string Referee { get; set; }
+        public Referee GameReferee { get; set; }
         private Random Rand { get; set; }
         public string DisplayableResult { get; set; }
         public int Round { get; set; }
 
         #region Constructor
         // Constructor to single matches
-        public Game(Player player1, Player player2, int round, Random rand)
+        public Game(Player player1, Player player2, Referee referee, int round, Random rand)
         {
             Participants = new Player[2, 1];
             GameWinner = new Player[1];
             GameLoser = new Player[1];
+            GameReferee = referee;
             Sets = new Set[3];
             GameType = "single";
             Round = round;
@@ -34,11 +35,12 @@ namespace Tennis_exam.Classes
             Participants[1, 0] = player2;
         }
         // Constructor to double matches
-        public Game(Player[] team1, Player[] team2, int round, Random rand)
+        public Game(Player[] team1, Player[] team2, Referee referee, int round, Random rand)
         {
             Participants = new Player[2, 2];
             GameWinner = new Player[2];
             GameLoser = new Player[2];
+            GameReferee = referee;
             Sets = new Set[3];
             GameType = "double";
             Round = round;
