@@ -153,7 +153,8 @@ namespace Tennis_exam.Classes
             var j = Players.Count - 1;
             for (var i = 0; i <= j; i++)
             {
-                var newGame = new Game(Players[i], Players[j], Referees[i] , Round, Rand, TournamentType);
+                var newGame = new Game(Players[i], Players[j], Round, Rand, TournamentType);
+                newGame.AddReferee(Referees[i]);
                 Games.Add(newGame);
                 j--;
             }
@@ -173,7 +174,8 @@ namespace Tennis_exam.Classes
                 team2[0] = Players[j];
                 team2[1] = Players[j - 1];
 
-                var newGame = new Game(team1, team2, Referees[i / 2], Round, Rand, TournamentType);
+                var newGame = new Game(team1, team2, Round, Rand, TournamentType);
+                newGame.AddReferee(Referees[i / 2]);
                 Games.Add(newGame);
                 j -= 2;
             }
@@ -193,7 +195,8 @@ namespace Tennis_exam.Classes
                 team2[0] = SearchForMale(newPlayerList);
                 team2[1] = SearchForFemale(newPlayerList);
 
-                var newGame = new Game(team1, team2, Referees[i / 4], Round, Rand, TournamentType);
+                var newGame = new Game(team1, team2, Round, Rand, TournamentType);
+                newGame.AddReferee(Referees[i / 4]);
                 Games.Add(newGame);
             }
         }
@@ -271,9 +274,13 @@ namespace Tennis_exam.Classes
                     Player player1 = Games[start].GameWinner[0];
                     Player player2 = Games[start + 1].GameWinner[0];
                     Referee referee = Games[start].GameReferee;
-                    Game newGame = new Game(player1, player2, referee, Round, Rand, TournamentType);
-                    newGame.PlayGame();
-                    Games.Add(newGame);
+                    Game newGame = new Game(player1, player2, Round, Rand, TournamentType);
+                    newGame.AddReferee(referee);
+                    if (newGame.GameValidation())
+                    {
+                        newGame.PlayGame();
+                        Games.Add(newGame);
+                    }             
                     start += 2;
                 }
                 Round++;
@@ -310,9 +317,13 @@ namespace Tennis_exam.Classes
                     team2[1] = Games[start + 1].GameWinner[1];
                     Referee referee = Games[start].GameReferee;
 
-                    Game newGame = new Game(team1, team2, referee, Round, Rand, TournamentType);
-                    newGame.PlayGame();
-                    Games.Add(newGame);
+                    Game newGame = new Game(team1, team2, Round, Rand, TournamentType);
+                    newGame.AddReferee(referee);
+                    if (newGame.GameValidation())
+                    {
+                        newGame.PlayGame();
+                        Games.Add(newGame);
+                    }  
                     start += 2;
                 }
                 Round++;

@@ -343,7 +343,7 @@ namespace Tennis_exam
                 else
                 {
                     throw new Exception("Unknown tournament type.");
-                }       
+                }
             }
 
             catch (Exception ex)

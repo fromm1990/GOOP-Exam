@@ -16,19 +16,12 @@ namespace Tennis_exam.Classes
             if (rand.Next(0, 100) < 49)
             {
                 Score1 = 6;
+                Score2 = rand.Next(0, 6);
             }
             else
             {
                 Score2 = 6;
-            }
-            
-            if (Score1 == 6)
-            {
-                Score2 = rand.Next(0, 5);
-            }
-            else
-            {
-                Score1 = rand.Next(0, 5);
+                Score1 = rand.Next(0, 6);
             }
         }
     }
