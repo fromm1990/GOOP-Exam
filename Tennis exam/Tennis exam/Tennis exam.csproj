@@ -45,7 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\AutoFillData.cs" />
-    <Compile Include="Classes\Common.cs" />
     <Compile Include="Classes\Game.cs" />
     <Compile Include="Classes\GameMaster.cs" />
     <Compile Include="Classes\Player.cs" />
