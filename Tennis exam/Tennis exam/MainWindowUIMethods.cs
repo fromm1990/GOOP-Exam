@@ -124,25 +124,19 @@ namespace Tennis_exam
             }
         }
 
-        private void PopulateDataGridView(DataGridView dataGrid, Player[] players)
+        private void PopulateDataGridView(DataGridView dataGrid, List<Player> players)
         {
-            foreach (Player player in players)
+            foreach (var player in players)
             {
-                if (player != null)
-                {
-                    DataGridAddElement(dataGrid, player);
-                }
+                DataGridAddElement(dataGrid, player);
             }
         }
 
-        private void PopulateDataGridView(DataGridView dataGrid, Referee[] referees)
+        private void PopulateDataGridView(DataGridView dataGrid, List<Referee> referees)
         {
-            foreach (Referee referee in referees)
+            foreach (var referee in referees)
             {
-                if (referee != null)
-                {
-                    DataGridAddElement(dataGrid, referee);
-                }
+                DataGridAddElement(dataGrid, referee);
             }
         }
 

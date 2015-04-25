@@ -8,15 +8,15 @@ namespace Tennis_exam.Classes
 {
     public enum TournamentTypes { SingleMale, SingleFemale, DoubleMale, DoubleFemale, MixDouble }
 
-    internal class Tournament : Common
+    internal class Tournament
     {
         public string Name { get; set; }
         public int Year { get; set; }
         public DateTime StartsAt { get; set; }
         public DateTime EndsAt { get; set; }
-        public Player[] Players { get; set; }
-        public Referee[] Referees { get; set; }
-        public GameMaster GameMasterProp { get; set; }
+        public List<Player> Players { get; set; }
+        public List<Referee> Referees { get; set; }
+        public GameMaster GameMaster { get; set; }
         public int TournamentSize { get; set; }
         public TournamentTypes TournamentType { get; set; }
         public List<Game> Games { get; set; }
@@ -27,9 +27,9 @@ namespace Tennis_exam.Classes
         {
             Name = name;
             TournamentSize = amountOfPlayers;
-            Players = new Player[TournamentSize];
-            Referees = new Referee[TournamentSize / 2];
-            GameMasterProp = null;
+            Players = new List<Player>();
+            Referees = new List<Referee>();
+            GameMaster = null;
             TournamentType = tournamentType;
             Games = new List<Game>();
             Year = startsAt.Year;
@@ -38,53 +38,34 @@ namespace Tennis_exam.Classes
         }
 
         #region Add/Remove Player or Referee
-        private bool Add(Object element, Object[] array)
-        {
-            int index = EmptyObjectArrayIndex(array);
-            if (index >= 0)
-            {
-                array[index] = element;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        private bool Remove(Object element, Object[] array)
-        {
-            int index = FindElementIndex(element, array);
-            if (index >= 0)
-            {
-                Players[index] = null;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
 
         public void AddPlayer(Player player)
         {
-            if (!Add(player, Players))
+            if (Players.Count > TournamentSize)
             {
                 throw new Exception("All player slots are filled.");
+            }
+            else
+            {
+                Players.Add(player);
             }
         }
 
         public void AddReferee(Referee referee)
         {
-            if (!Add(referee, Referees))
+            if (Referees.Count > TournamentSize / 2)
             {
                 throw new Exception("All referee slots are filled.");
+            }
+            else
+            {
+                Referees.Add(referee);
             }
         }
 
         public void RemovePlayer(Player player)
         {
-            if (!Remove(player, Players))
+            if (!Players.Remove(player))
             {
                 throw new Exception("No such player");
             }
@@ -92,7 +73,7 @@ namespace Tennis_exam.Classes
 
         public void RemoveReferee(Referee referee)
         {
-            if (!Remove(referee, Referees))
+            if (!Referees.Remove(referee))
             {
                 throw new Exception("No such referee");
             }
@@ -102,9 +83,9 @@ namespace Tennis_exam.Classes
         #region Add/Remove/Set Game master
         public void AddGameMaster(GameMaster gameMaster)
         {
-            if (GameMasterProp == null)
+            if (GameMaster == null)
             {
-                GameMasterProp = gameMaster;
+                GameMaster = gameMaster;
             }
             else
             {
@@ -114,7 +95,7 @@ namespace Tennis_exam.Classes
 
         public void SetGameMaster(Referee referee)
         {
-            if (GameMasterProp == null)
+            if (GameMaster == null)
             {
                 GameMaster gamemaster = new GameMaster();
                 //gamemaster = (GameMaster)referee;
@@ -127,7 +108,7 @@ namespace Tennis_exam.Classes
                 gamemaster.LicenseAcquired = referee.LicenseAcquired;
                 gamemaster.LicenseLastRenewed = referee.LicenseLastRenewed;
 
-                GameMasterProp = gamemaster;
+                GameMaster = gamemaster;
                 RemoveReferee(referee);
             }
             else
@@ -139,9 +120,9 @@ namespace Tennis_exam.Classes
 
         public void RemoveGamemaster()
         {
-            if (GameMasterProp != null)
+            if (GameMaster != null)
             {
-                GameMasterProp = null;
+                GameMaster = null;
             }
             else
             {
@@ -151,79 +132,32 @@ namespace Tennis_exam.Classes
         #endregion
 
         #region Sort Player or Referee
-        public void SortByFirstName(Player[] objectArray)
+        public void SortPlayersByFirstName()
         {
-            Array.Sort(objectArray,
-                delegate(Player x, Player y)
-                {
-                    if (x == null)
-                    {
-                        return y == null ? 0 : 1;
-                    }
-                    if (y == null)
-                    {
-                        return -1;
-                    }
-                    return x.FristName.CompareTo(y.FristName);
-                });
+            Players = Players.OrderBy(obj => obj.FristName).ToList();
         }
 
-        public void SortByFirstName(Referee[] objectArray)
+        public void SortRefereesByFirstName()
         {
-            Array.Sort(objectArray,
-                delegate(Referee x, Referee y)
-                {
-                    if (x == null)
-                    {
-                        return y == null ? 0 : 1;
-                    }
-                    if (y == null)
-                    {
-                        return -1;
-                    }
-                    return x.FristName.CompareTo(y.FristName);
-                });
+            Referees = Referees.OrderBy(obj => obj.FristName).ToList();
         }
 
-        public void SortByLastName(Player[] objectArray)
+        public void SortPlayersByLastName()
         {
-            Array.Sort(objectArray,
-                delegate(Player x, Player y)
-                {
-                    if (x == null)
-                    {
-                        return y == null ? 0 : 1;
-                    }
-                    if (y == null)
-                    {
-                        return -1;
-                    }
-                    return x.LastName.CompareTo(y.LastName);
-                });
+            Players = Players.OrderBy(obj => obj.LastName).ToList();
         }
 
-        public void SortByLastName(Referee[] objectArray)
+        public void SortRefereesByLastName()
         {
-            Array.Sort(objectArray,
-                delegate(Referee x, Referee y)
-                {
-                    if (x == null)
-                    {
-                        return y == null ? 0 : 1;
-                    }
-                    if (y == null)
-                    {
-                        return -1;
-                    }
-                    return x.LastName.CompareTo(y.LastName);
-                });
+            Referees = Referees.OrderBy(obj => obj.LastName).ToList();
         }
         #endregion
 
         #region Initialize gametypes
+        
         private void InitializeSingle()
         {
-            int j = Players.Length - 1;
+            int j = Players.Count - 1;
             int k = 0;
 
             for (int i = 0; i <= j; i++)
@@ -237,7 +171,7 @@ namespace Tennis_exam.Classes
 
         private void InitializeDouble()
         {
-            int j = Players.Length - 1;
+            int j = Players.Count - 1;
             int k = 0;
 
             for (int i = 0; i <= j; i += 2)
@@ -259,19 +193,19 @@ namespace Tennis_exam.Classes
 
         private void InitializeMixDouble()
         {
-            Player[] newPlayerArray = (Player[])Players.Clone();
+            var newPlayerList = new List<Player>(Players);
             int j = 0;
             int k = 0;
 
-            for (int i = 0; i < newPlayerArray.Length; i += 4)
+            for (int i = 0; i < newPlayerList.Count; i += 4)
             {
                 Player[] team1 = new Player[2];
                 Player[] team2 = new Player[2];
 
-                team1[0] = Players[SearchForMale(newPlayerArray)];
-                team1[1] = Players[SearchForFemale(newPlayerArray)];
-                team2[0] = Players[SearchForMale(newPlayerArray)];
-                team2[1] = Players[SearchForFemale(newPlayerArray)];
+                team1[0] = SearchForMale(newPlayerList);
+                team1[1] = SearchForFemale(newPlayerList);
+                team2[0] = SearchForMale(newPlayerList);
+                team2[1] = SearchForFemale(newPlayerList);
 
                 Game newGame = new Game(team1, team2, Referees[k], Round, Rand);
                 Games.Add(newGame);
@@ -280,31 +214,18 @@ namespace Tennis_exam.Classes
             }
         }
 
-        private int SearchForMale(Player[] players)
+        private Player SearchForMale(List<Player> players)
         {
-            for (int i = 0; i < players.Length; i++)
-            {
-                if (players[i] != null && players[i].Gender == Genders.Male)
-                {
-                    players[i] = null;
-                    return i;
-                }
-            }
-            return -1;
+            var male = players.Find(o => o.Gender == Genders.Male);
+            players.Remove(male);
+            return male;
         }
 
-        private int SearchForFemale(Player[] players)
+        private Player SearchForFemale(List<Player> players)
         {
-
-            for (int i = 0; i < players.Length; i++)
-            {
-                if (players[i] != null && players[i].Gender == Genders.Female)
-                {
-                    players[i] = null;
-                    return i;
-                }
-            }
-            return -1;
+            var female = players.Find(o => o.Gender == Genders.Female);
+            players.Remove(female);
+            return female;
         }
         #endregion
 

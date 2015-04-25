@@ -188,7 +188,7 @@ namespace Tennis_exam
         #region Sort players/referes by first and last -name
         private void buttonPlayerSortByFirstName_Click(object sender, EventArgs e)
         {
-            tournament.SortByFirstName(tournament.Players);
+            tournament.SortPlayersByFirstName();
             dataGridViewPlayer.Rows.Clear();
             PopulateDataGridView(dataGridViewPlayer, tournament.Players);
 
@@ -196,21 +196,21 @@ namespace Tennis_exam
 
         private void buttonPlayerSortByLastName_Click(object sender, EventArgs e)
         {
-            tournament.SortByLastName(tournament.Players);
+            tournament.SortPlayersByLastName();
             dataGridViewPlayer.Rows.Clear();
             PopulateDataGridView(dataGridViewPlayer, tournament.Players);
         }
 
         private void buttonRefereeSortByFirstName_Click(object sender, EventArgs e)
         {
-            tournament.SortByFirstName(tournament.Referees);
+            tournament.SortRefereesByFirstName();
             dataGridViewReferee.Rows.Clear();
             PopulateDataGridView(dataGridViewReferee, tournament.Referees);
         }
 
         private void buttonRefereeSortByLastName_Click(object sender, EventArgs e)
         {
-            tournament.SortByLastName(tournament.Referees);
+            tournament.SortRefereesByLastName();
             dataGridViewReferee.Rows.Clear();
             PopulateDataGridView(dataGridViewReferee, tournament.Referees);
         }
@@ -239,7 +239,7 @@ namespace Tennis_exam
                     Referee referee = (Referee)dataGridViewReferee.SelectedRows[0].Cells[0].Value;
                     tournament.SetGameMaster(referee);
                     dataGridViewReferee.Rows.RemoveAt(dataGridViewReferee.SelectedRows[0].Index);
-                    DataGridAddElement(dataGridViewGM, tournament.GameMasterProp);
+                    DataGridAddElement(dataGridViewGM, tournament.GameMaster);
                 }
             }
             catch (Exception ex)
