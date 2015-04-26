@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\AutoFillData.cs" />
+    <Compile Include="Data\RandomNumber.cs" />
     <Compile Include="TournamentLogic\Game.cs" />
     <Compile Include="People\GameMaster.cs" />
     <Compile Include="People\Player.cs" />

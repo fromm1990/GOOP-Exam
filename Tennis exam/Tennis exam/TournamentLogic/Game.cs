@@ -177,14 +177,14 @@ namespace TennisExam.TournamentLogic
             switch (TournamentType)
             {
                 case TournamentTypes.SingleMale:
-                    if (Participants[0, 0].Gender == Genders.Male 
+                    if (Participants[0, 0].Gender == Genders.Male
                         && Participants[1, 0].Gender == Genders.Male)
                     {
                         return true;
                     }
                     throw new Exception("Both players will have to be males in a men's single.");
                 case TournamentTypes.SingleFemale:
-                    if (Participants[0, 0].Gender == Genders.Female 
+                    if (Participants[0, 0].Gender == Genders.Female
                         && Participants[1, 0].Gender == Genders.Female)
                     {
                         return true;
@@ -192,9 +192,9 @@ namespace TennisExam.TournamentLogic
                     throw new Exception("Both players will have to be females in a womans's single.");
 
                 case TournamentTypes.DoubleMale:
-                    if (Participants[0, 0].Gender == Genders.Male 
-                        && Participants[0, 1].Gender == Genders.Male 
-                        && Participants[1, 0].Gender == Genders.Male 
+                    if (Participants[0, 0].Gender == Genders.Male
+                        && Participants[0, 1].Gender == Genders.Male
+                        && Participants[1, 0].Gender == Genders.Male
                         && Participants[1, 1].Gender == Genders.Male)
                     {
                         return true;

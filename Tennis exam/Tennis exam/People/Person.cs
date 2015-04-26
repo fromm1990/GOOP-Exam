@@ -8,7 +8,7 @@ namespace TennisExam.People
         private string firstName;
         private string lastName;
 
-        public string FristName
+        public string FirstName
         {
             get { return firstName; }
             set

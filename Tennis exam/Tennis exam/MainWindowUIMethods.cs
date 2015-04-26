@@ -14,7 +14,7 @@ namespace Tennis_exam
             int n = dataGrid.Rows.Add();
 
             dataGrid.Rows[n].Cells[0].Value = newPlayer;
-            dataGrid.Rows[n].Cells[1].Value = newPlayer.FristName;
+            dataGrid.Rows[n].Cells[1].Value = newPlayer.FirstName;
             dataGrid.Rows[n].Cells[2].Value = newPlayer.MiddleName;
             dataGrid.Rows[n].Cells[3].Value = newPlayer.LastName;
             dataGrid.Rows[n].Cells[4].Value = newPlayer.DateOfBirth;
@@ -37,7 +37,7 @@ namespace Tennis_exam
             int n = dataGrid.Rows.Add();
 
             dataGrid.Rows[n].Cells[0].Value = newReferee;
-            dataGrid.Rows[n].Cells[1].Value = newReferee.FristName;
+            dataGrid.Rows[n].Cells[1].Value = newReferee.FirstName;
             dataGrid.Rows[n].Cells[2].Value = newReferee.MiddleName;
             dataGrid.Rows[n].Cells[3].Value = newReferee.LastName;
             dataGrid.Rows[n].Cells[4].Value = newReferee.DateOfBirth;
@@ -62,7 +62,7 @@ namespace Tennis_exam
         private void DataGridAddElement(DataGridView dataGrid, GameMaster newGameMaster)
         {
             dataGrid.Rows[0].Cells[0].Value = newGameMaster;
-            dataGrid.Rows[0].Cells[1].Value = newGameMaster.FristName;
+            dataGrid.Rows[0].Cells[1].Value = newGameMaster.FirstName;
             dataGrid.Rows[0].Cells[2].Value = newGameMaster.MiddleName;
             dataGrid.Rows[0].Cells[3].Value = newGameMaster.LastName;
             dataGrid.Rows[0].Cells[4].Value = newGameMaster.DateOfBirth;

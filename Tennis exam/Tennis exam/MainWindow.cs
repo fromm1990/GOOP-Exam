@@ -54,7 +54,7 @@ namespace Tennis_exam
                     //Add game master
                     var newGameMaster = new GameMaster
                     {
-                        FristName = "Sebastian",
+                        FirstName = "Sebastian",
                         MiddleName = "Grabow",
                         LastName = "Christensen",
                         Gender = Genders.Male,
@@ -130,7 +130,7 @@ namespace Tennis_exam
             Player newPlayer = new Player();
             try
             {         
-                newPlayer.FristName = textPlayerFirstName.Text;
+                newPlayer.FirstName = textPlayerFirstName.Text;
                 newPlayer.MiddleName = textPlayerMiddleName.Text;
                 newPlayer.LastName = textPlayerLastName.Text;
                 newPlayer.DateOfBirth = datePlayerDOB.Value;
@@ -178,7 +178,7 @@ namespace Tennis_exam
             Referee newReferee = new Referee();
             try
             {
-                newReferee.FristName = textRefereeFirstName.Text;
+                newReferee.FirstName = textRefereeFirstName.Text;
                 newReferee.MiddleName = textRefereeMiddleName.Text;
                 newReferee.LastName = textRefereeLastName.Text;
                 newReferee.DateOfBirth = dateRefereeDOB.Value;
@@ -310,7 +310,7 @@ namespace Tennis_exam
             GameMaster newGameMaster = new GameMaster();
             try
             {
-                newGameMaster.FristName = textGMFirstName.Text;
+                newGameMaster.FirstName = textGMFirstName.Text;
                 newGameMaster.MiddleName = textGMMiddleName.Text;
                 newGameMaster.LastName = textGMLastName.Text;
                 newGameMaster.DateOfBirth = dateGMDOB.Value;

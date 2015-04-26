@@ -99,7 +99,7 @@ namespace TennisExam.TournamentLogic
             {
                 var gamemaster = new GameMaster
                 {
-                    FristName = referee.FristName,
+                    FirstName = referee.FirstName,
                     MiddleName = referee.MiddleName,
                     LastName = referee.LastName,
                     DateOfBirth = referee.DateOfBirth,
@@ -127,12 +127,12 @@ namespace TennisExam.TournamentLogic
         #region Sort Player or Referee
         public void SortPlayersByFirstName()
         {
-            Players = Players.OrderBy(obj => obj.FristName).ToList();
+            Players = Players.OrderBy(obj => obj.FirstName).ToList();
         }
 
         public void SortRefereesByFirstName()
         {
-            Referees = Referees.OrderBy(obj => obj.FristName).ToList();
+            Referees = Referees.OrderBy(obj => obj.FirstName).ToList();
         }
 
         public void SortPlayersByLastName()
