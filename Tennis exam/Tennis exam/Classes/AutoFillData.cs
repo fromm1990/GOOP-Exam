@@ -44,28 +44,32 @@ namespace Tennis_exam.Classes
 
         public void AutoAddPlayers(Tournament tournament)
         {
+            var currentAddedMales = tournament.Players.Count(player => player.Gender == Genders.Male);
+            var currentAddedFemales = tournament.Players.Count(player => player.Gender == Genders.Female);
+            var currentAddedAmount = tournament.Players.Count;
+
             switch (tournament.TournamentType)
             {
                 case TournamentTypes.SingleFemale:
                 case TournamentTypes.DoubleFemale:
-                    for (int i = 0; i < tournament.TournamentSize; i++)
+                    for (int i = 0; i < tournament.TournamentSize - currentAddedAmount; i++)
                     {
                         tournament.AddPlayer(AutoCreatePlayer(Genders.Female));
                     }
                     break;
                 case TournamentTypes.SingleMale:
                 case TournamentTypes.DoubleMale:
-                    for (int i = 0; i < tournament.TournamentSize; i++)
+                    for (int i = 0; i < tournament.TournamentSize - currentAddedAmount; i++)
                     {
                         tournament.AddPlayer(AutoCreatePlayer(Genders.Male));
                     }
                     break;
                 case TournamentTypes.MixDouble:
-                    for (int i = 0; i < tournament.TournamentSize / 2; i++)
+                    for (int i = 0; i < (tournament.TournamentSize / 2) - currentAddedFemales; i++)
                     {
                         tournament.AddPlayer(AutoCreatePlayer(Genders.Female));
                     }
-                    for (int i = 0; i < tournament.TournamentSize / 2; i++)
+                    for (int i = 0; i < (tournament.TournamentSize / 2) - currentAddedMales; i++)
                     {
                         tournament.AddPlayer(AutoCreatePlayer(Genders.Male));
                     }
@@ -101,15 +105,18 @@ namespace Tennis_exam.Classes
 
         public void AutoAddReferees(Tournament tournament)
         {
+            var currentAddedMales = tournament.Referees.Count(player => player.Gender == Genders.Male);
+            var currentAddedFemales = tournament.Referees.Count(player => player.Gender == Genders.Female);
+
             switch (tournament.TournamentType)
             {
                 case TournamentTypes.SingleFemale:
                 case TournamentTypes.SingleMale:
-                    for (int i = 0; i < tournament.TournamentSize / 4; i++)
+                    for (int i = 0; i < (tournament.TournamentSize / 4) - currentAddedFemales; i++)
                     {
                         tournament.AddReferee(AutoCreateReferee(Genders.Female));
                     }
-                    for (int i = 0; i < tournament.TournamentSize / 4; i++)
+                    for (int i = 0; i < (tournament.TournamentSize / 4) - currentAddedMales; i++)
                     {
                         tournament.AddReferee(AutoCreateReferee(Genders.Male));
                     }
@@ -117,11 +124,11 @@ namespace Tennis_exam.Classes
                 case TournamentTypes.DoubleFemale:
                 case TournamentTypes.DoubleMale:
                 case TournamentTypes.MixDouble:
-                    for (int i = 0; i < tournament.TournamentSize / 8; i++)
+                    for (int i = 0; i < (tournament.TournamentSize / 8) - currentAddedFemales; i++)
                     {
                         tournament.AddReferee(AutoCreateReferee(Genders.Female));
                     }
-                    for (int i = 0; i < tournament.TournamentSize / 8; i++)
+                    for (int i = 0; i < (tournament.TournamentSize / 8) - currentAddedMales; i++)
                     {
                         tournament.AddReferee(AutoCreateReferee(Genders.Male));
                     }

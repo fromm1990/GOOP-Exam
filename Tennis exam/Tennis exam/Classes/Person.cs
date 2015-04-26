@@ -54,17 +54,13 @@ namespace Tennis_exam.Classes
         }
         public string FullName 
         {
-            get 
+            get
             {
                 if (MiddleName == "")
                 {
                     return firstName + " " + LastName;
                 }
-                else
-                {
-                    return firstName + " " + MiddleName[0] + ". " + LastName; 
-                }
-                
+                return firstName + " " + MiddleName[0] + ". " + LastName;
             }
         }
         public DateTime DateOfBirth { get; set; }
