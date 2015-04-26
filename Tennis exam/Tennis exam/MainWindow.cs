@@ -50,10 +50,10 @@ namespace Tennis_exam
                     buttonRefereeRemove.Enabled = false;
 
                     tournament = new Tournament("Wimbledon", DateTime.Today, DateTime.Today.AddDays(5), 8, TournamentTypes.SingleMale);
-                    AutoFillData autoAdd = new AutoFillData();
-                    autoAdd.AutoAddPlayers(tournament);
-                    PopulateDataGridView(dataGridViewPlayer, tournament.Players);
-                    autoAdd.AutoAddReferees(tournament);
+                    AutoFillData autoAdd = new AutoFillData(tournament);
+                    autoAdd.AutoAddPlayers();
+                    autoAdd.AutoAddReferees();
+                    PopulateDataGridView(dataGridViewPlayer, tournament.Players);      
                     PopulateDataGridView(dataGridViewReferee, tournament.Referees);
 
                     //Add game master
@@ -376,8 +376,8 @@ namespace Tennis_exam
         {
             try
             {
-                AutoFillData autoAdd = new AutoFillData();
-                autoAdd.AutoAddPlayers(tournament);
+                AutoFillData autoAdd = new AutoFillData(tournament);
+                autoAdd.AutoAddPlayers();
                 dataGridViewPlayer.Rows.Clear();
                 PopulateDataGridView(dataGridViewPlayer, tournament.Players);
             }
@@ -391,8 +391,8 @@ namespace Tennis_exam
         {
             try
             {
-                AutoFillData autoAdd = new AutoFillData();
-                autoAdd.AutoAddReferees(tournament);
+                AutoFillData autoAdd = new AutoFillData(tournament);
+                autoAdd.AutoAddReferees();
                 dataGridViewReferee.Rows.Clear();
                 PopulateDataGridView(dataGridViewReferee, tournament.Referees);
             }
