@@ -22,8 +22,70 @@ namespace Tennis_exam
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            groupBoxAdd.Enabled = false;
-            //groupBoxGame.Enabled = false;
+            const string message = "Do you want to simulate a tournament with 8 players?";
+            const string caption = "Simulation";
+            var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            
+            
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    //Disable group boxes
+                    groupBoxTournament.Enabled = false;
+                    groupBoxGame.Enabled = false;
+                    
+                    //Disable game master buttons
+                    buttonGMAdd.Enabled = false;
+                    buttonGMRemove.Enabled = false;
+                    
+                    //Disable player buttons
+                    buttonPlayerAdd.Enabled = false;
+                    buttonPlayerAutoAdd.Enabled = false;
+                    buttonPlayerRemove.Enabled = false;
+                    
+                    //Disable referee buttons
+                    buttonRefereeAdd.Enabled = false;
+                    buttonRefereeAutoAdd.Enabled = false;
+                    buttonRefereeRemove.Enabled = false;
+
+                    tournament = new Tournament("Wimbledon", DateTime.Today, DateTime.Today.AddDays(5), 8, TournamentTypes.SingleMale);
+                    AutoFillData autoAdd = new AutoFillData();
+                    autoAdd.AutoAddPlayers(tournament);
+                    PopulateDataGridView(dataGridViewPlayer, tournament.Players);
+                    autoAdd.AutoAddReferees(tournament);
+                    PopulateDataGridView(dataGridViewReferee, tournament.Referees);
+
+                    //Add game master
+                    var newGameMaster = new GameMaster
+                    {
+                        FristName = "Sebastian",
+                        MiddleName = "Grabow",
+                        LastName = "Christensen",
+                        Gender = Genders.Male,
+                        DateOfBirth = DateTime.Today.AddYears(-42),
+                        Nationality = (int) Nationalities.England,
+                        LicenseAcquired = DateTime.Today.AddYears(-14),
+                        LicenseLastRenewed = DateTime.Today.AddYears(-4)
+                    };
+                    tournament.AddGameMaster(newGameMaster);
+                    DataGridAddElement(dataGridViewGM, tournament.GameMaster);
+
+                    //Play tournament and find winner
+                    tournament.PlayTournament();
+                    PopulateDataGridView(dataGridViewGames, tournament.Games);
+                    labelTournamentWinner.Text = "Tournament winner: " + tournament.TournamentWinner()[0].FullName;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Simulation error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
+            }
+            else
+            {
+                groupBoxAdd.Enabled = false;
+            }
 
             //Setting up Data sources for combo boxes
             comboPlayerGender.DataSource = Enum.GetValues(typeof(Genders));
@@ -312,16 +374,33 @@ namespace Tennis_exam
 
         private void buttonPlayerAutoAdd_Click(object sender, EventArgs e)
         {
-            AutoFillData autoAdd = new AutoFillData();
-            autoAdd.AutoAddPlayers(tournament);
-            PopulateDataGridView(dataGridViewPlayer, tournament.Players);
+            try
+            {
+                AutoFillData autoAdd = new AutoFillData();
+                autoAdd.AutoAddPlayers(tournament);
+                dataGridViewPlayer.Rows.Clear();
+                PopulateDataGridView(dataGridViewPlayer, tournament.Players);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Can't Add players", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void buttonRefereeAutoAdd_Click(object sender, EventArgs e)
         {
-            AutoFillData autoAdd = new AutoFillData();
-            autoAdd.AutoAddReferees(tournament);
-            PopulateDataGridView(dataGridViewReferee, tournament.Referees);
+            try
+            {
+                AutoFillData autoAdd = new AutoFillData();
+                autoAdd.AutoAddReferees(tournament);
+                dataGridViewReferee.Rows.Clear();
+                PopulateDataGridView(dataGridViewReferee, tournament.Referees);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Can't Add referees", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
         #endregion
 
@@ -337,8 +416,9 @@ namespace Tennis_exam
                 }
                 else if (tournament.IsDouble())
                 {
-                    labelTournamentWinner.Text = "Tournament winner: " + tournament.TournamentWinner()[0].FullName + 
-                                                                 " and " + tournament.TournamentWinner()[1].FullName;
+                    labelTournamentWinner.Text =
+                        "Tournament winner: " + tournament.TournamentWinner()[0].FullName + 
+                        " and " + tournament.TournamentWinner()[1].FullName;
                 }
                 else
                 {
@@ -348,7 +428,7 @@ namespace Tennis_exam
 
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Can't add player", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Can't paly tournament", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
