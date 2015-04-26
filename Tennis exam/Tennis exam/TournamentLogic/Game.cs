@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TennisExam.People;
+using TennisExam.Data;
 
-namespace Tennis_exam.Classes
+namespace TennisExam.TournamentLogic
 {
     internal class Game
     {

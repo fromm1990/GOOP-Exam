@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TennisExam.Data;
 
-namespace Tennis_exam.Classes
+namespace TennisExam.People
 {
     internal abstract class Person
     {     

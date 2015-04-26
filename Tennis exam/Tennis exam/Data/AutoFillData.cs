@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TennisExam.TournamentLogic;
+using TennisExam.People;
 
-namespace Tennis_exam.Classes
+namespace TennisExam.Data
 {
     public enum Nationalities { Albania, Belgium, Colombia, Denmark, England, France, Greece, Holland, Italy }
     public enum Genders { Male, Female }

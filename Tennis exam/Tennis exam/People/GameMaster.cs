@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tennis_exam.Classes
+namespace TennisExam.People
 {
-    internal class Player : Person
+    class GameMaster : Referee
     {
 
     }

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TennisExam.People;
+using TennisExam.Data;
 
-namespace Tennis_exam.Classes
+namespace TennisExam.TournamentLogic
 {
     public enum TournamentTypes { SingleMale, SingleFemale, DoubleMale, DoubleFemale, MixDouble }
 
@@ -373,13 +373,13 @@ namespace Tennis_exam.Classes
             {
                 if (IsSingle())
                 {
-                    Player[] tournamentWinner = new Player[1];
+                    var tournamentWinner = new Player[1];
                     tournamentWinner[0] = Games[Games.Count - 1].GameWinner[0];
                     return tournamentWinner;
                 }
                 else
                 {
-                    Player[] tournamentWinner = new Player[2];
+                    var tournamentWinner = new Player[2];
                     tournamentWinner[0] = Games[Games.Count - 1].GameWinner[0];
                     tournamentWinner[1] = Games[Games.Count - 1].GameWinner[1];
                     return tournamentWinner;

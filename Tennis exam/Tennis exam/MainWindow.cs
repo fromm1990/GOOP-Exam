@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Tennis_exam.Classes;
+using TennisExam.TournamentLogic;
+using TennisExam.People;
+using TennisExam.Data;
 
 namespace Tennis_exam
 {
