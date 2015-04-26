@@ -108,6 +108,7 @@
             this.labelGMLicenseAcquired = new System.Windows.Forms.Label();
             this.dateGMLicenseRenewed = new System.Windows.Forms.DateTimePicker();
             this.dateGMLicenseAcquired = new System.Windows.Forms.DateTimePicker();
+            this.buttonGMAutoAdd = new System.Windows.Forms.Button();
             this.buttonGMRemove = new System.Windows.Forms.Button();
             this.buttonGMAdd = new System.Windows.Forms.Button();
             this.labelGMGender = new System.Windows.Forms.Label();
@@ -136,9 +137,9 @@
             this.labelTournamentEndsAt = new System.Windows.Forms.Label();
             this.labelTournamentStartsAt = new System.Windows.Forms.Label();
             this.groupBoxGame = new System.Windows.Forms.GroupBox();
-            this.labelTournamentWinner = new System.Windows.Forms.Label();
             this.buttonTournamentPlay = new System.Windows.Forms.Button();
             this.dataGridViewGames = new System.Windows.Forms.DataGridView();
+            this.labelTournamentWinner = new System.Windows.Forms.Label();
             this.Object = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Round = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Winner = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -737,6 +738,7 @@
             this.tabGameMaster.Controls.Add(this.labelGMLicenseAcquired);
             this.tabGameMaster.Controls.Add(this.dateGMLicenseRenewed);
             this.tabGameMaster.Controls.Add(this.dateGMLicenseAcquired);
+            this.tabGameMaster.Controls.Add(this.buttonGMAutoAdd);
             this.tabGameMaster.Controls.Add(this.buttonGMRemove);
             this.tabGameMaster.Controls.Add(this.buttonGMAdd);
             this.tabGameMaster.Controls.Add(this.labelGMGender);
@@ -881,6 +883,15 @@
             this.dateGMLicenseAcquired.TabIndex = 38;
             this.dateGMLicenseAcquired.Value = new System.DateTime(2015, 3, 25, 0, 0, 0, 0);
             // 
+            // buttonGMAutoAdd
+            // 
+            this.buttonGMAutoAdd.Location = new System.Drawing.Point(6, 132);
+            this.buttonGMAutoAdd.Name = "buttonGMAutoAdd";
+            this.buttonGMAutoAdd.Size = new System.Drawing.Size(69, 23);
+            this.buttonGMAutoAdd.TabIndex = 37;
+            this.buttonGMAutoAdd.Text = "Auto Add";
+            this.buttonGMAutoAdd.UseVisualStyleBackColor = true;
+            // 
             // buttonGMRemove
             // 
             this.buttonGMRemove.Location = new System.Drawing.Point(249, 132);
@@ -1004,7 +1015,7 @@
             // 
             this.groupBoxAdd.Controls.Add(this.tabControl1);
             this.groupBoxAdd.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBoxAdd.Location = new System.Drawing.Point(0, 302);
+            this.groupBoxAdd.Location = new System.Drawing.Point(0, 298);
             this.groupBoxAdd.Name = "groupBoxAdd";
             this.groupBoxAdd.Size = new System.Drawing.Size(1082, 290);
             this.groupBoxAdd.TabIndex = 1;
@@ -1059,7 +1070,7 @@
             this.groupBoxTournament.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBoxTournament.Location = new System.Drawing.Point(0, 0);
             this.groupBoxTournament.Name = "groupBoxTournament";
-            this.groupBoxTournament.Size = new System.Drawing.Size(184, 302);
+            this.groupBoxTournament.Size = new System.Drawing.Size(184, 298);
             this.groupBoxTournament.TabIndex = 7;
             this.groupBoxTournament.TabStop = false;
             this.groupBoxTournament.Text = "Tournament";
@@ -1141,26 +1152,15 @@
             this.groupBoxGame.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxGame.Location = new System.Drawing.Point(184, 0);
             this.groupBoxGame.Name = "groupBoxGame";
-            this.groupBoxGame.Size = new System.Drawing.Size(898, 302);
+            this.groupBoxGame.Size = new System.Drawing.Size(898, 298);
             this.groupBoxGame.TabIndex = 8;
             this.groupBoxGame.TabStop = false;
             this.groupBoxGame.Text = "Game";
             // 
-            // labelTournamentWinner
-            // 
-            this.labelTournamentWinner.AutoSize = true;
-            this.labelTournamentWinner.Dock = System.Windows.Forms.DockStyle.Top;
-            this.labelTournamentWinner.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTournamentWinner.Location = new System.Drawing.Point(3, 221);
-            this.labelTournamentWinner.Name = "labelTournamentWinner";
-            this.labelTournamentWinner.Size = new System.Drawing.Size(208, 25);
-            this.labelTournamentWinner.TabIndex = 10;
-            this.labelTournamentWinner.Text = "Tournament winner: ";
-            // 
             // buttonTournamentPlay
             // 
             this.buttonTournamentPlay.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.buttonTournamentPlay.Location = new System.Drawing.Point(3, 259);
+            this.buttonTournamentPlay.Location = new System.Drawing.Point(3, 255);
             this.buttonTournamentPlay.Name = "buttonTournamentPlay";
             this.buttonTournamentPlay.Size = new System.Drawing.Size(892, 40);
             this.buttonTournamentPlay.TabIndex = 9;
@@ -1183,6 +1183,17 @@
             this.dataGridViewGames.Name = "dataGridViewGames";
             this.dataGridViewGames.Size = new System.Drawing.Size(892, 205);
             this.dataGridViewGames.TabIndex = 0;
+            // 
+            // labelTournamentWinner
+            // 
+            this.labelTournamentWinner.AutoSize = true;
+            this.labelTournamentWinner.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelTournamentWinner.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTournamentWinner.Location = new System.Drawing.Point(3, 221);
+            this.labelTournamentWinner.Name = "labelTournamentWinner";
+            this.labelTournamentWinner.Size = new System.Drawing.Size(208, 25);
+            this.labelTournamentWinner.TabIndex = 10;
+            this.labelTournamentWinner.Text = "Tournament winner: ";
             // 
             // Object
             // 
@@ -1222,7 +1233,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1082, 592);
+            this.ClientSize = new System.Drawing.Size(1082, 588);
             this.Controls.Add(this.groupBoxGame);
             this.Controls.Add(this.groupBoxTournament);
             this.Controls.Add(this.groupBoxAdd);
@@ -1321,6 +1332,7 @@
         private System.Windows.Forms.Label labelGMLicenseAcquired;
         private System.Windows.Forms.DateTimePicker dateGMLicenseRenewed;
         private System.Windows.Forms.DateTimePicker dateGMLicenseAcquired;
+        private System.Windows.Forms.Button buttonGMAutoAdd;
         private System.Windows.Forms.Button buttonGMRemove;
         private System.Windows.Forms.Button buttonGMAdd;
         private System.Windows.Forms.Label labelGMGender;

@@ -218,13 +218,7 @@ namespace Tennis_exam.Classes
 
         #region Play tournament
         public void PlayTournament()
-        {
-            if (GameMaster == null)
-            {
-                throw new Exception("You will have to add a game master in order to start the tournament.");
-            }
-
-
+        {  
             switch (TournamentType)
             {
                 case TournamentTypes.SingleMale:
@@ -232,10 +226,6 @@ namespace Tennis_exam.Classes
                     if (Referees.Count < TournamentSize / 2)
                     {
                         throw new Exception("You will need " + TournamentSize / 2 + " referees in order to start the tournament. You Currently have " + Referees.Count + " referees.");
-                    }
-                    if (Players.Count < TournamentSize)
-                    {
-                        throw new Exception("You will need to have exactly " + TournamentSize + " players, you currently have " + Players.Count + ".");
                     }
                     InitializeSingle();
                     PlayAllSingleRounds();
@@ -246,10 +236,6 @@ namespace Tennis_exam.Classes
                     {
                         throw new Exception("You will need " + TournamentSize / 4 + " referees in order to start the tournament. You Currently have " + Referees.Count + " referees.");
                     }
-                    if (Players.Count < TournamentSize)
-                    {
-                        throw new Exception("You will need to have exactly " + TournamentSize + " players, you currently have " + Players.Count + ".");
-                    }
                     InitializeDouble();
                     PlayAllDoubleRounds();
                     break;
@@ -257,11 +243,6 @@ namespace Tennis_exam.Classes
                     if (Referees.Count < TournamentSize / 4)
                     {
                         throw new Exception("You will need " + TournamentSize / 4 + " referees in order to start the tournament. You Currently have " + Referees.Count + " referees.");
-                    }
-                    if (Players.Count < TournamentSize)
-                    {
-                        throw new Exception("You will need to have exactly " + TournamentSize / 2 + " male players, and exactly " + TournamentSize / 2 + " female players. " +
-                                            "You currently have " + Players.Count(obj => obj.Gender == Genders.Male) + " male players and " + Players.Count(obj => obj.Gender == Genders.Female) + " female players.");
                     }
                     InitializeMixDouble();
                     PlayAllDoubleRounds();
