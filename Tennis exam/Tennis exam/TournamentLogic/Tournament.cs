@@ -21,7 +21,7 @@ namespace TennisExam.TournamentLogic
         public TournamentTypes TournamentType { get; set; }
         public List<Game> Games { get; set; }
         public int Round { get; set; }
-        private Random Rand { get; set; }
+        private static Random Rand { get; set; }
 
         public Tournament(string name, DateTime startsAt, DateTime endsAt, int amountOfPlayers, TournamentTypes tournamentType)
         {

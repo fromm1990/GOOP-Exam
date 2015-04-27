@@ -16,7 +16,7 @@ namespace TennisExam.TournamentLogic
         public GameTypes GameType { get; private set; }
         private TournamentTypes TournamentType { get; set; }
         public Referee GameReferee { get; private set; }
-        private Random Rand { get; set; }
+        private static Random Rand { get; set; }
         public string DisplayableResult { get; private set; }
         public int Round { get; private set; }
 

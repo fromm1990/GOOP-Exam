@@ -75,7 +75,7 @@ namespace Tennis_exam
                 {
                     MessageBox.Show(ex.Message, "Simulation error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                
+                var jkdf = new Game();
             }
             else
             {

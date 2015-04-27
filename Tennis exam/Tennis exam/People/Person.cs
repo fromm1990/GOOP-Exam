@@ -64,12 +64,15 @@ namespace TennisExam.People
         public int Nationality { get; set; }
         public Genders Gender { get; set; }
 
-        public int CalcAge(DateTime DOB)
+        public int CalcAge(DateTime dob)
         {
             DateTime today = DateTime.Today;
-            int days = (int)today.Subtract(DOB).TotalDays;
-            int years = days / 365;
-            return years;
+            int age = today.Year - dob.Year;
+            if (dob > today.AddYears(-age))
+            {
+                age--;
+            }
+            return age;
         }
 
     }
