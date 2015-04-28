@@ -21,7 +21,7 @@ namespace TennisExam.TournamentLogic
         public TournamentTypes TournamentType { get; set; }
         public List<Game> Games { get; set; }
         public int Round { get; set; }
-        private static Random Rand { get; set; }
+        internal static Random Rand { get; set; }
 
         public Tournament(string name, DateTime startsAt, DateTime endsAt, int amountOfPlayers, TournamentTypes tournamentType)
         {
@@ -338,6 +338,7 @@ namespace TennisExam.TournamentLogic
 
                     Game newGame = new Game(team1, team2, Round, Rand, TournamentType);
                     newGame.AddReferee(referee);
+                    
                     if (newGame.GameValidation())
                     {
                         newGame.PlayGame();

@@ -17,34 +17,50 @@ namespace TennisExam.Data
         enum LastNames { Østergaard, Jensen, Rasmussen, Jespersen, Pedersen, Petersen, Larsen, Nielsen, Andersen }
 
         private Tournament Tournament { get; set; }
-
-        Random rand = new Random();
+        private static Random Rand { get; set; }
 
         public AutoFillData(Tournament tournament)
         {
             Tournament = tournament;
+            Rand = Tournament.Rand;
+        }
+
+        private static int RandomIndex()
+        {
+            var randomIndex = Rand.Next(0, 8);
+            return randomIndex;
+        }
+
+        private static DateTime RandomBirthDate()
+        {
+            var start = new DateTime(1980, 1, 1);
+            var end = new DateTime(1995, 1, 1);
+
+            var range = (end - start).Days;
+            return start.AddDays(Rand.Next(range));
         }
 
         #region Auto create players
-        private Player AutoCreatePlayer(Genders gender)
+        private static Player AutoCreatePlayer(Genders gender)
         {
-            Player newPlayer = new Player();
+            var newPlayer = new Player();
 
-            if (gender == Genders.Male)
+            switch (gender)
             {
-                newPlayer.FirstName = Enum.GetName(typeof(FirstNameMale), RandomIndex());
-                newPlayer.Gender = (int)Genders.Male;
+                case Genders.Male:
+                    newPlayer.FirstName = Enum.GetName(typeof(FirstNameMale), RandomIndex());
+                    newPlayer.Gender = (int)Genders.Male;
+                    break;
+                case Genders.Female:
+                    newPlayer.FirstName = Enum.GetName(typeof(FirstNameFemale), RandomIndex());
+                    newPlayer.Gender = Genders.Female;
+                    break;
             }
-            else if (gender == Genders.Female)
-            {
-                newPlayer.FirstName = Enum.GetName(typeof(FirstNameFemale), RandomIndex());
-                newPlayer.Gender = Genders.Female;
-            }
+
             newPlayer.MiddleName = Enum.GetName(typeof(MiddleNames), RandomIndex());
             newPlayer.LastName = Enum.GetName(typeof(LastNames), RandomIndex());
             newPlayer.DateOfBirth = RandomBirthDate();
-            newPlayer.Nationality = Enum.GetName(typeof(Nationalities), RandomIndex())
-            ;
+            newPlayer.Nationality = Enum.GetName(typeof(Nationalities), RandomIndex());
 
             return newPlayer;
         }
@@ -59,24 +75,24 @@ namespace TennisExam.Data
             {
                 case TournamentTypes.SingleFemale:
                 case TournamentTypes.DoubleFemale:
-                    for (int i = 0; i < Tournament.TournamentSize - currentAddedAmount; i++)
+                    for (var i = 0; i < Tournament.TournamentSize - currentAddedAmount; i++)
                     {
                         Tournament.AddPlayer(AutoCreatePlayer(Genders.Female));
                     }
                     break;
                 case TournamentTypes.SingleMale:
                 case TournamentTypes.DoubleMale:
-                    for (int i = 0; i < Tournament.TournamentSize - currentAddedAmount; i++)
+                    for (var i = 0; i < Tournament.TournamentSize - currentAddedAmount; i++)
                     {
                         Tournament.AddPlayer(AutoCreatePlayer(Genders.Male));
                     }
                     break;
                 case TournamentTypes.MixDouble:
-                    for (int i = 0; i < (Tournament.TournamentSize / 2) - currentAddedFemales; i++)
+                    for (var i = 0; i < (Tournament.TournamentSize / 2) - currentAddedFemales; i++)
                     {
                         Tournament.AddPlayer(AutoCreatePlayer(Genders.Female));
                     }
-                    for (int i = 0; i < (Tournament.TournamentSize / 2) - currentAddedMales; i++)
+                    for (var i = 0; i < (Tournament.TournamentSize / 2) - currentAddedMales; i++)
                     {
                         Tournament.AddPlayer(AutoCreatePlayer(Genders.Male));
                     }
@@ -86,20 +102,22 @@ namespace TennisExam.Data
         #endregion
 
         #region Auto create referees
-        private Referee AutoCreateReferee(Genders gender)
+        private static Referee AutoCreateReferee(Genders gender)
         {
-            Referee newReferee = new Referee();
+            var newReferee = new Referee();
 
-            if (gender == Genders.Male)
+            switch (gender)
             {
-                newReferee.FirstName = Enum.GetName(typeof(FirstNameMale), RandomIndex());
-                newReferee.Gender = Genders.Male;
+                case Genders.Male:
+                    newReferee.FirstName = Enum.GetName(typeof(FirstNameMale), RandomIndex());
+                    newReferee.Gender = Genders.Male;
+                    break;
+                case Genders.Female:
+                    newReferee.FirstName = Enum.GetName(typeof(FirstNameFemale), RandomIndex());
+                    newReferee.Gender = Genders.Female;
+                    break;
             }
-            else if (gender == Genders.Female)
-            {
-                newReferee.FirstName = Enum.GetName(typeof(FirstNameFemale), RandomIndex());
-                newReferee.Gender = Genders.Female;
-            }
+
             newReferee.MiddleName = Enum.GetName(typeof(MiddleNames), RandomIndex());
             newReferee.LastName = Enum.GetName(typeof(LastNames), RandomIndex());
             newReferee.DateOfBirth = RandomBirthDate();
@@ -119,11 +137,11 @@ namespace TennisExam.Data
             {
                 case TournamentTypes.SingleFemale:
                 case TournamentTypes.SingleMale:
-                    for (int i = 0; i < (Tournament.TournamentSize / 4) - currentAddedFemales; i++)
+                    for (var i = 0; i < (Tournament.TournamentSize / 4) - currentAddedFemales; i++)
                     {
                         Tournament.AddReferee(AutoCreateReferee(Genders.Female));
                     }
-                    for (int i = 0; i < (Tournament.TournamentSize / 4) - currentAddedMales; i++)
+                    for (var i = 0; i < (Tournament.TournamentSize / 4) - currentAddedMales; i++)
                     {
                         Tournament.AddReferee(AutoCreateReferee(Genders.Male));
                     }
@@ -131,11 +149,11 @@ namespace TennisExam.Data
                 case TournamentTypes.DoubleFemale:
                 case TournamentTypes.DoubleMale:
                 case TournamentTypes.MixDouble:
-                    for (int i = 0; i < (Tournament.TournamentSize / 8) - currentAddedFemales; i++)
+                    for (var i = 0; i < (Tournament.TournamentSize / 8) - currentAddedFemales; i++)
                     {
                         Tournament.AddReferee(AutoCreateReferee(Genders.Female));
                     }
-                    for (int i = 0; i < (Tournament.TournamentSize / 8) - currentAddedMales; i++)
+                    for (var i = 0; i < (Tournament.TournamentSize / 8) - currentAddedMales; i++)
                     {
                         Tournament.AddReferee(AutoCreateReferee(Genders.Male));
                     }
@@ -145,19 +163,5 @@ namespace TennisExam.Data
         }
         #endregion
 
-        private int RandomIndex()
-        {
-            int randomIndex = rand.Next(0, 8);
-            return randomIndex;
-        }
-
-        private DateTime RandomBirthDate()
-        {
-            DateTime start = new DateTime(1980, 1, 1);
-            DateTime end = new DateTime(1995, 1, 1);
-
-            int range = (end - start).Days;
-            return start.AddDays(rand.Next(range));
-        }
     }
 }

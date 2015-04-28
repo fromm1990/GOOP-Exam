@@ -4,7 +4,7 @@ using TennisExam.Data;
 namespace TennisExam.People
 {
     internal abstract class Person
-    {     
+    {
         private string firstName;
         private string lastName;
 
@@ -17,14 +17,12 @@ namespace TennisExam.People
                 {
                     throw new Exception("Only one first name is allowed.");
                 }
-                else if (value == "")
+                if (value == "")
                 {
                     throw new Exception("You will have to type a first name.");
                 }
-                else
-                {
-                    firstName = value;
-                };
+
+                firstName = value;
             }
         }
 
@@ -39,17 +37,16 @@ namespace TennisExam.People
                 {
                     throw new Exception("Only one last name is allowed.");
                 }
-                else if (value == "")
+                if (value == "")
                 {
                     throw new Exception("You will have to type a last name.");
                 }
-                else
-                {
-                    lastName = value;
-                };
+
+                lastName = value;
             }
         }
-        public string FullName 
+
+        public string FullName
         {
             get
             {
@@ -64,10 +61,10 @@ namespace TennisExam.People
         public string Nationality { get; set; }
         public Genders Gender { get; set; }
 
-        public int CalcAge(DateTime dob)
+        public int CalculateAge(DateTime dob)
         {
-            DateTime today = DateTime.Today;
-            int age = today.Year - dob.Year;
+            var today = DateTime.Today;
+            var age = today.Year - dob.Year;
             if (dob > today.AddYears(-age))
             {
                 age--;

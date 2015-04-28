@@ -94,57 +94,59 @@ namespace TennisExam.TournamentLogic
                     player2GameScore++;
                 }
             }
+
             SetGameStatus(player1GameScore, player2GameScore);
             BuildDispResult(player1GameScore, player2GameScore);
         }
 
         private void SetGameStatus(int player1Score, int player2Score)
         {
-            if (GameType == GameTypes.Single)
+            switch (GameType)
             {
-                if (player1Score > player2Score)
-                {
-                    GameWinner[0] = Participants[0, 0];
-                    GameLoser[0] = Participants[1, 0];
-                }
-                else
-                {
-                    GameWinner[0] = Participants[1, 0];
-                    GameLoser[0] = Participants[0, 0];
-                }
-            }
-            else if (GameType == GameTypes.Double)
-            {
-                if (player1Score > player2Score)
-                {
-                    GameWinner[0] = Participants[0, 0];
-                    GameWinner[1] = Participants[0, 1];
-                    GameLoser[0] = Participants[1, 0];
-                    GameLoser[1] = Participants[1, 1];
-                }
-                else
-                {
-                    GameWinner[0] = Participants[1, 0];
-                    GameWinner[1] = Participants[1, 1];
-                    GameLoser[0] = Participants[0, 0];
-                    GameLoser[1] = Participants[0, 1];
-                }
-            }
-            else
-            {
-                throw new Exception("Unknown gametype.");
+                case GameTypes.Single:
+                    if (player1Score > player2Score)
+                    {
+                        GameWinner[0] = Participants[0, 0];
+                        GameLoser[0] = Participants[1, 0];
+                    }
+                    else
+                    {
+                        GameWinner[0] = Participants[1, 0];
+                        GameLoser[0] = Participants[0, 0];
+                    }
+                    break;
+                case GameTypes.Double:
+                    if (player1Score > player2Score)
+                    {
+                        GameWinner[0] = Participants[0, 0];
+                        GameWinner[1] = Participants[0, 1];
+                        GameLoser[0] = Participants[1, 0];
+                        GameLoser[1] = Participants[1, 1];
+                    }
+                    else
+                    {
+                        GameWinner[0] = Participants[1, 0];
+                        GameWinner[1] = Participants[1, 1];
+                        GameLoser[0] = Participants[0, 0];
+                        GameLoser[1] = Participants[0, 1];
+                    }
+                    break;
+                default:
+                    throw new Exception("Unknown gametype.");
             }
         }
 
         private void BuildDispResult(int player1Score, int player2Score)
         {
-            string result = "";
+            var result = "";
+
             if (player1Score > player2Score)
             {
-                for (int i = 0; i < Sets.Length; i++)
+                for (var i = 0; i < Sets.Length; i++)
                 {
                     result = result + "(" + Sets[i].Score1 + ", " + Sets[i].Score2 + "), ";
                 }
+
                 DisplayableResult = result;
             }
             else
@@ -210,16 +212,34 @@ namespace TennisExam.TournamentLogic
                     }
                     throw new Exception("All players will have to be females in a women's double.");
                 case TournamentTypes.MixDouble:
-                    if (Participants[0, 0].Gender == Genders.Male && Participants[0, 1].Gender == Genders.Female
-                        || Participants[0, 0].Gender == Genders.Female && Participants[0, 1].Gender == Genders.Male
-                        && Participants[1, 0].Gender == Genders.Male && Participants[1, 1].Gender == Genders.Female
-                        || Participants[1, 0].Gender == Genders.Female && Participants[1, 1].Gender == Genders.Male)
+                    var malesCount = 0;
+                    var femalesCount = 0;
+
+                    for (var i = 0; i < Participants.GetLength(0); i++)
+                    {
+                        for (var j = 0; j < Participants.GetLength(1); j++)
+                        {
+                            switch (Participants[i, j].Gender)
+                            {
+                                case Genders.Male:
+                                    malesCount++;
+                                    break;
+                                case Genders.Female:
+                                    femalesCount++;
+                                    break;
+                            }
+                        }
+                    }
+                        
+                    if (malesCount == femalesCount)
                     {
                         return true;
                     }
+
                     throw new Exception("One male and one female is needed on each team in a mix-double.");
             }
             throw new Exception("Unknown Tournament type in game validation");
         }
+
     }
 }

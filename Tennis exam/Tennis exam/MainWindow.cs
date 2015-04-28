@@ -8,7 +8,7 @@ namespace Tennis_exam
 {
     public partial class MainWindow : Form
     {
-        Tournament tournament;
+        private Tournament tournament;
 
         public MainWindow()
         {
@@ -20,8 +20,8 @@ namespace Tennis_exam
             const string message = "Do you want to simulate a tournament with 8 players?";
             const string caption = "Simulation";
             var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            
-            
+
+
             if (result == DialogResult.Yes)
             {
                 try
@@ -29,16 +29,16 @@ namespace Tennis_exam
                     //Disable group boxes
                     groupBoxTournament.Enabled = false;
                     groupBoxGame.Enabled = false;
-                    
+
                     //Disable game master buttons
                     buttonGMAdd.Enabled = false;
                     buttonGMRemove.Enabled = false;
-                    
+
                     //Disable player buttons
                     buttonPlayerAdd.Enabled = false;
                     buttonPlayerAutoAdd.Enabled = false;
                     buttonPlayerRemove.Enabled = false;
-                    
+
                     //Disable referee buttons
                     buttonRefereeAdd.Enabled = false;
                     buttonRefereeAutoAdd.Enabled = false;
@@ -48,7 +48,7 @@ namespace Tennis_exam
                     AutoFillData autoAdd = new AutoFillData(tournament);
                     autoAdd.AutoAddPlayers();
                     autoAdd.AutoAddReferees();
-                    PopulateDataGridView(dataGridViewPlayer, tournament.Players);      
+                    PopulateDataGridView(dataGridViewPlayer, tournament.Players);
                     PopulateDataGridView(dataGridViewReferee, tournament.Referees);
 
                     //Add game master
@@ -90,7 +90,7 @@ namespace Tennis_exam
             comboGMNationality.DataSource = Enum.GetValues(typeof(Nationalities));
             comboTournamentType.DataSource = Enum.GetValues(typeof(TournamentTypes));
         }
-        
+
         #region Create Tournament
         private void buttonTournamentCreate_Click(object sender, EventArgs e)
         {
@@ -112,23 +112,23 @@ namespace Tennis_exam
                 }
 
                 tournament = new Tournament(name, startsAt, endsAt, amountOfPlayers, type);
-                
+
                 groupBoxTournament.Enabled = false;
                 groupBoxAdd.Enabled = true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Can't create tournament", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }    
+            }
         }
         #endregion
 
         #region Add/Remover player
         private void buttonAddPlayer_Click(object sender, EventArgs e)
         {
-            Player newPlayer = new Player();
+            var newPlayer = new Player();
             try
-            {         
+            {
                 newPlayer.FirstName = textPlayerFirstName.Text;
                 newPlayer.MiddleName = textPlayerMiddleName.Text;
                 newPlayer.LastName = textPlayerLastName.Text;
@@ -157,7 +157,7 @@ namespace Tennis_exam
         private void buttonPlayerRemove_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in dataGridViewPlayer.SelectedRows)
-            {   
+            {
                 try
                 {
                     tournament.RemovePlayer((Player)row.Cells[0].Value);
@@ -174,7 +174,7 @@ namespace Tennis_exam
         #region Add/Remove Referee
         private void buttonRefereeAdd_Click(object sender, EventArgs e)
         {
-            Referee newReferee = new Referee();
+            var newReferee = new Referee();
             try
             {
                 newReferee.FirstName = textRefereeFirstName.Text;
@@ -192,7 +192,7 @@ namespace Tennis_exam
                 else
                 {
                     newReferee.LicenseLastRenewed = dateRefereeLicenseRenewed.Value;
-                }              
+                }
 
                 tournament.AddReferee(newReferee);
 
@@ -214,14 +214,7 @@ namespace Tennis_exam
 
         private void checkRefereeNeverRenewed_CheckedChanged(object sender, EventArgs e)
         {
-            if (dateRefereeLicenseRenewed.Enabled == true)
-            {
-                dateRefereeLicenseRenewed.Enabled = false;
-            }
-            else
-            {
-                dateRefereeLicenseRenewed.Enabled = true;
-            }          
+            dateRefereeLicenseRenewed.Enabled = !dateRefereeLicenseRenewed.Enabled;
         }
 
         private void buttonRefereeRemove_Click(object sender, EventArgs e)
@@ -275,28 +268,27 @@ namespace Tennis_exam
         #region Set/Add/Remove game master
         private void buttonSetAsGameMaster_Click(object sender, EventArgs e)
         {
-            int selectedRowCount = dataGridViewReferee.SelectedRows.Count;
+            var selectedRowCount = dataGridViewReferee.SelectedRows.Count;
             try
             {
                 if (selectedRowCount > 1)
                 {
                     throw new Exception("You can only promote exactly one referee");
                 }
-                else if (selectedRowCount <= 0)
+                if (selectedRowCount <= 0)
                 {
                     throw new Exception("You will have to select exactly one referee.");
                 }
-                else if (dataGridViewReferee.SelectedRows[0].Cells[0].Value == null)
+                if (dataGridViewReferee.SelectedRows[0].Cells[0].Value == null)
                 {
                     throw new Exception("You can't promote an empty row");
                 }
-                else
-                {
-                    Referee referee = (Referee)dataGridViewReferee.SelectedRows[0].Cells[0].Value;
-                    tournament.SetGameMaster(referee);
-                    dataGridViewReferee.Rows.RemoveAt(dataGridViewReferee.SelectedRows[0].Index);
-                    DataGridAddElement(dataGridViewGM, tournament.GameMaster);
-                }
+
+                var referee = (Referee)dataGridViewReferee.SelectedRows[0].Cells[0].Value;
+                tournament.SetGameMaster(referee);
+                dataGridViewReferee.Rows.RemoveAt(dataGridViewReferee.SelectedRows[0].Index);
+                DataGridAddElement(dataGridViewGM, tournament.GameMaster);
+
             }
             catch (Exception ex)
             {
@@ -306,7 +298,7 @@ namespace Tennis_exam
 
         private void buttonGMAdd_Click(object sender, EventArgs e)
         {
-            GameMaster newGameMaster = new GameMaster();
+            var newGameMaster = new GameMaster();
             try
             {
                 newGameMaster.FirstName = textGMFirstName.Text;
@@ -347,14 +339,7 @@ namespace Tennis_exam
 
         private void checkGMLicenseNeverRenewed_CheckedChanged(object sender, EventArgs e)
         {
-            if (dateGMLicenseRenewed.Enabled == true)
-            {
-                dateGMLicenseRenewed.Enabled = false;
-            }
-            else
-            {
-                dateGMLicenseRenewed.Enabled = true;
-            }
+            dateGMLicenseRenewed.Enabled = !dateGMLicenseRenewed.Enabled;
         }
 
         private void buttonGMRemove_Click(object sender, EventArgs e)
@@ -370,7 +355,7 @@ namespace Tennis_exam
         {
             try
             {
-                AutoFillData autoAdd = new AutoFillData(tournament);
+                var autoAdd = new AutoFillData(tournament);
                 autoAdd.AutoAddPlayers();
                 dataGridViewPlayer.Rows.Clear();
                 PopulateDataGridView(dataGridViewPlayer, tournament.Players);
@@ -385,7 +370,7 @@ namespace Tennis_exam
         {
             try
             {
-                AutoFillData autoAdd = new AutoFillData(tournament);
+                var autoAdd = new AutoFillData(tournament);
                 autoAdd.AutoAddReferees();
                 dataGridViewReferee.Rows.Clear();
                 PopulateDataGridView(dataGridViewReferee, tournament.Referees);
@@ -394,7 +379,7 @@ namespace Tennis_exam
             {
                 MessageBox.Show(ex.Message, "Can't Add referees", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
         #endregion
 
@@ -411,7 +396,7 @@ namespace Tennis_exam
                 else if (tournament.IsDouble())
                 {
                     labelTournamentWinner.Text =
-                        "Tournament winner: " + tournament.TournamentWinner()[0].FullName + 
+                        "Tournament winner: " + tournament.TournamentWinner()[0].FullName +
                         " and " + tournament.TournamentWinner()[1].FullName;
                 }
                 else

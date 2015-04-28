@@ -18,7 +18,7 @@ namespace Tennis_exam
             dataGrid.Rows[n].Cells[2].Value = newPlayer.MiddleName;
             dataGrid.Rows[n].Cells[3].Value = newPlayer.LastName;
             dataGrid.Rows[n].Cells[4].Value = newPlayer.DateOfBirth;
-            dataGrid.Rows[n].Cells[5].Value = newPlayer.CalcAge(newPlayer.DateOfBirth);
+            dataGrid.Rows[n].Cells[5].Value = newPlayer.CalculateAge(newPlayer.DateOfBirth);
             dataGrid.Rows[n].Cells[6].Value = newPlayer.Nationality;
             dataGrid.Rows[n].Cells[7].Value = newPlayer.Gender;
 
@@ -41,7 +41,7 @@ namespace Tennis_exam
             dataGrid.Rows[n].Cells[2].Value = newReferee.MiddleName;
             dataGrid.Rows[n].Cells[3].Value = newReferee.LastName;
             dataGrid.Rows[n].Cells[4].Value = newReferee.DateOfBirth;
-            dataGrid.Rows[n].Cells[5].Value = newReferee.CalcAge(newReferee.DateOfBirth);
+            dataGrid.Rows[n].Cells[5].Value = newReferee.CalculateAge(newReferee.DateOfBirth);
             dataGrid.Rows[n].Cells[6].Value = newReferee.Nationality;
             dataGrid.Rows[n].Cells[7].Value = newReferee.Gender;
             dataGrid.Rows[n].Cells[8].Value = newReferee.LicenseAcquired;
@@ -66,7 +66,7 @@ namespace Tennis_exam
             dataGrid.Rows[0].Cells[2].Value = newGameMaster.MiddleName;
             dataGrid.Rows[0].Cells[3].Value = newGameMaster.LastName;
             dataGrid.Rows[0].Cells[4].Value = newGameMaster.DateOfBirth;
-            dataGrid.Rows[0].Cells[5].Value = newGameMaster.CalcAge(newGameMaster.DateOfBirth);
+            dataGrid.Rows[0].Cells[5].Value = newGameMaster.CalculateAge(newGameMaster.DateOfBirth);
             dataGrid.Rows[0].Cells[6].Value = newGameMaster.Nationality;
             dataGrid.Rows[0].Cells[7].Value = newGameMaster.Gender;
             dataGrid.Rows[0].Cells[8].Value = newGameMaster.LicenseAcquired;

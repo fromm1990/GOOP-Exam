@@ -7,8 +7,8 @@
     <ProjectGuid>{BCA40527-56C0-4BE2-9D26-6A4057E64820}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Tennis_exam</RootNamespace>
-    <AssemblyName>Tennis exam</AssemblyName>
+    <RootNamespace>TennisExam</RootNamespace>
+    <AssemblyName>TennisExam</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -74,6 +74,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
