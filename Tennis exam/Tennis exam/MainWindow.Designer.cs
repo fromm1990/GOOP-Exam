@@ -1212,6 +1212,7 @@
             // 
             this.Result.HeaderText = "Result";
             this.Result.Name = "Result";
+            this.Result.Width = 175;
             // 
             // Referee
             // 

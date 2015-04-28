@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TennisExam.People
 {
-    class GameMaster : Referee
+    internal class GameMaster : Referee
     {
 
     }
