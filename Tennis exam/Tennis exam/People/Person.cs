@@ -61,7 +61,7 @@ namespace TennisExam.People
             }
         }
         public DateTime DateOfBirth { get; set; }
-        public int Nationality { get; set; }
+        public string Nationality { get; set; }
         public Genders Gender { get; set; }
 
         public int CalcAge(DateTime dob)

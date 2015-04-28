@@ -43,7 +43,8 @@ namespace TennisExam.Data
             newPlayer.MiddleName = Enum.GetName(typeof(MiddleNames), RandomIndex());
             newPlayer.LastName = Enum.GetName(typeof(LastNames), RandomIndex());
             newPlayer.DateOfBirth = RandomBirthDate();
-            newPlayer.Nationality = RandomIndex();
+            newPlayer.Nationality = Enum.GetName(typeof(Nationalities), RandomIndex())
+            ;
 
             return newPlayer;
         }
@@ -102,7 +103,7 @@ namespace TennisExam.Data
             newReferee.MiddleName = Enum.GetName(typeof(MiddleNames), RandomIndex());
             newReferee.LastName = Enum.GetName(typeof(LastNames), RandomIndex());
             newReferee.DateOfBirth = RandomBirthDate();
-            newReferee.Nationality = RandomIndex();
+            newReferee.Nationality = Enum.GetName(typeof(Nationalities), RandomIndex());
             newReferee.LicenseAcquired = RandomBirthDate();
             newReferee.LicenseLastRenewed = RandomBirthDate();
 

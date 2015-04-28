@@ -59,7 +59,7 @@ namespace Tennis_exam
                         LastName = "Christensen",
                         Gender = Genders.Male,
                         DateOfBirth = DateTime.Today.AddYears(-42),
-                        Nationality = (int) Nationalities.England,
+                        Nationality = Nationalities.England.ToString(),
                         LicenseAcquired = DateTime.Today.AddYears(-14),
                         LicenseLastRenewed = DateTime.Today.AddYears(-4)
                     };
@@ -133,7 +133,7 @@ namespace Tennis_exam
                 newPlayer.MiddleName = textPlayerMiddleName.Text;
                 newPlayer.LastName = textPlayerLastName.Text;
                 newPlayer.DateOfBirth = datePlayerDOB.Value;
-                newPlayer.Nationality = (int)comboPlayerNationality.SelectedValue;
+                newPlayer.Nationality = comboPlayerNationality.SelectedValue.ToString();
                 newPlayer.Gender = (Genders)comboPlayerGender.SelectedValue;
 
                 tournament.AddPlayer(newPlayer);
@@ -181,7 +181,7 @@ namespace Tennis_exam
                 newReferee.MiddleName = textRefereeMiddleName.Text;
                 newReferee.LastName = textRefereeLastName.Text;
                 newReferee.DateOfBirth = dateRefereeDOB.Value;
-                newReferee.Nationality = (int)comboRefereeNationality.SelectedValue;
+                newReferee.Nationality = comboRefereeNationality.SelectedValue.ToString();
                 newReferee.Gender = (Genders)comboRefereeGender.SelectedValue;
                 newReferee.LicenseAcquired = dateRefereeLicenseAcquired.Value;
 
@@ -313,7 +313,7 @@ namespace Tennis_exam
                 newGameMaster.MiddleName = textGMMiddleName.Text;
                 newGameMaster.LastName = textGMLastName.Text;
                 newGameMaster.DateOfBirth = dateGMDOB.Value;
-                newGameMaster.Nationality = (int)comboGMNationality.SelectedValue;
+                newGameMaster.Nationality = comboGMNationality.SelectedValue.ToString();
                 newGameMaster.Gender = (Genders)comboGMGender.SelectedValue;
                 newGameMaster.LicenseAcquired = dateGMLicenseAcquired.Value;
 
