@@ -21,7 +21,6 @@ namespace TennisExam.TournamentLogic
         public TournamentTypes TournamentType { get; set; }
         public List<Game> Games { get; set; }
         public int Round { get; set; }
-        internal static Random Rand { get; set; }
 
         public Tournament(string name, DateTime startsAt, DateTime endsAt, int amountOfPlayers, TournamentTypes tournamentType)
         {
@@ -34,14 +33,13 @@ namespace TennisExam.TournamentLogic
             Games = new List<Game>();
             Year = startsAt.Year;
             Round = 1;
-            Rand = new Random();
         }
 
         #region Add/Remove Player or Referee
 
         public void AddPlayer(Player player)
         {
-            if (Players.Count > TournamentSize)
+            if (Players.Count >= TournamentSize)
             {
                 throw new Exception("All player slots are filled.");
             }
@@ -53,7 +51,7 @@ namespace TennisExam.TournamentLogic
 
         public void AddReferee(Referee referee)
         {
-            if (Referees.Count > TournamentSize / 2)
+            if (Referees.Count >= TournamentSize / 2)
             {
                 throw new Exception("All referee slots are filled.");
             }
@@ -147,13 +145,13 @@ namespace TennisExam.TournamentLogic
         #endregion
 
         #region Initialize gametypes
-        
+
         private void InitializeSingle()
         {
             var j = Players.Count - 1;
             for (var i = 0; i <= j; i++)
             {
-                var newGame = new Game(Players[i], Players[j], Round, Rand, TournamentType);
+                var newGame = new Game(Players[i], Players[j], Round, TournamentType);
                 newGame.AddReferee(Referees[i]);
                 Games.Add(newGame);
                 j--;
@@ -174,7 +172,7 @@ namespace TennisExam.TournamentLogic
                 team2[0] = Players[j];
                 team2[1] = Players[j - 1];
 
-                var newGame = new Game(team1, team2, Round, Rand, TournamentType);
+                var newGame = new Game(team1, team2, Round, TournamentType);
                 newGame.AddReferee(Referees[i / 2]);
                 Games.Add(newGame);
                 j -= 2;
@@ -184,21 +182,23 @@ namespace TennisExam.TournamentLogic
         private void InitializeMixDouble()
         {
             var newPlayerList = new List<Player>(Players);
-
-            for (var i = 0; i < Players.Count; i += 4)
+            if (PlayerListValidation())
             {
-                var team1 = new Player[2];
-                var team2 = new Player[2];
+                for (var i = 0; i < Players.Count; i += 4)
+                {
+                    var team1 = new Player[2];
+                    var team2 = new Player[2];
 
-                team1[0] = SearchForMale(newPlayerList);
-                team1[1] = SearchForFemale(newPlayerList);
-                team2[0] = SearchForMale(newPlayerList);
-                team2[1] = SearchForFemale(newPlayerList);
+                    team1[0] = SearchForMale(newPlayerList);
+                    team1[1] = SearchForFemale(newPlayerList);
+                    team2[0] = SearchForMale(newPlayerList);
+                    team2[1] = SearchForFemale(newPlayerList);
 
-                var newGame = new Game(team1, team2, Round, Rand, TournamentType);
-                newGame.AddReferee(Referees[i / 4]);
-                Games.Add(newGame);
-            }
+                    var newGame = new Game(team1, team2, Round, TournamentType);
+                    newGame.AddReferee(Referees[i / 4]);
+                    Games.Add(newGame);
+                }
+            }        
         }
 
         private Player SearchForMale(List<Player> players)
@@ -275,7 +275,7 @@ namespace TennisExam.TournamentLogic
 
             if (Round == 1)
             {
-                for (int i = 0; i < Games.Count; i++ )
+                for (int i = 0; i < Games.Count; i++)
                 {
                     Games[i].PlayGame();
                 }
@@ -293,13 +293,13 @@ namespace TennisExam.TournamentLogic
                     Player player1 = Games[start].GameWinner[0];
                     Player player2 = Games[start + 1].GameWinner[0];
                     Referee referee = Games[start].GameReferee;
-                    Game newGame = new Game(player1, player2, Round, Rand, TournamentType);
+                    Game newGame = new Game(player1, player2, Round, TournamentType);
                     newGame.AddReferee(referee);
                     if (newGame.GameValidation())
                     {
                         newGame.PlayGame();
                         Games.Add(newGame);
-                    }             
+                    }
                     start += 2;
                 }
                 Round++;
@@ -328,7 +328,7 @@ namespace TennisExam.TournamentLogic
                 while (start < end)
                 {
                     Player[] team1 = new Player[2];
-                    Player[] team2 = new Player[2];                   
+                    Player[] team2 = new Player[2];
 
                     team1[0] = Games[start].GameWinner[0];
                     team1[1] = Games[start].GameWinner[1];
@@ -336,14 +336,14 @@ namespace TennisExam.TournamentLogic
                     team2[1] = Games[start + 1].GameWinner[1];
                     Referee referee = Games[start].GameReferee;
 
-                    Game newGame = new Game(team1, team2, Round, Rand, TournamentType);
+                    Game newGame = new Game(team1, team2, Round, TournamentType);
                     newGame.AddReferee(referee);
-                    
+
                     if (newGame.GameValidation())
                     {
                         newGame.PlayGame();
                         Games.Add(newGame);
-                    }  
+                    }
                     start += 2;
                 }
                 Round++;
@@ -389,22 +389,54 @@ namespace TennisExam.TournamentLogic
             else
             {
                 throw new Exception("The winner is not found yet.");
-            }         
+            }
         }
 
         public bool IsSingle()
         {
-            return  TournamentType == TournamentTypes.SingleFemale || 
-                    TournamentType == TournamentTypes.SingleMale 
+            return TournamentType == TournamentTypes.SingleFemale ||
+                    TournamentType == TournamentTypes.SingleMale
                     ? true : false;
         }
 
         public bool IsDouble()
         {
-            return  TournamentType == TournamentTypes.DoubleFemale || 
-                    TournamentType == TournamentTypes.DoubleMale || 
-                    TournamentType == TournamentTypes.MixDouble 
+            return TournamentType == TournamentTypes.DoubleFemale ||
+                    TournamentType == TournamentTypes.DoubleMale ||
+                    TournamentType == TournamentTypes.MixDouble
                     ? true : false;
         }
+
+        private bool PlayerListValidation()
+        {
+            switch (TournamentType)
+            {
+                case TournamentTypes.SingleMale:
+                case TournamentTypes.DoubleMale:
+                    if (Players.Exists(player => player.Gender == Genders.Female))
+                    {
+                        throw new Exception("Both players will have to be males in a men's single.");
+                    }
+                    return true;
+
+                case TournamentTypes.SingleFemale:
+                case TournamentTypes.DoubleFemale:
+                    if (Players.Exists(player => player.Gender == Genders.Male))
+                    {
+                        throw new Exception("Both players will have to be females in a womans's single.");
+                    }
+                    return true;
+                case TournamentTypes.MixDouble:
+                    var females = Players.FindAll(player => player.Gender == Genders.Female);
+                    var males = Players.FindAll(player => player.Gender == Genders.Male);
+                    if (females.Count != males.Count)
+                    {
+                        throw new Exception("One male and one female is needed on each team in a mix-double.");
+                    }
+                    return true;
+            }
+            throw new Exception("Player list validation failed");
+        }
+
     }
 }

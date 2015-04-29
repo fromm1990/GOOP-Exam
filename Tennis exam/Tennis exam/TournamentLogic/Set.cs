@@ -1,4 +1,4 @@
-﻿using System;
+﻿using TennisExam.Data;
 
 namespace TennisExam.TournamentLogic
 {
@@ -7,8 +7,9 @@ namespace TennisExam.TournamentLogic
         public int Score1 { get; set; }
         public int Score2 { get; set; }
 
-        public void PlaySet(Random rand)
+        public void PlaySet()
         {
+            var rand = StaticRandom.Rand;
             if (rand.Next(0, 100) < 49)
             {
                 Score1 = 6;

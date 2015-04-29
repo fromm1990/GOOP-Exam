@@ -22,7 +22,7 @@ namespace TennisExam.Data
         public AutoFillData(Tournament tournament)
         {
             Tournament = tournament;
-            Rand = Tournament.Rand;
+            Rand = StaticRandom.Rand;
         }
 
         private static int RandomIndex()

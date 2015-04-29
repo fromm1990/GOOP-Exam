@@ -16,20 +16,18 @@ namespace TennisExam.TournamentLogic
         public GameTypes GameType { get; private set; }
         private TournamentTypes TournamentType { get; set; }
         public Referee GameReferee { get; private set; }
-        private static Random Rand { get; set; }
         public string DisplayableResult { get; private set; }
         public int Round { get; private set; }
 
         #region Constructor
         // Constructor to single matches
-        public Game(Player player1, Player player2, int round, Random rand, TournamentTypes tournamentType)
+        public Game(Player player1, Player player2, int round, TournamentTypes tournamentType)
         {
             Participants = new Player[2, 1];
             GameWinner = new Player[1];
             GameLoser = new Player[1];
             GameType = GameTypes.Single;
             Round = round;
-            Rand = rand;
             TournamentType = tournamentType;
 
             switch (tournamentType)
@@ -46,14 +44,13 @@ namespace TennisExam.TournamentLogic
             Participants[1, 0] = player2;
         }
         // Constructor to double matches
-        public Game(Player[] team1, Player[] team2, int round, Random rand, TournamentTypes tournamentType)
+        public Game(Player[] team1, Player[] team2, int round, TournamentTypes tournamentType)
         {
             Participants = new Player[2, 2];
             GameWinner = new Player[2];
             GameLoser = new Player[2];
             GameType = GameTypes.Double;
             Round = round;
-            Rand = rand;
             TournamentType = tournamentType;
 
             switch (tournamentType)
@@ -82,7 +79,7 @@ namespace TennisExam.TournamentLogic
             for (var i = 0; i < Sets.Length; i++)
             {
                 var newSet = new Set();
-                newSet.PlaySet(Rand);
+                newSet.PlaySet();
                 Sets[i] = newSet;
 
                 if (newSet.Score1 > newSet.Score2)
@@ -240,6 +237,6 @@ namespace TennisExam.TournamentLogic
             }
             throw new Exception("Unknown Tournament type in game validation");
         }
-
+        
     }
 }
