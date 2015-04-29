@@ -71,6 +71,18 @@ namespace TennisExam.TournamentLogic
         }
         #endregion
 
+        #region Add/remove GameReferee
+        public void AddReferee(Referee referee)
+        {
+            GameReferee = referee;
+        }
+
+        public void RemoveReferee()
+        {
+            GameReferee = null;
+        }
+        #endregion
+
         public void PlayGame()
         {
             var player1GameScore = 0;
@@ -92,11 +104,13 @@ namespace TennisExam.TournamentLogic
                 }
             }
 
-            SetGameStatus(player1GameScore, player2GameScore);
-            BuildDispResult(player1GameScore, player2GameScore);
+            SetGameWinner(player1GameScore, player2GameScore);
+            SetGameLooser(player1GameScore, player2GameScore);
+
+            BuildDisplayableResult(player1GameScore, player2GameScore);
         }
 
-        private void SetGameStatus(int player1Score, int player2Score)
+        private void SetGameWinner(int player1Score, int player2Score)
         {
             switch (GameType)
             {
@@ -104,12 +118,10 @@ namespace TennisExam.TournamentLogic
                     if (player1Score > player2Score)
                     {
                         GameWinner[0] = Participants[0, 0];
-                        GameLoser[0] = Participants[1, 0];
                     }
                     else
                     {
                         GameWinner[0] = Participants[1, 0];
-                        GameLoser[0] = Participants[0, 0];
                     }
                     break;
                 case GameTypes.Double:
@@ -117,13 +129,40 @@ namespace TennisExam.TournamentLogic
                     {
                         GameWinner[0] = Participants[0, 0];
                         GameWinner[1] = Participants[0, 1];
-                        GameLoser[0] = Participants[1, 0];
-                        GameLoser[1] = Participants[1, 1];
                     }
                     else
                     {
                         GameWinner[0] = Participants[1, 0];
                         GameWinner[1] = Participants[1, 1];
+                    }
+                    break;
+                default:
+                    throw new Exception("Unknown gametype.");
+            }
+        }
+
+        private void SetGameLooser(int player1Score, int player2Score)
+        {
+            switch (GameType)
+            {
+                case GameTypes.Single:
+                    if (player1Score > player2Score)
+                    {
+                        GameLoser[0] = Participants[1, 0];
+                    }
+                    else
+                    {
+                        GameLoser[0] = Participants[0, 0];
+                    }
+                    break;
+                case GameTypes.Double:
+                    if (player1Score > player2Score)
+                    {
+                        GameLoser[0] = Participants[1, 0];
+                        GameLoser[1] = Participants[1, 1];
+                    }
+                    else
+                    {
                         GameLoser[0] = Participants[0, 0];
                         GameLoser[1] = Participants[0, 1];
                     }
@@ -133,24 +172,39 @@ namespace TennisExam.TournamentLogic
             }
         }
 
-        private void BuildDispResult(int player1Score, int player2Score)
+        private void BuildDisplayableResult(int player1Score, int player2Score)
         {
-            var result = "";
+            string result = null;
 
             if (player1Score > player2Score)
             {
                 for (var i = 0; i < Sets.Length; i++)
                 {
-                    result = result + "(" + Sets[i].Score1 + ", " + Sets[i].Score2 + "), ";
+                    if (i == Sets.Length - 1)
+                    {
+                        result += "[" + Sets[i].Score1 + " | " + Sets[i].Score2 + "]";
+                    }
+                    else
+                    {
+                        result += "[" + Sets[i].Score1 + " | " + Sets[i].Score2 + "] - ";
+                    }
+
                 }
 
                 DisplayableResult = result;
             }
             else
             {
-                for (int i = 0; i < Sets.Length; i++)
+                for (var i = 0; i < Sets.Length; i++)
                 {
-                    result = result + "(" + Sets[i].Score2 + ", " + Sets[i].Score1 + "), ";
+                    if (i == Sets.Length - 1)
+                    {
+                        result += "[" + Sets[i].Score2 + " | " + Sets[i].Score1 + "]";
+                    }
+                    else
+                    {
+                        result += "[" + Sets[i].Score2 + " | " + Sets[i].Score1 + "] - ";
+                    }
                 }
                 DisplayableResult = result;
             }
@@ -159,16 +213,6 @@ namespace TennisExam.TournamentLogic
         public int SetsPlayed()
         {
             return Sets.Count(set => set != null);
-        }
-
-        public void AddReferee(Referee referee)
-        {
-            GameReferee = referee;
-        }
-
-        public void RemoveReferee()
-        {
-            GameReferee = null;
         }
 
         public bool GameValidation()
@@ -227,7 +271,7 @@ namespace TennisExam.TournamentLogic
                             }
                         }
                     }
-                        
+
                     if (malesCount == femalesCount)
                     {
                         return true;
@@ -237,6 +281,6 @@ namespace TennisExam.TournamentLogic
             }
             throw new Exception("Unknown Tournament type in game validation");
         }
-        
+
     }
 }

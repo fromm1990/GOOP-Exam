@@ -45,7 +45,7 @@ namespace Tennis_exam
                     buttonRefereeRemove.Enabled = false;
 
                     tournament = new Tournament("Wimbledon", DateTime.Today, DateTime.Today.AddDays(5), 8, TournamentTypes.SingleMale);
-                    AutoFillData autoAdd = new AutoFillData(tournament);
+                    var autoAdd = new AutoFillData(tournament);
                     autoAdd.AutoAddPlayers();
                     autoAdd.AutoAddReferees();
                     PopulateDataGridView(dataGridViewPlayer, tournament.Players);
@@ -63,6 +63,7 @@ namespace Tennis_exam
                         LicenseAcquired = DateTime.Today.AddYears(-14),
                         LicenseLastRenewed = DateTime.Today.AddYears(-4)
                     };
+
                     tournament.AddGameMaster(newGameMaster);
                     DataGridAddElement(dataGridViewGM, tournament.GameMaster);
 
@@ -96,11 +97,11 @@ namespace Tennis_exam
         {
             try
             {
-                string name = textTournamentName.Text;
-                DateTime startsAt = dateTimeTournamentStartsAt.Value;
-                DateTime endsAt = dateTimeTournamentEndsAt.Value;
-                int amountOfPlayers = Convert.ToInt32(comboTournamentAmountOfPlayers.SelectedItem);
-                TournamentTypes type = (TournamentTypes)comboTournamentType.SelectedValue;
+                var name = textTournamentName.Text;
+                var startsAt = dateTimeTournamentStartsAt.Value;
+                var endsAt = dateTimeTournamentEndsAt.Value;
+                var amountOfPlayers = Convert.ToInt32(comboTournamentAmountOfPlayers.SelectedItem);
+                var type = (TournamentTypes)comboTournamentType.SelectedValue;
 
                 switch (type)
                 {

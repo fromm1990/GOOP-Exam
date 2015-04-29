@@ -7,7 +7,7 @@ using TennisExam.TournamentLogic;
 
 namespace Tennis_exam
 {
-    public partial class MainWindow : Form
+    public partial class MainWindow
     {
         private void DataGridAddElement(DataGridView dataGrid, Player newPlayer)
         {
@@ -86,7 +86,7 @@ namespace Tennis_exam
 
         private void DataGridAddElement(DataGridView dataGrid, Game newGame)
         {
-            int n = dataGrid.Rows.Add();
+            var n = dataGrid.Rows.Add();
 
             if (tournament.IsSingle())
             {
