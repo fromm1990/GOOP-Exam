@@ -388,6 +388,13 @@ namespace Tennis_exam
         {
             try
             {
+                if (!tournament.IsTurnamentActive())
+                {
+                    tournament.Games.Clear();
+                    tournament.Round = 1;
+                    dataGridViewGames.Rows.Clear();
+                }
+
                 tournament.PlayTournament();
                 PopulateDataGridView(dataGridViewGames, tournament.Games);
                 if (tournament.IsSingle())
@@ -404,6 +411,8 @@ namespace Tennis_exam
                 {
                     throw new Exception("Unknown tournament type.");
                 }
+
+                buttonTournamentPlay.Text = "Play again";
             }
 
             catch (Exception ex)

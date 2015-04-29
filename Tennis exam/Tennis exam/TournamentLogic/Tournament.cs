@@ -384,6 +384,10 @@ namespace TennisExam.TournamentLogic
 
         public bool IsTurnamentActive()
         {
+            if (Games.Count == 0)
+            {
+                return true;
+            }
             if (IsSingle())
             {
                 return Games.Last().Round != (int)Math.Log(TournamentSize, 2);
