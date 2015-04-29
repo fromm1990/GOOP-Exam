@@ -88,7 +88,7 @@ namespace TennisExam.TournamentLogic
             var player1GameScore = 0;
             var player2GameScore = 0;
 
-            for (var i = 0; i < Sets.Length; i++)
+            for (int i = 0; i < Sets.Length; i++)
             {
                 var newSet = new Set();
                 newSet.PlaySet();
@@ -178,7 +178,7 @@ namespace TennisExam.TournamentLogic
 
             if (player1Score > player2Score)
             {
-                for (var i = 0; i < Sets.Length; i++)
+                for (int i = 0; i < Sets.Length; i++)
                 {
                     if (i == Sets.Length - 1)
                     {
@@ -195,7 +195,7 @@ namespace TennisExam.TournamentLogic
             }
             else
             {
-                for (var i = 0; i < Sets.Length; i++)
+                for (int i = 0; i < Sets.Length; i++)
                 {
                     if (i == Sets.Length - 1)
                     {

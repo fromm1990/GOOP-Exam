@@ -4,7 +4,7 @@ using TennisExam.TournamentLogic;
 using TennisExam.People;
 using TennisExam.Data;
 
-namespace Tennis_exam
+namespace TennisExam.UI
 {
     public partial class MainWindow : Form
     {

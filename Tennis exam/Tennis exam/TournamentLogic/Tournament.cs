@@ -3,6 +3,57 @@ using System.Collections.Generic;
 using System.Linq;
 using TennisExam.People;
 using TennisExam.Data;
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Documentation
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Namespace: TennisExam
+//This namespace consists of the Program class that holds the main function which runs the MainWindow.
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Namespace: TennisExam.Data
+//This namespace consists of the AutoFillData and StaticRandom classes, and will consist of classes that produce data for tennis application
+//
+//The AutoFillData class handles all the auto creation of player and referee -objects.
+//The StaticRandom class consists of one static random object in order to avoid multiple random objects throughout the program.
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Namespace: TennisExam.Peolpe
+//This namespace consists of the classes Person, Player, Referee and GameMaster and will consist of classes that represents people which are 
+//involved in at tennis tournament.
+//
+//The Person class is an abstract base class that holds all the common properties for the classes Player, Referee and GameMaster. 
+//Furthermore it consist of the method CalculateAge method that is also common for the before mentioned classes.
+//
+//The classes Player, GameMaster and Referee holds additional properties each relevant for each classes.
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Namespace: TennisExam.TournamentLogic
+//This namespace consists of the classes Tournament, Game and Set. The namespace is meant for classes which have an influence in how 
+//a tournament is executed.
+//
+//The Tournament class consists of three lists, a games, a referees and a players -list. The players list contains all the players who are 
+//about to or already is playing in the tournament. 
+//The referees list contains all the referees who are about to or already is judging a game in the tournament.
+//The games list contains all the played games in the tournament.
+//Furthermore the Tournament class instantiates all the teams in the tournament and puts the teams into games which will have to be played.
+//The Game class associates a referee to a game and finds the winner and the loser for that game.
+//The Set class contains a method to play a set and stores the score values for the played set.
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Namespace: TennisExam.UI
+//This namespace contains all the elements that handles the user interface.
+//
+//I have decided to split the MainWindow class into to parts, one which mainly call methods (the MainWindow) and one which contains methods 
+//to manipulate the user interface (the MainWindowUIMethods). This was done to improve readability of the MainWindow class.
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Assumptions:
+//
+//I have assumed that a GameMaster cannot be a game referee.
+//I have assumed that a referee can judge only one game in round at the time
+//I have assumed that all players have equal chance to win a game.
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace TennisExam.TournamentLogic
 {
@@ -14,23 +65,37 @@ namespace TennisExam.TournamentLogic
         public int Year { get; set; }
         public DateTime StartsAt { get; set; }
         public DateTime EndsAt { get; set; }
-        public List<Player> Players { get; set; }
-        public List<Referee> Referees { get; set; }
+
+        private List<Player> player;
+        public List<Player> Players
+        {
+            get { return player ?? (player = new List<Player>()); }
+        }
+
+        private List<Referee> referee;
+        public List<Referee> Referees
+        {
+            get { return referee ?? (referee = new List<Referee>()); }
+        }
+
+        private List<Game> games;
+        public List<Game> Games
+        {
+            get { return games ?? (games = new List<Game>()); }
+        }
+
         public GameMaster GameMaster { get; set; }
         public int TournamentSize { get; set; }
         public TournamentTypes TournamentType { get; set; }
-        public List<Game> Games { get; set; }
+
         public int Round { get; set; }
 
         public Tournament(string name, DateTime startsAt, DateTime endsAt, int amountOfPlayers, TournamentTypes tournamentType)
         {
             Name = name;
             TournamentSize = amountOfPlayers;
-            Players = new List<Player>();
-            Referees = new List<Referee>();
             GameMaster = null;
             TournamentType = tournamentType;
-            Games = new List<Game>();
             Year = startsAt.Year;
             StartsAt = startsAt;
             EndsAt = endsAt;
@@ -124,22 +189,22 @@ namespace TennisExam.TournamentLogic
         #region Sort Player or Referee
         public void SortPlayersByFirstName()
         {
-            Players = Players.OrderBy(obj => obj.FirstName).ToList();
+            Players.Sort((player1, player2) => string.Compare(player1.FirstName, player2.FirstName, StringComparison.Ordinal));
         }
 
         public void SortRefereesByFirstName()
         {
-            Referees = Referees.OrderBy(obj => obj.FirstName).ToList();
+            Referees.Sort((referee1, referee2) => string.Compare(referee1.FirstName, referee2.FirstName, StringComparison.Ordinal));
         }
 
         public void SortPlayersByLastName()
         {
-            Players = Players.OrderBy(obj => obj.LastName).ToList();
+            Players.Sort((player1, player2) => string.Compare(player1.LastName, player2.LastName, StringComparison.Ordinal));
         }
 
         public void SortRefereesByLastName()
         {
-            Referees = Referees.OrderBy(obj => obj.LastName).ToList();
+            Referees.Sort((referee1, referee2) => string.Compare(referee1.LastName, referee2.LastName, StringComparison.Ordinal));
         }
         #endregion
 
@@ -181,7 +246,7 @@ namespace TennisExam.TournamentLogic
             if (!PlayerListValidation()) return;
             var j = Players.Count - 1;
 
-            for (var i = 0; i <= j; i++)
+            for (int i = 0; i <= j; i++)
             {
                 var newGame = new Game(Players[i], Players[j], Round, TournamentType);
                 newGame.AddReferee(Referees[i]);
@@ -195,7 +260,7 @@ namespace TennisExam.TournamentLogic
             if (!PlayerListValidation()) return;
             var j = Players.Count - 1;
 
-            for (var i = 0; i <= j; i += 2)
+            for (int i = 0; i <= j; i += 2)
             {
                 var team1 = new Player[2];
                 var team2 = new Player[2];
@@ -217,7 +282,7 @@ namespace TennisExam.TournamentLogic
             if (!PlayerListValidation()) return;
             var newPlayerList = new List<Player>(Players);
 
-            for (var i = 0; i < Players.Count; i += 4)
+            for (int i = 0; i < Players.Count; i += 4)
             {
                 var team1 = new Player[2];
                 var team2 = new Player[2];
@@ -315,9 +380,9 @@ namespace TennisExam.TournamentLogic
 
             while (Round <= totalRounds)
             {
-                int offset = (int)Math.Pow(2, (totalRounds - (Round - 1)));
-                int start = Games.Count - offset;
-                int end = Games.Count;
+                var offset = (int)Math.Pow(2, (totalRounds - (Round - 1)));
+                var start = Games.Count - offset;
+                var end = Games.Count;
 
                 while (start < end)
                 {
@@ -339,27 +404,27 @@ namespace TennisExam.TournamentLogic
 
         private void PlayAllDoubleRounds()
         {
-            int totalRounds = (int)Math.Log(TournamentSize / 2, 2);
+            var totalRounds = (int)Math.Log(TournamentSize / 2, 2);
 
             if (Round == 1)
             {
-                for (int i = 0; i < Games.Count; i++)
+                foreach (Game game in Games)
                 {
-                    Games[i].PlayGame();
+                    game.PlayGame();
                 }
                 Round++;
             }
 
             while (Round <= totalRounds)
             {
-                int offset = (int)Math.Pow(2, (totalRounds - (Round - 1)));
-                int start = Games.Count - offset;
-                int end = Games.Count;
+                var offset = (int)Math.Pow(2, (totalRounds - (Round - 1)));
+                var start = Games.Count - offset;
+                var end = Games.Count;
 
                 while (start < end)
                 {
-                    Player[] team1 = new Player[2];
-                    Player[] team2 = new Player[2];
+                    var team1 = new Player[2];
+                    var team2 = new Player[2];
 
                     team1[0] = Games[start].GameWinner[0];
                     team1[1] = Games[start].GameWinner[1];

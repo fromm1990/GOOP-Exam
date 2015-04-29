@@ -1,4 +1,4 @@
-﻿namespace Tennis_exam
+﻿namespace TennisExam.UI
 {
     partial class MainWindow
     {
